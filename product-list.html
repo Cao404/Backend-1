@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>shop vn</title>
+  <link rel="stylesheet" href="./css/product.css" />
+  <script src="./js/auth-guard.js"></script>
+</head>
+<body>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="#f9a44d" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="#f9a44d" stroke-width="1.5"/></svg>
+      <span class="brand-text">shop vn</span>
+      <div class="toggle-btn" onclick="toggleSidebar()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <h6>TỔNG HỢP</h6>
+      <a href="dashboard.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12l9-8 9 8v8a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8z" stroke="currentColor"/></svg><span>Bảng điều khiển</span></a>
+      
+      <h6>Sản phẩm</h6>
+      <a href="product-list.html" class="active"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="currentColor" stroke-width="1.5"/></svg><span>Danh sách</span></a>
+      <a href="product-grid.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="currentColor" stroke-width="1.5"/></svg><span>Lưới</span></a>
+      <a href="product-details.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="currentColor" stroke-width="1.5"/></svg><span>Chi tiết</span></a>
+
+      <h6>MUA SẮM</h6>
+      <a href="cart.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.5 6M17 13l2.5 6M9.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM17.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke="currentColor"/></svg><span>Giỏ hàng</span><span class="cart-badge" id="sidebarCartBadge" style="display:none">0</span></a>
+
+      <h6>DANH MỤC</h6>
+      <a href="category-list.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor"/></svg><span>Quản lý danh mục</span></a>
+      
+      <h6>QUẢN TRỊ</h6>
+      <a href="admin-seller-approval.html"><svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M20 8v6M23 11h-6" stroke="currentColor" stroke-width="2"/></svg><span>Duyệt Người Bán</span></a>
+      <a href="admin-users.html"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 20c2-4 6-4 8-4s6 0 8 4" stroke="currentColor" stroke-width="2"/></svg><span>Quản lý người dùng</span></a>
+      <a href="admin-content-moderation.html"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 0 1.946-.806 3.42 3.42 0 0 1 3.438 0 3.42 3.42 0 0 0 1.946.806 3.42 3.42 0 0 1 3.138 3.138 3.42 3.42 0 0 0 .806 1.946 3.42 3.42 0 0 1 0 3.438 3.42 3.42 0 0 0-.806 1.946 3.42 3.42 0 0 1-3.138 3.138 3.42 3.42 0 0 0-1.946.806 3.42 3.42 0 0 1-3.438 0 3.42 3.42 0 0 0-1.946-.806 3.42 3.42 0 0 1-3.138-3.138 3.42 3.42 0 0 0-.806-1.946 3.42 3.42 0 0 1 0-3.438 3.42 3.42 0 0 0 .806-1.946 3.42 3.42 0 0 1 3.138-3.138z" stroke="currentColor" stroke-width="2"/></svg><span>Kiểm Duyệt Nội Dung</span></a>
+      <a href="admin-promotions.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"/></svg><span>Khuyến Mãi</span></a>
+      <a href="admin-shipping.html"><svg viewBox="0 0 24 24" fill="none"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z" stroke="currentColor" stroke-width="2"/><circle cx="5.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="2"/><circle cx="18.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg><span>Vận Chuyển</span></a>
+      <a href="admin-finance.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"/></svg><span>Tài Chính</span></a>
+      <a href="admin-disputes.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="2"/><path d="M12 16v-4M12 8h.01" stroke="currentColor" stroke-width="2"/></svg><span>Khiếu Nại & Tranh Chấp</span></a>
+      <a href="admin-reports.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18M7 16l4-4 4 4 6-6" stroke="currentColor" stroke-width="2"/></svg><span>Báo Cáo & Giám Sát</span></a>
+      <a href="admin-permissions.html"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="2"/></svg><span>Phân Quyền & Nhật Ký</span></a>
+      
+      <h6>HÀNG TỒN KHO</h6>
+      <a href="inventory-warehouse.html"><svg viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor"/></svg><span>Kho hàng</span></a>
+      <a href="inventory-received-orders.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.5 6M17 13l2.5 6M9.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM17.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke="currentColor"/></svg><span>Đã nhận được đơn đặt hàng</span></a>
+    </nav>
+
+    <div class="grow"></div>
+
+    <div class="user">
+      <div class="avatar"></div>
+      <div style="flex:1">
+        <div style="font-weight:700">Admin</div>
+        <div class="sub">Quản trị viên</div>
+      </div>
+      <div class="icon-btn" onclick="logout()" title="Đăng xuất" style="width:32px;height:32px;margin-left:4px">
+        <svg viewBox="0 0 24 24" fill="none" width="16" height="16">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <section class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="title">DANH SÁCH SẢN PHẨM</div>
+      <div class="actions">
+        <div class="icon-btn" title="Chế độ tối">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M21 12a9 9 0 1 1-8-8 7 7 0 0 0 8 8z" stroke="#b9c7e5"/></svg>
+        </div>
+        <div class="icon-btn" title="Thông báo">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" stroke="#b9c7e5"/></svg>
+        </div>
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><circle cx="11" cy="11" r="8" stroke="#7a8fb0"/><path d="m21 21-4.35-4.35" stroke="#7a8fb0"/></svg>
+          <input type="text" placeholder="Tìm kiếm..." id="searchInput" />
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      
+      <div class="card">
+        <div class="card-header">
+          <div style="font-weight:700;font-size:16px">Tất cả Danh sách sản phẩm</div>
+          <div style="display:flex;gap:10px">
+            <button class="btn" onclick="openProductModal()">+ Thêm sản phẩm</button>
+            <select style="background:var(--panel);border:1px solid var(--line);color:var(--text);padding:8px 12px;border-radius:8px">
+              <option>Tháng Này</option>
+              <option>Tuần Này</option>
+              <option>Hôm Nay</option>
+            </select>
+          </div>
+        </div>
+
+          <table class="table">
+            <thead>
+              <tr>
+              <th style="width:32px"><input type="checkbox" id="selectAll" /></th>
+              <th>SẢN PHẨM</th>
+              <th>SKU</th>
+              <th>DANH MỤC</th>
+              <th>GIÁ BÁN</th>
+              <th>KHO</th>
+              <th>ĐÃ BÁN</th>
+              <th>TRẠNG THÁI</th>
+              <th>THAO TÁC</th>
+              </tr>
+            </thead>
+          <tbody id="productTableBody">
+            <!-- Products will be rendered here by JavaScript -->
+            </tbody>
+          </table>
+
+        <!-- Pagination -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border-top:1px solid var(--line)">
+          <div style="color:var(--muted);font-size:13px" id="pageInfo">Hiển thị 1-10 trong 50 kết quả</div>
+          <div style="display:flex;gap:6px" id="pagination">
+            <!-- Pagination buttons will be rendered here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div style="text-align:center;padding:16px 0 0 0;color:var(--muted);font-size:13px;margin-top:auto">
+        2025 © shop vn. Được chế tạo bởi <span style="color:var(--accent);font-weight:600">Cao, Trần Huy và Đào Huy</span>
+      </div>
+
+    </div>
+
+  </section>
+
+ </div>
+
+<!-- MODAL THÊM/SỬA SẢN PHẨM -->
+<div id="productModal" class="modal" style="display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.7);align-items:center;justify-content:center">
+  <div class="modal-content" style="background:var(--panel);border-radius:12px;width:90%;max-width:700px;max-height:90vh;overflow-y:auto;border:1px solid var(--line)">
+    <div class="modal-header" style="display:flex;justify-content:space-between;align-items:flex-start;padding:20px 24px;border-bottom:1px solid var(--line)">
+      <div>
+        <h2 id="productModalTitle" style="font-size:22px;margin-bottom:6px;font-weight:700">Thêm sản phẩm mới</h2>
+        <p class="modal-subtitle" style="font-size:14px;color:var(--muted);font-weight:500">Điền thông tin sản phẩm bên dưới để thêm vào cửa hàng</p>
+      </div>
+      <button class="modal-close" onclick="closeProductModal()" style="background:transparent;border:none;color:var(--muted);font-size:24px;cursor:pointer;padding:0;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:6px">✕</button>
+    </div>
+
+    <form id="productForm" style="display:flex;flex-direction:column">
+      <div class="modal-body" style="padding:24px">
+        <!-- Image Upload -->
+        <div class="form-group" style="margin-bottom:20px">
+          <label style="display:block;margin-bottom:8px;font-size:14px;font-weight:500">Hình ảnh sản phẩm</label>
+          <div class="image-upload-box" style="width:140px;height:140px;border:2px dashed var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.3s;position:relative;overflow:hidden;background:var(--panel-2)">
+            <input type="file" id="imageUpload" accept="image/*" style="display:none" />
+            <div class="image-upload-icon" id="imageUploadIcon" style="font-size:32px;color:var(--muted);transition:color 0.3s;display:flex;align-items:center;justify-content:center;position:relative;z-index:2">📷+</div>
+            <div id="imagePreview" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:3;background:var(--panel-2)">
+              <img id="imagePreviewImg" alt="Preview" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block" onerror="this.src='https://via.placeholder.com/140'; this.onerror=null;" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Name -->
+        <div class="form-group" style="margin-bottom:20px">
+          <label style="display:block;margin-bottom:8px;font-size:14px;font-weight:500">Tên sản phẩm <span style="color:var(--danger)">*</span></label>
+          <input type="text" name="productName" id="modalProductName" placeholder="Nhập tên sản phẩm" required style="width:100%;padding:10px 12px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:14px;outline:none" />
+        </div>
+
+        <!-- SKU and Category -->
+        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+          <div class="form-group">
+            <label style="display:block;margin-bottom:8px;font-size:14px;font-weight:500">Mã SKU</label>
+            <input type="text" name="sku" id="modalSku" placeholder="VD: IP15PM-256-BK" style="width:100%;padding:10px 12px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:14px;outline:none" />
+          </div>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:8px;font-size:14px;font-weight:500">Danh mục <span style="color:var(--danger)">*</span></label>
+            <select name="category" id="modalCategory" required style="width:100%;padding:10px 12px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:14px;outline:none">
+              <option value="">Chọn danh mục</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Price, Original Price, Quantity -->
+        <div class="form-row-3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px">
+          <div class="form-group">
+            <label style="display:block;margin-bottom:8px;font-size:14px;font-weight:500">Giá bán (VND) <span style="color:var(--danger)">*</span></label>
+            <input type="text" name="price" id="modalPrice" placeholder="34.990.000" required style="width:100%;padding:10px 12px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:14px;outline:none" />
+          </div>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:8px;font-size:14px;font-weight:500">Giá gốc (VND)</label>
+            <input type="text" name="originalPrice" id="modalOriginalPrice" placeholder="39.990.000" style="width:100%;padding:10px 12px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:14px;outline:none" />
+          </div>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:8px;font-size:14px;font-weight:500">Số lượng <span style="color:var(--danger)">*</span></label>
+            <input type="number" name="quantity" id="modalQuantity" placeholder="0" required style="width:100%;padding:10px 12px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:14px;outline:none" />
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group" style="margin-bottom:20px">
+          <label style="display:block;margin-bottom:8px;font-size:14px;font-weight:500">Mô tả sản phẩm</label>
+          <textarea name="description" id="modalDescription" placeholder="Nhập mô tả chi tiết về sản phẩm..." rows="4" style="width:100%;padding:10px 12px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:14px;outline:none;resize:vertical;font-family:inherit"></textarea>
+        </div>
+
+        <!-- Category-specific dynamic fields -->
+        <div id="modalCategoryFields">
+          <!-- Các trường thuộc tính sẽ được render động dựa trên danh mục -->
+        </div>
+      </div>
+
+      <div class="modal-footer" style="display:flex;justify-content:flex-end;gap:12px;padding:16px 24px;border-top:1px solid var(--line)">
+        <button type="button" class="btn-cancel" onclick="closeProductModal()" style="background:transparent;color:var(--muted);padding:10px 24px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:14px;font-weight:500">Hủy</button>
+        <button type="submit" class="btn-submit" style="background:var(--accent);color:#2b1606;padding:10px 24px;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700" id="productModalSubmit">Thêm sản phẩm</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL XEM CHI TIẾT SẢN PHẨM -->
+<div id="productDetailModal" class="modal" style="display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.7);align-items:center;justify-content:center">
+  <div class="modal-content" style="background:var(--panel);border-radius:12px;width:90%;max-width:600px;max-height:90vh;overflow-y:auto;border:1px solid var(--line)">
+    <div class="modal-header" style="display:flex;justify-content:space-between;align-items:flex-start;padding:20px 24px;border-bottom:1px solid var(--line)">
+      <div>
+        <h2 style="font-size:22px;margin-bottom:6px;font-weight:700">Chi tiết sản phẩm</h2>
+      </div>
+      <button class="modal-close" onclick="closeProductDetailModal()" style="background:transparent;border:none;color:var(--muted);font-size:24px;cursor:pointer;padding:0;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:6px">✕</button>
+    </div>
+
+    <div class="modal-body" style="padding:24px">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <!-- Product Image -->
+        <div style="text-align:center">
+          <img id="detailImage" src="" alt="Product" style="max-width:300px;max-height:300px;border-radius:12px;object-fit:cover;cursor:pointer;transition:transform 0.2s;border:2px solid var(--line)" onclick="event.stopPropagation();viewFullProductDetailsFromModal()" onmouseover="this.style.transform='scale(1.05)';this.style.borderColor='var(--accent)'" onmouseout="this.style.transform='scale(1)';this.style.borderColor='var(--line)'" title="Click để xem chi tiết đầy đủ" />
+        </div>
+
+        <!-- Product Info -->
+        <div>
+          <div style="margin-bottom:16px">
+            <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Tên sản phẩm</div>
+            <div id="detailName" style="font-size:18px;font-weight:600"></div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+            <div>
+              <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Danh mục</div>
+              <div id="detailCategory" style="font-size:14px"></div>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Mã SKU</div>
+              <div id="detailSku" style="font-size:14px"></div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+            <div>
+              <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Giá bán</div>
+              <div id="detailPrice" style="font-size:16px;font-weight:600;color:var(--accent)"></div>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Số lượng</div>
+              <div id="detailQuantity" style="font-size:14px"></div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Mô tả</div>
+            <div id="detailDescription" style="font-size:14px;line-height:1.6"></div>
+          </div>
+
+          <!-- Attributes -->
+          <div id="detailAttributes" style="margin-top:16px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer" style="display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-top:1px solid var(--line)">
+      <button type="button" class="btn-view-full" onclick="viewFullProductDetailsFromModal()" style="background:var(--panel-2);color:var(--accent);padding:10px 20px;border:1px solid var(--accent);border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;transition:all 0.2s" onmouseover="this.style.background='var(--accent)';this.style.color='#2b1606'" onmouseout="this.style.background='var(--panel-2)';this.style.color='var(--accent)'">
+        <svg viewBox="0 0 24 24" fill="none" width="18" height="18" stroke="currentColor" stroke-width="2">
+          <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        </svg>
+        Xem chi tiết đầy đủ
+      </button>
+      <div style="display:flex;gap:12px">
+        <button type="button" class="btn-cancel" onclick="closeProductDetailModal()" style="background:transparent;color:var(--muted);padding:10px 24px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:14px;font-weight:500">Đóng</button>
+        <button type="button" class="btn-submit" onclick="editProductFromDetailModal()" style="background:var(--accent);color:#2b1606;padding:10px 24px;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700">✏️ Chỉnh sửa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./js/products.js"></script>
+<script src="./js/product-list-page.js"></script>
+</body>
+</html>

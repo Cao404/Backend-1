@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý đơn hàng - SellerHub</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/forms.css" />
+    <link rel="stylesheet" href="./css/donhang.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-header top-brand">
+          <div class="brand-left">
+            <div class="brand-icon">🛒</div>
+            <div class="brand-text">
+              <div class="brand-name">SellerHub</div>
+            </div>
+          </div>
+          <button class="collapse-btn">⮟</button>
+        </div>
+
+        <div class="sidebar-scroll">
+          <!-- QUẢN LÝ -->
+          <div class="sidebar-section-label">QUẢN LÝ</div>
+          <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Tổng quan</span>
+              </div>
+            </a>
+
+            <a href="sanpham-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📦</span>
+                <span class="nav-text">Sản phẩm</span>
+              </div>
+            </a>
+
+            <a href="danhmuc-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🗂</span>
+                <span class="nav-text">Danh mục</span>
+              </div>
+            </a>
+
+            <a href="tonkho-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏬</span>
+                <span class="nav-text">Tồn kho</span>
+              </div>
+            </a>
+
+            <a href="donhang-full.html" class="nav-item active">
+              <div class="nav-left">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">Đơn hàng</span>
+              </div>
+            </a>
+
+            <a href="khachhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Khách hàng</span>
+              </div>
+            </a>
+
+          </nav>
+
+          <!-- VẬN HÀNH -->
+          <div class="sidebar-section-label">VẬN HÀNH</div>
+          <nav class="sidebar-nav">
+            <a href="vanchuyen-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🚚</span>
+                <span class="nav-text">Vận chuyển</span>
+              </div>
+            </a>
+            <a href="hoantien-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">↩️</span>
+                <span class="nav-text">Hoàn tiền</span>
+              </div>
+            </a>
+            <a href="khuyenmai-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏷</span>
+                <span class="nav-text">Khuyến mãi</span>
+              </div>
+            </a>
+            <a href="flashsale-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Flash Sale</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- PHÂN TÍCH -->
+          <div class="sidebar-section-label">PHÂN TÍCH</div>
+          <nav class="sidebar-nav">
+            <a href="baocao-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Báo cáo</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- THIẾT LẬP -->
+          <div class="sidebar-section-label">THIẾT LẬP</div>
+          <nav class="sidebar-nav">
+            <a href="cuahang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">Cửa hàng</span>
+              </div>
+            </a>
+            <a href="caidat-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Cài đặt</span>
+              </div>
+            </a>
+          </nav>
+        </div>
+
+        <!-- FOOTER USER -->
+        <div class="sidebar-footer">
+          <div class="user">
+            <div class="avatar">
+              <img src="" alt="" onerror="this.style.display='none'" />
+              <span>NH</span>
+            </div>
+            <div class="user-info">
+              <div class="user-name">Nguyễn Hoàng</div>
+              <div class="user-role small">Premium Seller ▾</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+        <!-- TOP BAR -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <h1 class="page-title">Quản lý đơn hàng</h1>
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" class="search-input" id="orderSearchTopbar" placeholder="Tìm kiếm mã đơn, khách hàng..." />
+            </div>
+          </div>
+          <div class="topbar-right">
+            <button class="top-btn">🔔</button>
+            <button class="top-btn">❓</button>
+            <button class="btn-store-open">Cửa hàng đang mở</button>
+          </div>
+        </header>
+
+        <!-- BREADCRUMB -->
+        <nav class="breadcrumb">
+          <a href="index.html" class="breadcrumb-item">Trang chủ</a>
+          <span class="breadcrumb-separator">›</span>
+          <a href="#" class="breadcrumb-item">Quản lý</a>
+          <span class="breadcrumb-separator">›</span>
+          <span class="breadcrumb-item active">Đơn hàng</span>
+        </nav>
+
+        <!-- KPI -->
+        <section class="kpi-row" style="margin-bottom: 16px">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>Chờ xác nhận</span>
+            </div>
+            <div class="kpi-value" id="kpiPending">0</div>
+            <div class="kpi-footer">Đơn</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>Đang xử lý</span>
+            </div>
+            <div class="kpi-value" id="kpiProcessing">0</div>
+            <div class="kpi-footer">Đơn</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>Đang giao</span>
+            </div>
+            <div class="kpi-value" id="kpiShipping">0</div>
+            <div class="kpi-footer">Đơn</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>Đã giao</span>
+            </div>
+            <div class="kpi-value" id="kpiCompleted">0</div>
+            <div class="kpi-footer">Đơn</div>
+          </div>
+        </section>
+
+        <!-- TÌM KIẾM + LỌC -->
+        <section class="order-section">
+          <div class="order-search-row">
+            <div class="order-search">
+              <input
+                type="text"
+                id="orderSearch"
+                class="order-search-input"
+                placeholder="Tìm mã đơn, tên khách hàng..."
+              />
+            </div>
+
+            <div class="order-actions">
+              <div class="date-filter">
+                <button
+                  type="button"
+                  id="dateTrigger"
+                  class="date-trigger"
+                  aria-haspopup="true"
+                >
+                  <span id="dateLabel">Tất cả</span>
+                  <span class="date-caret">▾</span>
+                </button>
+                <div class="date-menu">
+                  <button class="date-option" data-range="all">
+                    Tất cả
+                  </button>
+                  <button class="date-option" data-range="today">
+                    Hôm nay
+                  </button>
+                  <button class="date-option" data-range="yesterday">
+                    Hôm qua
+                  </button>
+                  <button class="date-option" data-range="7days">
+                    7 ngày qua
+                  </button>
+                  <button class="date-option" data-range="30days">
+                    30 ngày qua
+                  </button>
+                  <button class="date-option" data-range="byDate">
+                    📅 Theo ngày
+                  </button>
+                  <button class="date-option" data-range="byMonth">
+                    📆 Theo tháng
+                  </button>
+                  <button class="date-option" data-range="byYear">
+                    📅 Theo năm
+                  </button>
+                  <button class="date-option" data-range="custom">
+                    Tùy chỉnh
+                  </button>
+                </div>
+              </div>
+
+              <button class="btn-sm" id="exportExcelBtn">⬇ Xuất Excel</button>
+              <button class="btn-sm" id="printOrderBtn">🖨 In đơn hàng</button>
+            </div>
+          </div>
+
+          <!-- TABS TRẠNG THÁI -->
+          <div class="order-tabs">
+            <button class="order-tab active" data-status="all">
+              Tất cả
+              <span class="order-tab-count" data-status-count="all">0</span>
+            </button>
+            <button class="order-tab" data-status="pending">
+              Chờ xác nhận
+              <span class="order-tab-count" data-status-count="pending">0</span>
+            </button>
+            <button class="order-tab" data-status="processing">
+              Đang xử lý
+              <span class="order-tab-count" data-status-count="processing"
+                >0</span
+              >
+            </button>
+            <button class="order-tab" data-status="shipping">
+              Đang giao
+              <span class="order-tab-count" data-status-count="shipping"
+                >0</span
+              >
+            </button>
+            <button class="order-tab" data-status="completed">
+              Đã giao
+              <span class="order-tab-count" data-status-count="completed"
+                >0</span
+              >
+            </button>
+            <button class="order-tab" data-status="canceled">
+              Đã hủy
+              <span class="order-tab-count" data-status-count="canceled"
+                >0</span
+              >
+            </button>
+          </div>
+
+          <!-- BẢNG ĐƠN HÀNG -->
+          <div class="card">
+            <div class="card-body table-wrapper">
+              <table class="order-table">
+                <thead>
+                  <tr>
+                    <th style="width: 36px; text-align: center">
+                      <input type="checkbox" id="checkAllOrders" />
+                    </th>
+                    <th>Mã đơn</th>
+                    <th>Khách hàng</th>
+                    <th>Sản phẩm</th>
+                    <th>Tổng tiền</th>
+                    <th>Thanh toán</th>
+                    <th>Trạng thái</th>
+                    <th>Thời gian</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="orderTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- MODAL TÙY CHỈNH NGÀY -->
+    <div id="customDateModal" class="modal">
+      <div class="modal-content" style="max-width: 500px;">
+        <div class="modal-header">
+          <div>
+            <h2>Chọn khoảng thời gian</h2>
+            <p class="modal-subtitle">Chọn ngày bắt đầu và ngày kết thúc</p>
+          </div>
+          <button class="modal-close" id="closeCustomDateModal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Ngày bắt đầu</label>
+            <input type="date" id="customDateStart" style="width: 100%; padding: 10px 12px; background-color: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; outline: none;" />
+          </div>
+          <div class="form-group">
+            <label>Ngày kết thúc</label>
+            <input type="date" id="customDateEnd" style="width: 100%; padding: 10px 12px; background-color: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; outline: none;" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="cancelCustomDate">Hủy</button>
+          <button type="button" class="btn-submit" id="applyCustomDate">Áp dụng</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL CHỌN NGÀY -->
+    <div id="selectDateModal" class="modal">
+      <div class="modal-content" style="max-width: 400px;">
+        <div class="modal-header">
+          <div>
+            <h2>Chọn ngày</h2>
+            <p class="modal-subtitle">Chọn một ngày cụ thể</p>
+          </div>
+          <button class="modal-close" id="closeSelectDateModal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Ngày</label>
+            <input type="date" id="selectDate" style="width: 100%; padding: 10px 12px; background-color: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; outline: none;" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="cancelSelectDate">Hủy</button>
+          <button type="button" class="btn-submit" id="applySelectDate">Áp dụng</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL CHỌN THÁNG -->
+    <div id="selectMonthModal" class="modal">
+      <div class="modal-content" style="max-width: 400px;">
+        <div class="modal-header">
+          <div>
+            <h2>Chọn tháng</h2>
+            <p class="modal-subtitle">Chọn tháng và năm</p>
+          </div>
+          <button class="modal-close" id="closeSelectMonthModal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Tháng</label>
+            <select id="selectMonth" style="width: 100%; padding: 10px 12px; background-color: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; outline: none;">
+              <option value="1">Tháng 1</option>
+              <option value="2">Tháng 2</option>
+              <option value="3">Tháng 3</option>
+              <option value="4">Tháng 4</option>
+              <option value="5">Tháng 5</option>
+              <option value="6">Tháng 6</option>
+              <option value="7">Tháng 7</option>
+              <option value="8">Tháng 8</option>
+              <option value="9">Tháng 9</option>
+              <option value="10">Tháng 10</option>
+              <option value="11">Tháng 11</option>
+              <option value="12">Tháng 12</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Năm</label>
+            <input type="number" id="selectMonthYear" min="2020" max="2030" value="2024" style="width: 100%; padding: 10px 12px; background-color: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; outline: none;" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="cancelSelectMonth">Hủy</button>
+          <button type="button" class="btn-submit" id="applySelectMonth">Áp dụng</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL CHỌN NĂM -->
+    <div id="selectYearModal" class="modal">
+      <div class="modal-content" style="max-width: 400px;">
+        <div class="modal-header">
+          <div>
+            <h2>Chọn năm</h2>
+            <p class="modal-subtitle">Chọn một năm cụ thể</p>
+          </div>
+          <button class="modal-close" id="closeSelectYearModal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Năm</label>
+            <input type="number" id="selectYear" min="2020" max="2030" value="2024" style="width: 100%; padding: 10px 12px; background-color: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; outline: none;" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="cancelSelectYear">Hủy</button>
+          <button type="button" class="btn-submit" id="applySelectYear">Áp dụng</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL CHI TIẾT ĐƠN HÀNG -->
+    <div id="orderDetailModal" class="modal">
+      <div class="modal-content order-detail-modal" style="max-width: 800px;">
+        <div class="modal-header">
+          <div>
+            <h2 id="orderDetailTitle">Chi tiết đơn hàng</h2>
+            <p class="modal-subtitle" id="orderDetailTime"></p>
+          </div>
+          <button class="modal-close" id="closeOrderDetailModal">✕</button>
+        </div>
+        <div class="modal-body order-detail-body">
+          <!-- Thông tin khách hàng -->
+          <div class="order-detail-section">
+            <div class="order-detail-customer">
+              <div class="order-detail-avatar" id="orderDetailAvatar">TA</div>
+              <div class="order-detail-customer-info">
+                <div class="order-detail-customer-name" id="orderDetailCustomerName">Trần Văn A</div>
+                <div class="order-detail-customer-phone" id="orderDetailCustomerPhone">0912 345 678</div>
+                <div class="order-detail-customer-email" id="orderDetailCustomerEmail">tranvana@email.com</div>
+              </div>
+            </div>
+            <div class="order-detail-status-badge" id="orderDetailStatusBadge">
+              <span class="status-pill st-pending">Chờ xác nhận</span>
+            </div>
+          </div>
+
+          <!-- Sản phẩm -->
+          <div class="order-detail-section">
+            <h3 class="order-detail-section-title">Sản phẩm</h3>
+            <div id="orderDetailProducts">
+              <!-- Sẽ được populate bằng JavaScript -->
+            </div>
+          </div>
+
+          <!-- Địa chỉ giao hàng -->
+          <div class="order-detail-section">
+            <h3 class="order-detail-section-title">Địa chỉ giao hàng</h3>
+            <div class="order-detail-address" id="orderDetailAddress">123 Nguyễn Văn Linh, Q.7, TP.HCM</div>
+            <div class="order-detail-note" id="orderDetailNote">Ghi chú: Gọi trước khi giao</div>
+          </div>
+
+          <!-- Thanh toán và tổng cộng -->
+          <div class="order-detail-payment-row">
+            <div class="order-detail-payment-card">
+              <div class="order-detail-payment-label">Phương thức thanh toán</div>
+              <div class="order-detail-payment-method" id="orderDetailPaymentMethod">COD</div>
+            </div>
+            <div class="order-detail-total">
+              <div class="order-detail-total-label">Tổng cộng</div>
+              <div class="order-detail-total-amount" id="orderDetailTotal">34.990.000₫</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer order-detail-footer">
+          <button type="button" class="btn-print" id="printOrderDetailBtn">
+            🖨 In đơn hàng
+          </button>
+          <button type="button" class="btn-cancel-order" id="cancelOrderDetailBtn">
+            ❌ Hủy đơn
+          </button>
+          <button type="button" class="btn-confirm-order" id="confirmOrderDetailBtn">
+            ✅ Xác nhận
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/scrip.js"></script>
+    <script src="js/donhang.js"></script>
+    <script src="js/user-info.js"></script>
+    <script src="js/sidebar-preserve.js"></script>
+    <script src="js/store-status.js"></script>
+  </body>
+</html>

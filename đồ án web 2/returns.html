@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đổi/Trả hàng - ShopVN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Split CSS into separate files -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/returns.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="logo">ShopVN</a>
+        <div class="search-box">
+          <input type="text" placeholder="Tìm kiếm sản phẩm...">
+          <button>Tìm</button>
+        </div>
+        <div class="header-actions" id="user-actions">
+          <a href="login.html">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            Đăng xuất
+          </a>
+        </div>
+        <a href="cart.html" class="cart-icon">
+          <div style="position: relative;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 24px; height: 24px;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span class="cart-count" id="cart-count">0</span>
+          </div>
+          Giỏ hàng
+        </a>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="products.html">Sản phẩm</a></li>
+          <li><a href="products.html?category=Điện thoại">Điện thoại</a></li>
+          <li><a href="products.html?category=Laptop">Laptop</a></li>
+          <li><a href="products.html?category=Máy tính bảng">Máy tính bảng</a></li>
+          <li><a href="products.html?category=Đồng hồ">Đồng hồ</a></li>
+          <li><a href="products.html?category=Phụ kiện">Phụ kiện</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+          <li><a href="returns.html" class="active">Đổi/Trả hàng</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Trang chủ</a>
+        <span>/</span>
+        <span>Đổi/Trả hàng</span>
+      </div>
+      <h1>Đổi/Trả hàng</h1>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container" style="padding: 40px 0;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+      <!-- Return Requests List -->
+      <div>
+        <div class="card" style="padding: 24px;">
+          <h2 style="font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 20px; height: 20px;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Yêu cầu đổi/trả của bạn
+          </h2>
+          <div id="returns-list">
+            <!-- Returns will be rendered here -->
+          </div>
+          <div id="empty-returns" style="display: none; text-align: center; padding: 40px 20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 60px; height: 60px; color: #9ca3af; margin: 0 auto 16px;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z" />
+            </svg>
+            <p style="color: #6b7280; margin-bottom: 16px;">Chưa có yêu cầu đổi/trả nào</p>
+            <p style="color: #9ca3af; font-size: 14px;">Vui lòng điền form bên cạnh để tạo yêu cầu mới</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Create Return Request Form -->
+      <div>
+        <div class="card" style="padding: 24px;">
+          <h2 style="font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 20px; height: 20px;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            Tạo yêu cầu đổi/trả mới
+          </h2>
+          <form id="return-form" onsubmit="handleReturnSubmit(event)">
+            <div class="form-group">
+              <label>Chọn đơn hàng *</label>
+              <select name="orderId" id="order-select" required onchange="loadOrderProducts()">
+                <option value="">Chọn đơn hàng đã giao</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Chọn sản phẩm *</label>
+              <select name="productId" id="product-select" required disabled>
+                <option value="">Chọn sản phẩm cần đổi/trả</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Loại yêu cầu *</label>
+              <div style="display: flex; gap: 16px;">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                  <input type="radio" name="type" value="return" checked>
+                  <span>Trả hàng hoàn tiền</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                  <input type="radio" name="type" value="exchange">
+                  <span>Đổi hàng</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Lý do *</label>
+              <select name="reason" required>
+                <option value="">Chọn lý do</option>
+                <option value="defect">Sản phẩm bị lỗi/hỏng</option>
+                <option value="wrong">Giao sai sản phẩm</option>
+                <option value="notmatch">Không đúng mô tả</option>
+                <option value="size">Sai kích thước</option>
+                <option value="change">Đổi ý không muốn mua</option>
+                <option value="other">Lý do khác</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Mô tả chi tiết *</label>
+              <textarea name="description" rows="4" required placeholder="Mô tả chi tiết vấn đề bạn gặp phải..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Hình ảnh minh họa <span style="font-weight: normal; color: #6b7280;">(Tối đa 5 ảnh)</span></label>
+              <div id="image-upload-area" style="border: 2px dashed #d1d5db; border-radius: 12px; padding: 30px; text-align: center; cursor: pointer; transition: all 0.2s;" 
+                   onclick="document.getElementById('image-input').click()"
+                   onmouseover="this.style.borderColor='#0284c7'; this.style.backgroundColor='#f0f9ff';"
+                   onmouseout="this.style.borderColor='#d1d5db'; this.style.backgroundColor='transparent';">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 40px; height: 40px; color: #9ca3af; margin: 0 auto 12px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p style="color: #6b7280; margin-bottom: 4px;">Nhấp để tải ảnh lên hoặc kéo thả</p>
+                <p style="font-size: 12px; color: #9ca3af;">PNG, JPG tối đa 5MB mỗi ảnh</p>
+              </div>
+              <input type="file" id="image-input" accept="image/*" multiple style="display: none;" onchange="handleImagePreview(event)">
+              <div id="image-preview" style="display: none; margin-top: 16px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px;" id="image-preview-grid"></div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Gửi yêu cầu</button>
+          </form>
+        </div>
+
+        <!-- Return Policy -->
+        <div class="card" style="padding: 24px; margin-top: 24px;">
+          <h3 style="font-size: 16px; margin-bottom: 16px;">Chính sách đổi/trả hàng</h3>
+          <ul style="color: #6b7280; font-size: 14px; line-height: 1.8;">
+            <li>Thời gian đổi/trả: 7 ngày kể từ khi nhận hàng</li>
+            <li>Sản phẩm còn nguyên tem, nhãn, chưa qua sử dụng</li>
+            <li>Có đầy đủ hóa đơn, phụ kiện đi kèm</li>
+            <li>Hoàn tiền trong 3-5 ngày làm việc sau khi nhận hàng trả</li>
+            <li>Phí vận chuyển trả hàng do ShopVN chịu (nếu lỗi từ shop)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>ShopVN</h3>
+          <p>Nền tảng mua sắm trực tuyến hàng đầu Việt Nam với hàng triệu sản phẩm chất lượng.</p>
+        </div>
+        <div>
+          <h4>Hỗ trợ khách hàng</h4>
+          <ul>
+            <li><a href="#">Trung tâm trợ giúp</a></li>
+            <li><a href="#">Hướng dẫn mua hàng</a></li>
+            <li><a href="#">Chính sách đổi trả</a></li>
+            <li><a href="#">Chính sách bảo hành</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Về ShopVN</h4>
+          <ul>
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Tuyển dụng</a></li>
+            <li><a href="#">Điều khoản sử dụng</a></li>
+            <li><a href="#">Chính sách bảo mật</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Liên hệ</h4>
+          <p>Email: support@shopvn.com</p>
+          <p>Hotline: 1900 1234</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 ShopVN. Tất cả quyền được bảo lưu.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Split JS into separate files -->
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/returns.js"></script>
+  <script src="js/header.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if orderId is in URL (from orders.html)
+      const urlParams = new URLSearchParams(window.location.search)
+      const orderId = urlParams.get('orderId')
+      
+      // Load delivered orders
+      loadDeliveredOrders()
+      
+      // If orderId is provided, select it
+      if (orderId) {
+        setTimeout(() => {
+          const orderSelect = document.getElementById('order-select')
+          if (orderSelect) {
+            // Check if order exists and is delivered
+            Orders.init()
+            const order = Orders.getById(orderId)
+            if (order && order.status === 'delivered') {
+              orderSelect.value = orderId
+              loadOrderProducts()
+            } else {
+              showToast('Đơn hàng không tồn tại hoặc chưa được giao!', 'error')
+            }
+          }
+        }, 100)
+      }
+      
+      // Render returns list
+      renderReturns(document.getElementById('returns-list'))
+      
+      // Update header and cart
+      if (typeof updateHeader === 'function') updateHeader()
+      if (Cart && typeof Cart.updateCount === 'function') Cart.updateCount()
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.metric-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+.metric-label { color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+.metric-value { font-size: 28px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+.metric-change { font-size: 12px; color: var(--muted); }
+.chart-container { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; margin-bottom: 20px; }
+.funnel-step { padding: 12px; background: var(--panel-2); border-radius: 8px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+

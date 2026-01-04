@@ -1,0 +1,13 @@
+.finance-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.status-pending { background: rgba(59, 130, 246, 0.2); color: #3b82f6; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+.status-completed { background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.stat-box { background: var(--panel-2); padding: 16px; border-radius: 8px; border: 1px solid var(--line); }
+.stat-label { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+.stat-value { font-size: 24px; font-weight: 700; color: var(--accent); }

@@ -1,0 +1,165 @@
+
+.form-group {
+  margin-bottom: 20px; /* Khoảng cách giữa các nhóm form */
+}
+
+/* ========== LABEL (NHÃN) ========== */
+
+.form-group label {
+  display: block; 
+  margin-bottom: 8px; 
+  font-size: 14px; 
+  font-weight: 500; 
+}
+
+/* ========== INPUT, SELECT, TEXTAREA ========== */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; 
+  padding: 10px 12px;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px; 
+  color: var(--text); 
+  font-size: 14px; 
+  font-family: inherit; 
+}
+
+/* ========== TRẠNG THÁI FOCUS (KHI ĐƯỢC CHỌN) ========== */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent); 
+}
+
+/* ========== TEXTAREA (Ô NHẬP VĂN BẢN DÀI) ========== */
+
+.form-group textarea {
+  resize: vertical; /* Chỉ cho phép kéo dãn theo chiều dọc */
+}
+
+/* ========== FORM ROW (HÀNG FORM) ========== */
+
+.form-row {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; /* 2 cột bằng nhau */
+  gap: 16px; 
+}
+
+
+
+.required {
+  color: var(--danger); 
+}
+
+/* ========== NÚT LƯU (SUBMIT BUTTON) ========== */
+
+.btn-submit {
+  background-color: var(--accent); 
+  color: white; 
+  padding: 10px 24px; 
+  border: none; 
+  border-radius: 8px; 
+  cursor: pointer;
+  font-size: 14px; 
+  font-weight: 500; 
+}
+
+/* ========== HOVER NÚT LƯU ========== */
+
+.btn-submit:hover {
+  background-color: #1ea34d; 
+}
+
+/* ========== NÚT HỦY (CANCEL BUTTON) ========== */
+
+.btn-cancel {
+  background-color: transparent; 
+  color: var(--text-muted);
+  padding: 10px 24px; 
+  border: 1px solid var(--border); 
+  border-radius: 8px; 
+  cursor: pointer; 
+  font-size: 14px; 
+  font-weight: 500; 
+}
+
+/* ========== HOVER NÚT HỦY ========== */
+
+.btn-cancel:hover {
+  background-color: var(--bg); 
+  color: var(--text); 
+}
+
+/* ========== MODAL FORM DANH MỤC ========== */
+
+#categoryModal .modal-content {
+  max-width: 600px; 
+}
+
+/* ========== INPUT TÊN DANH MỤC ========== */
+
+input[name="categoryName"] {
+  font-weight: 500; 
+  font-size: 15px; 
+}
+
+/* ========== INPUT MÃ DANH MỤC ========== */
+
+input[name="categoryCode"] {
+  text-transform: uppercase; 
+  font-family: 'Courier New', monospace; 
+  letter-spacing: 1px; 
+}
+
+/* ========== INPUT ICON (EMOJI) ========== */
+
+input[name="icon"] {
+  font-size: 24px; 
+  text-align: center; 
+  padding: 12px; 
+}
+
+/* ========== SELECT DANH MỤC CHA ========== */
+
+select[name="parentCategory"] {
+  cursor: pointer; 
+}
+
+/* ========== TEXTAREA MÔ TẢ DANH MỤC ========== */
+
+textarea[name="description"] {
+  min-height: 80px; 
+  resize: vertical; 
+  line-height: 1.5; 
+}
+
+/* ========== FORM ROW (MÃ VÀ ICON) ========== */
+
+.form-row {
+  gap: 16px; 
+}
+
+/* ========== RESPONSIVE (THIẾT BỊ DI ĐỘNG) ========== */
+
+@media (max-width: 768px) {
+ 
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  
+  input[name="icon"] {
+    font-size: 20px;
+  }
+  
+  
+  .form-row {
+    grid-template-columns: 1fr; 
+}
+
+}

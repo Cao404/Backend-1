@@ -1,0 +1,63 @@
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+.status-pending { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+.status-approved { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+.status-rejected { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+.status-violation { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+
+.violation-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.violation-tag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.image-preview {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.image-preview img {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 4px;
+  background: var(--panel-2);
+  border-radius: 10px;
+}
+.filter-tab {
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+}
+.filter-tab.active {
+  background: var(--accent);
+  color: #2b1606;
+}

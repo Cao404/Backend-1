@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>shop vn</title>
+  <link rel="stylesheet" href="./css/product.css" />
+  <script src="./js/auth-guard.js"></script>
+  <link rel="stylesheet" href="./css/inventory-warehouse.css" />
+</head>
+<body>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="#f9a44d" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="#f9a44d" stroke-width="1.5"/></svg>
+      <span class="brand-text">shop vn</span>
+      <div class="toggle-btn" onclick="toggleSidebar()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <h6>TỔNG HỢP</h6>
+      <a href="dashboard.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12l9-8 9 8v8a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8z" stroke="currentColor"/></svg><span>Bảng điều khiển</span></a>
+      
+      <h6>Sản phẩm</h6>
+      <a href="product-list.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="currentColor" stroke-width="1.5"/></svg><span>Danh sách</span></a>
+      <a href="product-grid.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="currentColor" stroke-width="1.5"/></svg><span>Lưới</span></a>
+      <a href="product-details.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="currentColor" stroke-width="1.5"/></svg><span>Chi tiết</span></a>
+
+      <h6>MUA SẮM</h6>
+      <a href="cart.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.5 6M17 13l2.5 6M9.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM17.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke="currentColor"/></svg><span>Giỏ hàng</span><span class="cart-badge" id="sidebarCartBadge" style="display:none">0</span></a>
+
+      <h6>DANH MỤC</h6>
+      <a href="category-list.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor"/></svg><span>Quản lý danh mục</span></a>
+      
+      <h6>QUẢN TRỊ</h6>
+      <a href="admin-seller-approval.html"><svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M20 8v6M23 11h-6" stroke="currentColor" stroke-width="2"/></svg><span>Duyệt Người Bán</span></a>
+      <a href="admin-users.html"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 20c2-4 6-4 8-4s6 0 8 4" stroke="currentColor" stroke-width="2"/></svg><span>Quản lý người dùng</span></a>
+      <a href="admin-content-moderation.html"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 0 1.946-.806 3.42 3.42 0 0 1 3.438 0 3.42 3.42 0 0 0 1.946.806 3.42 3.42 0 0 1 3.138 3.138 3.42 3.42 0 0 0 .806 1.946 3.42 3.42 0 0 1 0 3.438 3.42 3.42 0 0 0-.806 1.946 3.42 3.42 0 0 1-3.138 3.138 3.42 3.42 0 0 0-1.946.806 3.42 3.42 0 0 1-3.438 0 3.42 3.42 0 0 0-1.946-.806 3.42 3.42 0 0 1-3.138-3.138 3.42 3.42 0 0 0-.806-1.946 3.42 3.42 0 0 1 0-3.438 3.42 3.42 0 0 0 .806-1.946 3.42 3.42 0 0 1 3.138-3.138z" stroke="currentColor" stroke-width="2"/></svg><span>Kiểm Duyệt Nội Dung</span></a>
+      <a href="admin-promotions.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"/></svg><span>Khuyến Mãi</span></a>
+      <a href="admin-shipping.html"><svg viewBox="0 0 24 24" fill="none"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z" stroke="currentColor" stroke-width="2"/><circle cx="5.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="2"/><circle cx="18.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg><span>Vận Chuyển</span></a>
+      <a href="admin-finance.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"/></svg><span>Tài Chính</span></a>
+      <a href="admin-disputes.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="2"/><path d="M12 16v-4M12 8h.01" stroke="currentColor" stroke-width="2"/></svg><span>Khiếu Nại & Tranh Chấp</span></a>
+      <a href="admin-reports.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18M7 16l4-4 4 4 6-6" stroke="currentColor" stroke-width="2"/></svg><span>Báo Cáo & Giám Sát</span></a>
+      <a href="admin-permissions.html"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="2"/></svg><span>Phân Quyền & Nhật Ký</span></a>
+      
+      <h6>HÀNG TỒN KHO</h6>
+      <a href="inventory-warehouse.html" class="active"><svg viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor"/></svg><span>Kho hàng</span></a>
+      <a href="inventory-received-orders.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.5 6M17 13l2.5 6M9.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM17.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke="currentColor"/></svg><span>Đã nhận được đơn đặt hàng</span></a>
+    </nav>
+
+    <div class="grow"></div>
+
+    <div class="user">
+      <div class="avatar"></div>
+      <div style="flex:1">
+        <div style="font-weight:700">Admin</div>
+        <div class="sub">Quản trị viên</div>
+      </div>
+      <div class="icon-btn" onclick="logout()" title="Đăng xuất" style="width:32px;height:32px;margin-left:4px">
+        <svg viewBox="0 0 24 24" fill="none" width="16" height="16">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <section class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="title">DANH SÁCH KHO</div>
+      <div class="actions">
+        <div class="icon-btn" title="Chế độ tối">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M21 12a9 9 0 1 1-8-8 7 7 0 0 0 8 8z" stroke="#b9c7e5"/></svg>
+        </div>
+        <div class="icon-btn" title="Thông báo">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" stroke="#b9c7e5"/></svg>
+        </div>
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><circle cx="11" cy="11" r="8" stroke="#7a8fb0"/><path d="m21 21-4.35-4.35" stroke="#7a8fb0"/></svg>
+          <input type="text" placeholder="Tìm kiếm..." />
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, rgba(255, 143, 61, 0.1), rgba(255, 143, 61, 0.05));">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value">3521</div>
+            <div class="stat-label">(Vật phẩm)</div>
+            <div class="stat-label">Tổng số mặt hàng sản phẩm</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, rgba(255, 143, 61, 0.1), rgba(255, 143, 61, 0.05));">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2"/>
+              <path d="M3 9h18M9 3v18" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value">1311</div>
+            <div class="stat-label">(Vật phẩm)</div>
+            <div class="stat-label">Trong kho Sản phẩm</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, rgba(255, 143, 61, 0.1), rgba(255, 143, 61, 0.05));">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke-width="2"/>
+              <path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value">231</div>
+            <div class="stat-label">(Vật phẩm)</div>
+            <div class="stat-label">Sản phẩm hết hàng</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, rgba(255, 143, 61, 0.1), rgba(255, 143, 61, 0.05));">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2"/>
+              <circle cx="9" cy="7" r="4" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value">2334</div>
+            <div class="stat-label">(Tuần trước)</div>
+            <div class="stat-label">Tổng số khách hàng đã truy cập</div>
+            <div class="stat-change down">↓ 4.4%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="card">
+        <div class="card-header">
+          <div style="font-weight:700;font-size:16px">Tất cả Kho Danh sách</div>
+          <select style="background:var(--panel);border:1px solid var(--line);color:var(--text);padding:8px 12px;border-radius:8px">
+            <option>Tháng Này</option>
+            <option>Tuần Này</option>
+            <option>Hôm Nay</option>
+          </select>
+        </div>
+
+        <table class="table" id="warehouseTable">
+          <thead>
+            <tr>
+              <th style="width:32px"><input type="checkbox" /></th>
+              <th>ID kho</th>
+              <th>Tên Kho</th>
+              <th>Vị trí</th>
+              <th>Quản lý</th>
+              <th>Số liên lạc</th>
+              <th>Hàng cỡ sản</th>
+              <th>Văn chuyển chứng khoản</th>
+              <th>Doanh thu kho</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border-top:1px solid var(--line)">
+          <div style="color:var(--muted);font-size:13px">Hiển thị 1-10 trong 30 kết quả</div>
+          <div style="display:flex;gap:6px">
+            <button style="padding:6px 12px;background:var(--panel);border:1px solid var(--line);border-radius:6px;color:var(--muted);cursor:pointer">Trước đó</button>
+            <button style="padding:6px 12px;background:var(--accent);border:1px solid var(--accent);border-radius:6px;color:#2b1606;font-weight:700">1</button>
+            <button style="padding:6px 12px;background:var(--panel);border:1px solid var(--line);border-radius:6px;color:var(--text);cursor:pointer">2</button>
+            <button style="padding:6px 12px;background:var(--panel);border:1px solid var(--line);border-radius:6px;color:var(--text);cursor:pointer">3</button>
+            <button style="padding:6px 12px;background:var(--panel);border:1px solid var(--line);border-radius:6px;color:var(--text);cursor:pointer">Tiếp theo</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div style="text-align:center;padding:24px 0;color:var(--muted);font-size:13px">
+        2025 © shop vn. Được chế tạo bởi <span style="color:var(--accent);font-weight:600">Cao, Trần Huy và Đào Huy</span>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+<script src="./js/inventory-warehouse.js"></script>
+</body>
+</html>
+

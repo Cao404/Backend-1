@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash Sale - SellerHub</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/forms.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-header top-brand">
+          <div class="brand-left">
+            <div class="brand-icon">🛒</div>
+            <div class="brand-text">
+              <div class="brand-name">SellerHub</div>
+            </div>
+          </div>
+          <button class="collapse-btn">⮟</button>
+        </div>
+
+        <div class="sidebar-scroll">
+          <!-- QUẢN LÝ -->
+          <div class="sidebar-section-label">QUẢN LÝ</div>
+          <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Tổng quan</span>
+              </div>
+            </a>
+            <a href="sanpham-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📦</span>
+                <span class="nav-text">Sản phẩm</span>
+              </div>
+            </a>
+            <a href="danhmuc-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🗂</span>
+                <span class="nav-text">Danh mục</span>
+              </div>
+            </a>
+            <a href="tonkho-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏬</span>
+                <span class="nav-text">Tồn kho</span>
+              </div>
+            </a>
+            <a href="donhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">Đơn hàng</span>
+              </div>
+            </a>
+            <a href="khachhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Khách hàng</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- VẬN HÀNH -->
+          <div class="sidebar-section-label">VẬN HÀNH</div>
+          <nav class="sidebar-nav">
+            <a href="vanchuyen-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🚚</span>
+                <span class="nav-text">Vận chuyển</span>
+              </div>
+            </a>
+            <a href="hoantien-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">↩️</span>
+                <span class="nav-text">Hoàn tiền</span>
+              </div>
+            </a>
+            <a href="khuyenmai-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏷</span>
+                <span class="nav-text">Khuyến mãi</span>
+              </div>
+            </a>
+            <a href="flashsale-full.html" class="nav-item active">
+              <div class="nav-left">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Flash Sale</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- PHÂN TÍCH -->
+          <div class="sidebar-section-label">PHÂN TÍCH</div>
+          <nav class="sidebar-nav">
+            <a href="baocao-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Báo cáo</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- THIẾT LẬP -->
+          <div class="sidebar-section-label">THIẾT LẬP</div>
+          <nav class="sidebar-nav">
+            <a href="cuahang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">Cửa hàng</span>
+              </div>
+            </a>
+            <a href="caidat-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Cài đặt</span>
+              </div>
+            </a>
+          </nav>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="user">
+            <div class="avatar"><span>NH</span></div>
+            <div class="user-info">
+              <div class="user-name">Nguyễn Hoàng</div>
+              <div class="user-role small">Premium Seller ▾</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-left">
+            <h1 class="page-title">Flash Sale</h1>
+            <div class="search-box">
+              <span class="search-icon">Q</span>
+              <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm, đơn hàng..." />
+            </div>
+          </div>
+          <div class="topbar-right">
+            <button class="top-btn">🔔</button>
+            <button class="top-btn">❓</button>
+            <button class="btn-store-open">Cửa hàng đang mở</button>
+            <button class="btn-add" id="btnCreateFlashSale">+ Tạo Flash Sale</button>
+          </div>
+        </header>
+
+        <!-- SUMMARY CARDS -->
+        <section class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>⚡ Tổng Flash Sale</span>
+            </div>
+            <div class="kpi-value">3</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>⏰ Đang diễn ra</span>
+            </div>
+            <div class="kpi-value">1</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>📦 Sản phẩm tham gia</span>
+            </div>
+            <div class="kpi-value">6</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>💰 Doanh thu</span>
+            </div>
+            <div class="kpi-value">634M</div>
+          </div>
+        </section>
+
+        <!-- FLASH SALE LIST -->
+        <section class="product-section" id="flashSaleListContainer">
+          <!-- Flash Sales will be loaded here dynamically -->
+        </section>
+        
+        <!-- EMPTY STATE -->
+        <div id="flashSaleEmptyState" style="text-align: center; padding: 60px 20px; color: var(--text-muted); display: none;">
+          <div style="font-size: 48px; margin-bottom: 16px;">⚡</div>
+          <h3 style="color: var(--text); margin-bottom: 8px;">Chưa có Flash Sale nào</h3>
+          <p style="font-size: 14px; margin-bottom: 24px;">Tạo Flash Sale đầu tiên của bạn</p>
+          <button class="btn-add" id="btnCreateFlashSaleEmpty">+ Tạo Flash Sale</button>
+        </div>
+      </main>
+    </div>
+
+    <!-- MODAL TẠO FLASH SALE -->
+    <div id="flashSaleModal" class="modal">
+      <div class="modal-content" style="max-width: 800px;">
+        <div class="modal-header">
+          <div>
+            <h2>Tạo Flash Sale mới</h2>
+            <p class="modal-subtitle">Thiết lập chương trình Flash Sale</p>
+          </div>
+          <button class="modal-close" id="closeFlashSaleModal">✕</button>
+        </div>
+
+        <form id="flashSaleForm">
+          <div class="modal-body">
+            <!-- Tên chương trình -->
+            <div class="form-group">
+              <label>Tên chương trình <span class="required">*</span></label>
+              <input
+                type="text"
+                name="flashSaleName"
+                id="flashSaleName"
+                placeholder="VD: Flash Sale Cuối Tuần"
+                required
+              />
+            </div>
+
+            <!-- Thời gian -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Thời gian bắt đầu <span class="required">*</span></label>
+                <input
+                  type="date"
+                  name="startDate"
+                  id="flashSaleStartDate"
+                  required
+                />
+                <input
+                  type="time"
+                  name="startTime"
+                  id="flashSaleStartTime"
+                  required
+                  style="margin-top: 8px;"
+                />
+              </div>
+              <div class="form-group">
+                <label>Thời gian kết thúc <span class="required">*</span></label>
+                <input
+                  type="date"
+                  name="endDate"
+                  id="flashSaleEndDate"
+                  required
+                />
+                <input
+                  type="time"
+                  name="endTime"
+                  id="flashSaleEndTime"
+                  required
+                  style="margin-top: 8px;"
+                />
+              </div>
+            </div>
+
+            <!-- Chọn sản phẩm -->
+            <div class="form-group">
+              <label>Chọn sản phẩm <span class="required">*</span></label>
+              <div style="position: relative;">
+                <div class="product-select-wrapper" style="position: relative;">
+                  <input
+                    type="text"
+                    id="productSearchInput"
+                    placeholder="Tìm kiếm sản phẩm..."
+                    autocomplete="off"
+                    style="width: 100%; padding: 10px 12px; background-color: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px;"
+                  />
+                  <div id="productDropdown" class="product-dropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; max-height: 300px; overflow-y: auto; z-index: 1000; margin-top: 4px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);">
+                    <!-- Products will be loaded here -->
+                  </div>
+                </div>
+                <div id="selectedProductsContainer" style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px;">
+                  <!-- Selected products will be displayed here -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn-cancel" id="cancelFlashSaleBtn">Hủy</button>
+            <button type="submit" class="btn-submit">Tạo Flash Sale</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/scrip.js"></script>
+    <script src="js/user-info.js"></script>
+    <script src="js/action-menu.js"></script>
+    <script src="js/flashsale.js"></script>
+    <script src="js/sidebar-preserve.js"></script>
+    <script src="js/store-status.js"></script>
+  </body>
+</html>
+

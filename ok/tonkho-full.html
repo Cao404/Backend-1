@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý tồn kho - SellerHub</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/forms.css" />
+    <link rel="stylesheet" href="./css/tonkho.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-header top-brand">
+          <div class="brand-left">
+            <div class="brand-icon">🛒</div>
+            <div class="brand-text">
+              <div class="brand-name">SellerHub</div>
+            </div>
+          </div>
+          <button class="collapse-btn">⮟</button>
+        </div>
+
+        <div class="sidebar-scroll">
+          <!-- QUẢN LÝ -->
+          <div class="sidebar-section-label">QUẢN LÝ</div>
+          <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Tổng quan</span>
+              </div>
+            </a>
+
+            <a href="sanpham-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📦</span>
+                <span class="nav-text">Sản phẩm</span>
+              </div>
+            </a>
+
+            <a href="danhmuc-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🗂</span>
+                <span class="nav-text">Danh mục</span>
+              </div>
+            </a>
+
+            <a href="tonkho-full.html" class="nav-item active">
+              <div class="nav-left">
+                <span class="nav-icon">🏬</span>
+                <span class="nav-text">Tồn kho</span>
+              </div>
+            </a>
+
+            <a href="donhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">Đơn hàng</span>
+              </div>
+            </a>
+
+            <a href="khachhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Khách hàng</span>
+              </div>
+            </a>
+
+          </nav>
+
+          <!-- VẬN HÀNH -->
+          <div class="sidebar-section-label">VẬN HÀNH</div>
+          <nav class="sidebar-nav">
+            <a href="vanchuyen-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🚚</span>
+                <span class="nav-text">Vận chuyển</span>
+              </div>
+            </a>
+            <a href="hoantien-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">↩️</span>
+                <span class="nav-text">Hoàn tiền</span>
+              </div>
+            </a>
+            <a href="khuyenmai-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏷</span>
+                <span class="nav-text">Khuyến mãi</span>
+              </div>
+            </a>
+            <a href="flashsale-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Flash Sale</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- PHÂN TÍCH -->
+          <div class="sidebar-section-label">PHÂN TÍCH</div>
+          <nav class="sidebar-nav">
+            <a href="baocao-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Báo cáo</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- THIẾT LẬP -->
+          <div class="sidebar-section-label">THIẾT LẬP</div>
+          <nav class="sidebar-nav">
+            <a href="cuahang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">Cửa hàng</span>
+              </div>
+            </a>
+            <a href="caidat-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Cài đặt</span>
+              </div>
+            </a>
+          </nav>
+        </div>
+
+        <!-- FOOTER USER -->
+        <div class="sidebar-footer">
+          <div class="user">
+            <div class="avatar">
+              <img src="" alt="" onerror="this.style.display='none'" />
+              <span>NH</span>
+            </div>
+            <div class="user-info">
+              <div class="user-name">Nguyễn Hoàng</div>
+              <div class="user-role small">Premium Seller ▾</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+        <!-- TOP BAR -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <h1 class="page-title">Quản lý tồn kho</h1>
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" class="search-input" id="inventorySearch" placeholder="Tìm kiếm sản phẩm, mã SKU..." />
+            </div>
+          </div>
+          <div class="topbar-right">
+            <button class="top-btn">🔔</button>
+            <button class="top-btn">❓</button>
+            <button class="btn-store-open">Cửa hàng đang mở</button>
+          </div>
+        </header>
+
+        <!-- BREADCRUMB -->
+        <nav class="breadcrumb">
+          <a href="index.html" class="breadcrumb-item">Trang chủ</a>
+          <span class="breadcrumb-separator">›</span>
+          <a href="#" class="breadcrumb-item">Quản lý</a>
+          <span class="breadcrumb-separator">›</span>
+          <span class="breadcrumb-item active">Tồn kho</span>
+        </nav>
+
+        <!-- KPI -->
+        <section class="kpi-row">
+          <div class="kpi-card">
+            <h3>Tổng tồn kho</h3>
+            <div class="kpi-value" id="kpiTotalStock">0</div>
+            <div class="kpi-small">Đơn vị</div>
+          </div>
+
+          <div class="kpi-card">
+            <h3>Tổng biến thể</h3>
+            <div class="kpi-value" id="kpiTotalVariants">0</div>
+            <div class="kpi-small">Biến thể SKU</div>
+          </div>
+
+          <div class="kpi-card">
+            <h3>Cần nhập thêm</h3>
+            <div class="kpi-value" id="kpiLowStock">0</div>
+            <div class="kpi-small">Dưới ngưỡng cảnh báo</div>
+          </div>
+
+          <div class="kpi-card">
+            <h3>Hết hàng</h3>
+            <div class="kpi-value" id="kpiOutOfStock">0</div>
+            <div class="kpi-small">Biến thể</div>
+          </div>
+        </section>
+
+        <!-- INVENTORY TABLE -->
+        <section class="inventory-section">
+          <div class="card inventory-card">
+            <div class="card-header">
+              <h3>Danh sách tồn kho</h3>
+              <span class="card-subtitle"
+                >Click vào dòng sản phẩm để xem biến thể • Click vào số
+                <b>Tồn kho</b> để chỉnh sửa</span
+              >
+            </div>
+
+            <div class="card-body table-wrapper">
+              <table class="inventory-table">
+                <thead>
+                  <tr>
+                    <th style="width: 36px; text-align: center"></th>
+                    <th>Sản phẩm / Biến thể</th>
+                    <th>SKU</th>
+                    <th>Danh mục</th>
+                    <th>Tồn kho</th>
+                    <th>Đang giữ</th>
+                    <th>Có thể bán</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="inventoryTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- MODAL CHỈNH SỬA TỒN KHO -->
+    <div id="stockModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2>Điều chỉnh tồn kho</h2>
+          </div>
+          <button type="button" class="modal-close stock-close">✕</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Sản phẩm</label>
+            <div id="stockProductName" class="detail-value" style="font-size: 14px; color: var(--text, #fff);"></div>
+          </div>
+
+          <div class="form-group">
+            <label>Tồn kho hiện tại</label>
+            <div id="stockCurrentDisplay" style="font-size: 32px; font-weight: bold; color: var(--text, #fff); padding: 12px 0;"></div>
+            <div id="stockNewDisplay" style="font-size: 24px; font-weight: 600; color: #22c55e; padding: 8px 0; display: none;">
+              <span style="font-size: 16px; color: var(--text-muted, #9ca3af);">Tồn kho mới: </span>
+              <span id="stockNewValue"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Loại điều chỉnh</label>
+            <select id="stockAdjustType" style="width: 100%; padding: 10px; background: var(--bg-secondary, #1f2937); border: 1px solid var(--border-color, #374151); border-radius: 6px; color: var(--text, #fff);">
+              <option value="add">➕ Thêm vào kho</option>
+              <option value="subtract">➖ Trừ khỏi kho</option>
+              <option value="set">🔧 Đặt lại số lượng</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Số lượng</label>
+            <input 
+              type="number" 
+              id="stockChange" 
+              placeholder="0" 
+              min="0"
+              style="width: 100%; padding: 10px; background: var(--bg-secondary, #1f2937); border: 1px solid var(--border-color, #374151); border-radius: 6px; color: var(--text, #fff);"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Ghi chú</label>
+            <input 
+              type="text" 
+              id="stockNote" 
+              placeholder="Lý do điều chỉnh..." 
+              style="width: 100%; padding: 10px; background: var(--bg-secondary, #1f2937); border: 1px solid var(--border-color, #374151); border-radius: 6px; color: var(--text, #fff);"
+            />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel stock-close">Hủy</button>
+          <button type="button" id="btnSaveStock" class="btn-submit" style="background: #22c55e;">
+            Xác nhận
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/scrip.js"></script>
+    <script src="js/tonkho.js"></script>
+    <script src="js/user-info.js"></script>
+    <script src="js/sidebar-preserve.js"></script>
+    <script src="js/store-status.js"></script>
+  </body>
+</html>

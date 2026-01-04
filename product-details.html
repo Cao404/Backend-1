@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>shop vn</title>
+  <link rel="stylesheet" href="./css/product.css" />
+  <link rel="stylesheet" href="./css/product-details.css" />
+</head>
+<body>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="#f9a44d" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="#f9a44d" stroke-width="1.5"/></svg>
+      <span class="brand-text">shop vn</span>
+      <div class="toggle-btn" onclick="toggleSidebar()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <h6>TỔNG HỢP</h6>
+      <a href="dashboard.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12l9-8 9 8v8a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8z" stroke="currentColor"/></svg><span>Bảng điều khiển</span></a>
+      
+      <h6>Sản phẩm</h6>
+      <a href="product-list.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="currentColor" stroke-width="1.5"/></svg><span>Danh sách</span></a>
+      <a href="product-grid.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="currentColor" stroke-width="1.5"/></svg><span>Lưới</span></a>
+      <a href="product-details.html" class="active"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="currentColor" stroke-width="1.5"/></svg><span>Chi tiết</span></a>
+
+      <h6>MUA SẮM</h6>
+      <a href="cart.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.5 6M17 13l2.5 6M9.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM17.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke="currentColor"/></svg><span>Giỏ hàng</span><span class="cart-badge" id="sidebarCartBadge" style="display:none">0</span></a>
+
+      <h6>DANH MỤC</h6>
+      <a href="category-list.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor"/></svg><span>Quản lý danh mục</span></a>
+      
+      <h6>QUẢN TRỊ</h6>
+      <a href="admin-seller-approval.html"><svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M20 8v6M23 11h-6" stroke="currentColor" stroke-width="2"/></svg><span>Duyệt Người Bán</span></a>
+      <a href="admin-users.html"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 20c2-4 6-4 8-4s6 0 8 4" stroke="currentColor" stroke-width="2"/></svg><span>Quản lý người dùng</span></a>
+      <a href="admin-content-moderation.html"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 0 1.946-.806 3.42 3.42 0 0 1 3.438 0 3.42 3.42 0 0 0 1.946.806 3.42 3.42 0 0 1 3.138 3.138 3.42 3.42 0 0 0 .806 1.946 3.42 3.42 0 0 1 0 3.438 3.42 3.42 0 0 0-.806 1.946 3.42 3.42 0 0 1-3.138 3.138 3.42 3.42 0 0 0-1.946.806 3.42 3.42 0 0 1-3.438 0 3.42 3.42 0 0 0-1.946-.806 3.42 3.42 0 0 1-3.138-3.138 3.42 3.42 0 0 0-.806-1.946 3.42 3.42 0 0 1 0-3.438 3.42 3.42 0 0 0 .806-1.946 3.42 3.42 0 0 1 3.138-3.138z" stroke="currentColor" stroke-width="2"/></svg><span>Kiểm Duyệt Nội Dung</span></a>
+      <a href="admin-promotions.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"/></svg><span>Khuyến Mãi</span></a>
+      <a href="admin-shipping.html"><svg viewBox="0 0 24 24" fill="none"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z" stroke="currentColor" stroke-width="2"/><circle cx="5.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="2"/><circle cx="18.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg><span>Vận Chuyển</span></a>
+      <a href="admin-finance.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"/></svg><span>Tài Chính</span></a>
+      <a href="admin-disputes.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="2"/><path d="M12 16v-4M12 8h.01" stroke="currentColor" stroke-width="2"/></svg><span>Khiếu Nại & Tranh Chấp</span></a>
+      <a href="admin-reports.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18M7 16l4-4 4 4 6-6" stroke="currentColor" stroke-width="2"/></svg><span>Báo Cáo & Giám Sát</span></a>
+      <a href="admin-permissions.html"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="2"/></svg><span>Phân Quyền & Nhật Ký</span></a>
+      
+      <h6>HÀNG TỒN KHO</h6>
+      <a href="inventory-warehouse.html"><svg viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor"/></svg><span>Kho hàng</span></a>
+      <a href="inventory-received-orders.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.5 6M17 13l2.5 6M9.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM17.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke="currentColor"/></svg><span>Đã nhận được đơn đặt hàng</span></a>
+    </nav>
+
+    <div class="grow"></div>
+
+    <div class="user">
+      <div class="avatar"></div>
+      <div>
+        <div style="font-weight:700">Admin</div>
+        <div class="sub">Quản trị</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <section class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="title">CHI TIẾT SẢN PHẨM</div>
+      <div class="actions">
+        <div class="icon-btn" title="Chế độ tối">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M21 12a9 9 0 1 1-8-8 7 7 0 0 0 8 8z" stroke="#b9c7e5"/></svg>
+        </div>
+        <div class="icon-btn" title="Thông báo">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M15 17h5l-1-2v-4a7 7 0 0 0-14 0v4l-1 2h5m6 0a3 3 0 0 1-6 0" stroke="#b9c7e5"/><circle cx="18" cy="6" r="3" fill="#ef4444"/></svg>
+        </div>
+        <label class="search">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><circle cx="11" cy="11" r="7" stroke="#7f95bd"/><path d="M21 21l-3.5-3.5" stroke="#7f95bd"/></svg>
+          <input placeholder="Tìm kiếm..." />
+        </label>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="detail-layout">
+      <!-- Breadcrumb -->
+      <div class="breadcrumb">
+        <a href="product-grid.html">Sản phẩm</a>
+        <span>›</span>
+        <a href="#">Chi tiết</a>
+        <span>›</span>
+        <span style="color: var(--text)">Xem Thêm Chi Tiết</span>
+      </div>
+
+      <!-- Product Main Section -->
+      <div class="product-main">
+        <!-- Image Gallery -->
+        <div class="image-gallery">
+          <div class="main-image" id="mainImage">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600" alt="Product" />
+          </div>
+          <div class="thumbnail-list">
+            <div class="thumbnail active" onclick="changeImage('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600', this)">
+              <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200" alt="" />
+            </div>
+            <div class="thumbnail" onclick="changeImage('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600', this)">
+              <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=200" alt="" />
+            </div>
+            <div class="thumbnail" onclick="changeImage('https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600', this)">
+              <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=200" alt="" />
+            </div>
+            <div class="thumbnail" onclick="changeImage('https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600', this)">
+              <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=200" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="product-details">
+          <h1 class="product-title">Áo Thun Nam Màu Đen Premium Cotton</h1>
+          
+          <div class="rating-section">
+            <div class="rating-stars">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="color:#3f4756"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+            </div>
+            <span class="rating-text">Chất lượng tuyệt vời</span>
+            <span class="reviews-count">· 55 Đánh giá</span>
+          </div>
+
+          <div class="price-section">
+            <div class="price-row">
+              <div class="current-price" id="productPrice">80.000 ₫</div>
+              <div class="old-price" id="productOldPrice" style="display: none;">100.000 ₫</div>
+              <div class="discount-badge" id="productDiscount" style="display: none;">Giảm 30%</div>
+            </div>
+          </div>
+
+          <div class="description">
+            Được đánh giá tại Canada vào ngày 16 tháng 11 năm 2023. Đỗ dày thêm binh. Không có lại sau khi xưa. Đỗ dần hỏi tốt (Good elasticity). Kích thước XL. Hoàn toàn phù hợp với chiều cao 5,10 và thân nặng. Không phải sau khi xưa, chỉ đánh cho áo phông màu tối đổ, hiểu áo thụm nhật đi trong lúc đầu liền những không phát.
+          </div>
+
+          <!-- Color Selection -->
+          <div class="options-section">
+            <div class="option-label">Màu sắc</div>
+            <div class="color-options">
+              <div class="color-btn active" style="background: #1a1a1a;"></div>
+              <div class="color-btn" style="background: #ffffff; border: 2px solid var(--line);"></div>
+              <div class="color-btn" style="background: #ef4444;"></div>
+              <div class="color-btn" style="background: #3b82f6;"></div>
+              <div class="color-btn" style="background: #10b981;"></div>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="quantity-section">
+            <div class="option-label">Số lượng</div>
+            <div class="quantity-control">
+              <button class="qty-btn" onclick="changeQty(-1)">−</button>
+              <input type="number" class="qty-input" value="1" min="1" id="qtyInput" />
+              <button class="qty-btn" onclick="changeQty(1)">+</button>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button class="add-cart-btn" onclick="addToCartFromDetails()">
+              <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" stroke="currentColor" stroke-width="2"/>
+                <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2"/>
+                <path d="M16 10a4 4 0 0 1-8 0" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              Thêm vào giỏ hàng
+            </button>
+            <div class="wishlist-btn" onclick="toggleWishlist(this)">
+              <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="#d7e0f0" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Info Grid -->
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="info-text">
+                <div class="info-label">Miễn phí vận chuyển</div>
+                <div class="info-value">Chi trọng tuần này</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                  <path d="M7 15h4M7 11h10" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="info-text">
+                <div class="info-label">Giảm giá đặc biệt</div>
+                <div class="info-value">Phiếu giảm giá đến 100.000 ₫</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="info-text">
+                <div class="info-label">Gói quà tặng miễn phí</div>
+                <div class="info-value">Với 100 chu cái chỉ cho tưy chỉnh</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M9 22V12h6v10" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="info-text">
+                <div class="info-label">Dịch vụ khách hàng chuyên nghiệp</div>
+                <div class="info-value">8:00 - 20:00, 7 ngày/tuần</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Details Section (2 columns) -->
+      <div class="details-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+        
+        <!-- Left: Items Detail -->
+        <div class="tabs-section">
+          <div class="tabs-header" style="border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center;">
+            <div class="chart-title" style="padding: 16px 24px;">Thông Tin Chi Tiết Sản Phẩm</div>
+            <button class="btn" onclick="openAddSpecModal()" style="margin-right: 16px; padding: 8px 16px; font-size: 13px;">+ Thêm</button>
+          </div>
+          <div class="tab-content" style="padding: 24px;">
+            <div class="specs-grid" id="specsGrid">
+              <!-- Specs will be rendered dynamically here -->
+            </div>
+            <div id="emptySpecs" style="text-align: center; padding: 40px; color: var(--muted); display: none;">
+              Chưa có thông tin chi tiết. Nhấn "Thêm" để thêm thông tin.
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Top Review From World -->
+        <div class="tabs-section">
+          <div class="tabs-header" style="border-bottom: 1px solid var(--line);">
+            <div class="chart-title" style="padding: 16px 24px;">Top Review From World</div>
+          </div>
+          <div class="tab-content">
+            <div class="reviews-header">
+              <div class="reviews-summary">
+                <div class="avg-rating">4.3</div>
+                <div>
+                  <div class="rating-stars" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="color:#3f4756"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                  </div>
+                  <div class="reviews-count">Dựa trên 87 đánh giá</div>
+                </div>
+              </div>
+              <select class="sort-select">
+                <option>Mới nhất</option>
+                <option>Hữu ích nhất</option>
+                <option>Đánh giá cao nhất</option>
+              </select>
+            </div>
+
+            <!-- Review Cards -->
+            <div class="review-card">
+              <div class="review-header">
+                <div class="reviewer-avatar"></div>
+                <div class="reviewer-info">
+                  <div class="reviewer-name">Henny K. Mark</div>
+                  <div class="review-date">Được đánh giá tại Canada vào ngày 16 tháng 11 năm 2023</div>
+                </div>
+              </div>
+              <div class="review-rating">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+              </div>
+              <div class="review-quality">Chất lượng tuyệt vời</div>
+              <div class="review-text">
+                Được đánh giá tại Canada vào ngày 16 tháng 11 năm 2023. Đỗ dày thêm binh. Không có lại sau khi xưa. Đỗ dần hỏi tốt (Good elasticity). Kích thước XL. Hoàn toàn phù hợp với chiều cao 5,10 và thân nặng. Không phải sau khi xưa, chỉ đánh cho áo phông màu tối đổ, hiểu áo thụm nhật đi trong lúc đầu liền những không phát. Tôi đã mua 5 chiếc áo phông có nhiều màu sắc khác nhau. Rất khuyến khích trong giá này vấy.
+              </div>
+              <div class="review-footer">
+                <div class="review-action">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M7 22V11M2 13l5-5 5 5" stroke="currentColor" stroke-width="2"/><path d="M12 13h10" stroke="currentColor" stroke-width="2"/></svg>
+                  Hữu ích
+                </div>
+                <div class="review-action">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2"/></svg>
+                  Báo cáo
+                </div>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-header">
+                <div class="reviewer-avatar" style="background: linear-gradient(135deg, #ec4899, #f43f5e);"></div>
+                <div class="reviewer-info">
+                  <div class="reviewer-name">Jorge Herry</div>
+                  <div class="review-date">Được đánh giá tại Hoa Kỳ vào ngày 21 tháng 12 năm 2023</div>
+                </div>
+              </div>
+              <div class="review-rating">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fbbf24"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#3f4756"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8"/></svg>
+              </div>
+              <div class="review-quality">Chất Lượng Tốt</div>
+              <div class="review-text">
+                Tôi thích áo thun, nó là cotton nguyên chất & thấm thiên tốt của, nhưng kích thước nhỏ hơn đổ so sánh kích thước tiêu chuẩn.
+              </div>
+              <div class="review-footer">
+                <div class="review-action">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M7 22V11M2 13l5-5 5 5" stroke="currentColor" stroke-width="2"/><path d="M12 13h10" stroke="currentColor" stroke-width="2"/></svg>
+                  Hữu ích
+                </div>
+                <div class="review-action">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2"/></svg>
+                  Báo cáo
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+          <!-- Footer -->
+          <div style="text-align: center; padding: 16px 0 0 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; margin-top: auto;">
+            2025 © shop vn. Được chế tạo bởi <span style="color: var(--accent); font-weight: 600;">Cao, Trần Huy và Đào Huy</span>
+          </div>
+
+    </div>
+
+  </section>
+</div>
+
+<!-- Add/Edit Spec Modal -->
+<div id="specModalBackdrop" class="modal-backdrop" onclick="closeSpecModal(event)" style="display: none;">
+  <div class="modal-content" onclick="event.stopPropagation()" style="max-width: 500px;">
+    <div class="modal-header">
+      <div id="specModalTitle" style="font-weight:700;font-size:18px">Thêm Thông Tin Chi Tiết</div>
+      <div class="icon-btn" onclick="closeSpecModal()" title="Đóng">
+        <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+    
+    <form id="specForm" onsubmit="saveSpec(event)">
+      <div class="modal-body">
+        <div class="form-field" style="margin-bottom: 16px;">
+          <label for="spec-label">Tên trường *</label>
+          <input id="spec-label" type="text" required placeholder="Ví dụ: Kích thước, Nhà sản xuất, RAM..." />
+        </div>
+        <div class="form-field" style="margin-bottom: 16px;">
+          <label for="spec-value">Giá trị *</label>
+          <input id="spec-value" type="text" required placeholder="Nhập giá trị" />
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeSpecModal()">Hủy</button>
+        <button type="submit" class="btn">Lưu</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="./js/products.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/product-details-page.js"></script>
+</body>
+</html>
+

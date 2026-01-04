@@ -1,0 +1,148 @@
+
+.form-group {
+  margin-bottom: 20px; 
+}
+
+
+.form-group label {
+  display: block; 
+  margin-bottom: 8px;
+  font-size: 14px; 
+  font-weight: 500; 
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; 
+  padding: 10px 12px; 
+  background-color: var(--bg); 
+  border: 1px solid var(--border); 
+  border-radius: 8px; 
+  color: var(--text); 
+  font-size: 14px; 
+  font-family: inherit; 
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none; 
+  border-color: var(--accent); 
+}
+
+
+.form-group textarea {
+  resize: vertical; 
+}
+
+
+.form-row {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 16px; 
+}
+
+.required {
+  color: var(--danger); /* Màu đỏ để thu hút sự chú ý */
+}
+
+
+.btn-submit {
+  background-color: var(--accent); /* Màu nền tím (accent) */
+  padding: 10px 24px; 
+  border: none; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  font-size: 14px; 
+  font-weight: 500; 
+}
+
+
+.btn-submit:hover {
+  background-color: #1ea34d; 
+}
+
+
+.btn-cancel {
+  background-color: transparent; 
+  color: var(--text-muted); 
+  padding: 10px 24px;
+  border: 1px solid var(--border); 
+  border-radius: 8px; 
+  cursor: pointer; 
+  font-size: 14px; 
+  font-weight: 500; 
+}
+
+
+.btn-cancel:hover {
+  background-color: var(--bg); 
+  color: var(--text); 
+}
+
+
+#customerModal .modal-content {
+  max-width: 600px; 
+}
+
+
+input[type="text"][name*="name"] {
+  font-weight: 500; 
+}
+
+
+input[type="email"] {
+  font-family: inherit; 
+}
+
+
+input[type="tel"] {
+  font-family: 'Courier New', monospace; 
+  letter-spacing: 1px; 
+}
+
+
+#customerType {
+  width: 100%; 
+  padding: 10px; 
+  background: var(--bg-secondary, #1f2937); 
+  border: 1px solid var(--border-color, #374151); 
+  border-radius: 6px; 
+  color: var(--text, #fff); 
+  cursor: pointer; 
+  font-size: 14px; 
+}
+
+#customerType:focus {
+  outline: none; 
+  border-color: var(--accent); 
+}
+
+
+input[type="text"][name*="address"] {
+  font-size: 14px; 
+  line-height: 1.5;
+}
+
+
+@media (max-width: 768px) {
+  
+  #customerModal .modal-content {
+    width: 95%; 
+    max-width: none; 
+  }
+  
+ 
+  #customerType {
+    padding: 12px; /* Padding lớn hơn cho dễ bấm */
+  }
+  
+  /* Chuyển form row từ 2 cột thành 1 cột */
+  .form-row {
+    grid-template-columns: 1fr; /* Chỉ còn 1 cột */
+  }
+}
+

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đơn hàng của tôi - ShopVN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Split CSS into separate files -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/orders.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="logo">ShopVN</a>
+        <div class="search-box">
+          <input type="text" placeholder="Tìm kiếm sản phẩm...">
+          <button>Tìm</button>
+        </div>
+        <div class="header-actions" id="user-actions">
+          <a href="login.html">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            Đăng xuất
+          </a>
+        </div>
+        <a href="cart.html" class="cart-icon">
+          <div style="position: relative;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 24px; height: 24px;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span class="cart-count" id="cart-count">0</span>
+          </div>
+          Giỏ hàng
+        </a>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="products.html">Sản phẩm</a></li>
+          <li><a href="products.html?category=Điện thoại">Điện thoại</a></li>
+          <li><a href="products.html?category=Laptop">Laptop</a></li>
+          <li><a href="products.html?category=Máy tính bảng">Máy tính bảng</a></li>
+          <li><a href="products.html?category=Đồng hồ">Đồng hồ</a></li>
+          <li><a href="products.html?category=Phụ kiện">Phụ kiện</a></li>
+          <li><a href="orders.html" class="active">Đơn hàng</a></li>
+          <li><a href="returns.html">Đổi/Trả hàng</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Trang chủ</a>
+        <span>/</span>
+        <span>Đơn hàng của tôi</span>
+      </div>
+      <h1>Đơn hàng của tôi</h1>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container" style="padding: 40px 0;">
+    <!-- Order Status Tabs -->
+    <div class="order-tabs" style="display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;">
+      <button class="tab-btn active" data-status="all" onclick="filterOrders('all', this)">Tất cả</button>
+      <button class="tab-btn" data-status="pending" onclick="filterOrders('pending', this)">Chờ xác nhận</button>
+      <button class="tab-btn" data-status="confirmed" onclick="filterOrders('confirmed', this)">Đã xác nhận</button>
+      <button class="tab-btn" data-status="shipping" onclick="filterOrders('shipping', this)">Đang giao</button>
+      <button class="tab-btn" data-status="delivered" onclick="filterOrders('delivered', this)">Đã giao</button>
+      <button class="tab-btn" data-status="cancelled" onclick="filterOrders('cancelled', this)">Đã hủy</button>
+    </div>
+
+    <!-- Orders List -->
+    <div id="orders-list">
+      <!-- Orders will be rendered here -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-orders" style="display: none; text-align: center; padding: 60px 20px;">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 80px; height: 80px; color: #9ca3af; margin: 0 auto 20px;">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+      </svg>
+      <h2 style="font-size: 24px; margin-bottom: 12px;">Chưa có đơn hàng</h2>
+      <p style="color: #6b7280; margin-bottom: 24px;">Bạn chưa có đơn hàng nào</p>
+      <a href="products.html" class="btn btn-primary">Mua sắm ngay</a>
+    </div>
+  </main>
+
+  <!-- Order Detail Modal -->
+  <div id="order-modal" class="modal" style="display: none;">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-content" style="max-width: 700px;">
+      <div class="modal-header">
+        <h2>Chi tiết đơn hàng</h2>
+        <button onclick="closeModal()" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="order-detail-content">
+        <!-- Order detail will be rendered here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>ShopVN</h3>
+          <p>Nền tảng mua sắm trực tuyến hàng đầu Việt Nam với hàng triệu sản phẩm chất lượng.</p>
+        </div>
+        <div>
+          <h4>Hỗ trợ khách hàng</h4>
+          <ul>
+            <li><a href="#">Trung tâm trợ giúp</a></li>
+            <li><a href="#">Hướng dẫn mua hàng</a></li>
+            <li><a href="#">Chính sách đổi trả</a></li>
+            <li><a href="#">Chính sách bảo hành</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Về ShopVN</h4>
+          <ul>
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Tuyển dụng</a></li>
+            <li><a href="#">Điều khoản sử dụng</a></li>
+            <li><a href="#">Chính sách bảo mật</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Liên hệ</h4>
+          <p>Email: support@shopvn.com</p>
+          <p>Hotline: 1900 1234</p>   
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 ShopVN. Tất cả quyền được bảo lưu.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Split JS into separate files -->
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/header.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize orders to ensure latest data is loaded
+      Orders.init();
+      
+      // Render orders
+      const ordersList = document.getElementById('orders-list');
+      renderOrders(ordersList, 'all');
+      
+      // Update header and cart count
+      if (typeof updateHeader === 'function') updateHeader();
+      if (Cart && typeof Cart.updateCount === 'function') Cart.updateCount();
+    });
+  </script>
+</body>
+</html>

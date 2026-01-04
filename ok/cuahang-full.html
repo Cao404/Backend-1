@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cửa hàng - SellerHub</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/cuahang.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-header top-brand">
+          <div class="brand-left">
+            <div class="brand-icon">🛒</div>
+            <div class="brand-text">
+              <div class="brand-name">SellerHub</div>
+            </div>
+          </div>
+          <button class="collapse-btn">⮟</button>
+        </div>
+
+        <div class="sidebar-scroll">
+          <!-- QUẢN LÝ -->
+          <div class="sidebar-section-label">QUẢN LÝ</div>
+          <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Tổng quan</span>
+              </div>
+            </a>
+            <a href="sanpham-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📦</span>
+                <span class="nav-text">Sản phẩm</span>
+              </div>
+            </a>
+            <a href="danhmuc-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🗂</span>
+                <span class="nav-text">Danh mục</span>
+              </div>
+            </a>
+            <a href="tonkho-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏬</span>
+                <span class="nav-text">Tồn kho</span>
+              </div>
+            </a>
+            <a href="donhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">Đơn hàng</span>
+              </div>
+            </a>
+            <a href="khachhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Khách hàng</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- VẬN HÀNH -->
+          <div class="sidebar-section-label">VẬN HÀNH</div>
+          <nav class="sidebar-nav">
+            <a href="vanchuyen-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🚚</span>
+                <span class="nav-text">Vận chuyển</span>
+              </div>
+            </a>
+            <a href="hoantien-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">↩️</span>
+                <span class="nav-text">Hoàn tiền</span>
+              </div>
+            </a>
+            <a href="khuyenmai-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏷</span>
+                <span class="nav-text">Khuyến mãi</span>
+              </div>
+            </a>
+            <a href="flashsale-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Flash Sale</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- PHÂN TÍCH -->
+          <div class="sidebar-section-label">PHÂN TÍCH</div>
+          <nav class="sidebar-nav">
+            <a href="baocao-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Báo cáo</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- THIẾT LẬP -->
+          <div class="sidebar-section-label">THIẾT LẬP</div>
+          <nav class="sidebar-nav">
+            <a href="cuahang-full.html" class="nav-item active">
+              <div class="nav-left">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">Cửa hàng</span>
+              </div>
+            </a>
+            <a href="caidat-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Cài đặt</span>
+              </div>
+            </a>
+          </nav>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="user">
+            <div class="avatar"><span>NH</span></div>
+            <div class="user-info">
+              <div class="user-name">Nguyễn Hoàng</div>
+              <div class="user-role small">Premium Seller ▾</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-left">
+            <h1 class="page-title">Cửa hàng</h1>
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm, đơn hàng..." />
+            </div>
+          </div>
+          <div class="topbar-right">
+            <button class="top-btn">🔔</button>
+            <button class="top-btn">❓</button>
+            <button class="btn-store-open" id="topbarStoreStatusBtn">Cửa hàng đang mở</button>
+          </div>
+        </header>
+
+        <!-- PROFILE CARD -->
+        <div class="card" style="margin-bottom: 20px;">
+          <div style="position: relative;">
+            <!-- Cover Image -->
+            <div id="coverImageUpload" style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px 12px 0 0; cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center;">
+              <div id="coverImagePlaceholder" style="color: white; font-size: 14px;">📷 Click để thêm ảnh bìa</div>
+              <img id="coverImagePreview" src="" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px 12px 0 0; display: none;" />
+              <input type="file" id="coverImageInput" accept="image/*" style="display: none;" />
+            </div>
+          </div>
+
+          <div style="padding: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-top: -60px; margin-bottom: 20px;">
+              <div style="display: flex; gap: 16px;">
+                <div class="avatar" style="width: 120px; height: 120px; font-size: 48px; border: 4px solid var(--bg);">
+                  <span>🏪</span>
+                </div>
+                <div style="padding-top: 60px;">
+                  <h2>TechStore Official</h2>
+                  <div style="color: var(--text-muted); margin-bottom: 8px;">@techstore-official</div>
+                  <div style="margin-bottom: 16px;">Chuyên cung cấp các sản phẩm công nghệ chính hãng Apple, Samsung, Sony với giá tốt nhất thị trường. Cam kết 100% hàng chính hãng, bảo hành đầy đủ.</div>
+                </div>
+              </div>
+              <div style="text-align: right; padding-top: 60px;">
+                <div style="margin-bottom: 8px;">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="storeOpenToggle" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div id="storeStatusText" style="font-weight: 600; color: #10b981; margin-bottom: 4px;">Cửa hàng đang mở</div>
+                <div id="storeStatusSubtext" style="font-size: 13px; color: var(--text-muted);">Khách hàng có thể đặt hàng</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABS -->
+        <div class="tabs" style="margin-bottom: 20px;">
+          <button class="tab-btn active" data-tab="general">Thông tin chung</button>
+          <button class="tab-btn" data-tab="contact">Liên hệ & Địa chỉ</button>
+          <button class="tab-btn" data-tab="hours">Giờ hoạt động</button>
+          <button class="tab-btn" data-tab="social">Mạng xã hội</button>
+        </div>
+
+        <!-- TAB: THÔNG TIN CHUNG -->
+        <div class="card tab-content" id="tab-general" style="padding: 24px;">
+          <div class="form-group">
+            <label>Tên cửa hàng <span class="required">*</span></label>
+            <input type="text" id="storeName" value="TechStore Official" />
+          </div>
+
+          <div class="form-group">
+            <label>Đường dẫn cửa hàng</label>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--text-muted);">shop.example.com/</span>
+              <input type="text" id="storeSlug" value="techstore-official" style="flex: 1;" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Mô tả cửa hàng</label>
+            <textarea id="storeDescription" rows="4">Chuyên cung cấp các sản phẩm công nghệ chính hãng Apple, Samsung, Sony với giá tốt nhất thị trường. Cam kết 100% hàng chính hãng, bảo hành đầy đủ.</textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Ngành hàng chính</label>
+              <select id="storeCategory">
+                <option value="electronics">Điện tử & Công nghệ</option>
+                <option value="fashion">Thời trang</option>
+                <option value="food">Thực phẩm</option>
+                <option value="home">Gia dụng</option>
+                <option value="sports">Thể thao</option>
+                <option value="books">Sách</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Mã số thuế</label>
+              <input type="text" id="taxId" value="0123456789" />
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <button class="btn-cancel" id="cancelGeneral">Hủy thay đổi</button>
+            <button class="btn-submit" id="saveGeneral">Lưu thay đổi</button>
+          </div>
+        </div>
+
+        <!-- TAB: LIÊN HỆ & ĐỊA CHỈ -->
+        <div class="card tab-content" id="tab-contact" style="padding: 24px; display: none;">
+          <div class="form-group">
+            <label>Số điện thoại</label>
+            <input type="tel" id="storePhone" value="0912 345 678" />
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="storeEmail" value="contact@techstore.com" />
+          </div>
+
+          <div class="form-group">
+            <label>Website</label>
+            <input type="url" id="storeWebsite" value="https://techstore.com.vn" />
+          </div>
+
+          <div class="form-group">
+            <label>Địa chỉ</label>
+            <input type="text" id="storeAddress" value="123 Nguyễn Văn Linh, Phường Tân Phong" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phường/Xã</label>
+              <select id="storeWard">
+                <option value="tan-phong">Tân Phong</option>
+                <option value="tan-thuan-dong">Tân Thuận Đông</option>
+                <option value="tan-thuan-tay">Tân Thuận Tây</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Quận/Huyện</label>
+              <select id="storeDistrict">
+                <option value="quan-7">Quận 7</option>
+                <option value="quan-1">Quận 1</option>
+                <option value="quan-2">Quận 2</option>
+                <option value="quan-3">Quận 3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Thành phố</label>
+              <select id="storeCity">
+                <option value="hcm">TP. Hồ Chí Minh</option>
+                <option value="hn">Hà Nội</option>
+                <option value="dn">Đà Nẵng</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <button class="btn-cancel" id="cancelContact">Hủy thay đổi</button>
+            <button class="btn-submit" id="saveContact">Lưu thay đổi</button>
+          </div>
+        </div>
+
+        <!-- TAB: GIỜ HOẠT ĐỘNG -->
+        <div class="card tab-content" id="tab-hours" style="padding: 24px; display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <div>
+              <h3 style="margin-bottom: 8px; font-size: 18px; font-weight: 600;">Hiển thị giờ hoạt động</h3>
+              <div style="font-size: 13px; color: var(--text-muted);">Hiển thị giờ hoạt động trên trang cửa hàng</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="showHoursToggle" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div id="operatingHoursList">
+            <!-- Sẽ được tạo bằng JavaScript -->
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <button class="btn-cancel" id="cancelHours">Hủy thay đổi</button>
+            <button class="btn-submit" id="saveHours">Lưu thay đổi</button>
+          </div>
+        </div>
+
+        <!-- TAB: MẠNG XÃ HỘI -->
+        <div class="card tab-content" id="tab-social" style="padding: 24px; display: none;">
+          <div class="form-group">
+            <label>Facebook</label>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--text-muted);">facebook.com/</span>
+              <input type="url" id="socialFacebook" value="techstore.official" style="flex: 1;" placeholder="yourpage" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Instagram</label>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--text-muted);">instagram.com/</span>
+              <input type="url" id="socialInstagram" value="techstore.official" style="flex: 1;" placeholder="yourprofile" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>TikTok</label>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--text-muted);">tiktok.com/@</span>
+              <input type="url" id="socialTikTok" value="yourprofile" style="flex: 1;" placeholder="yourprofile" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>YouTube</label>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--text-muted);">youtube.com/@</span>
+              <input type="url" id="socialYouTube" value="yourchannel" style="flex: 1;" placeholder="yourchannel" />
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <button class="btn-cancel" id="cancelSocial">Hủy thay đổi</button>
+            <button class="btn-submit" id="saveSocial">Lưu thay đổi</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/scrip.js"></script>
+    <script src="js/user-info.js"></script>
+    <script src="js/sidebar-preserve.js"></script>
+    <script src="js/store-status.js"></script>
+    <script src="js/cuahang.js"></script>
+  </body>

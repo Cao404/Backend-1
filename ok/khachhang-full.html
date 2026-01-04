@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý khách hàng - SellerHub</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/khachhang.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-header top-brand">
+          <div class="brand-left">
+            <div class="brand-icon">🛒</div>
+            <div class="brand-text">
+              <div class="brand-name">SellerHub</div>
+            </div>
+          </div>
+          <button class="collapse-btn">⮟</button>
+        </div>
+
+        <div class="sidebar-scroll">
+          <!-- QUẢN LÝ -->
+          <div class="sidebar-section-label">QUẢN LÝ</div>
+          <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Tổng quan</span>
+              </div>
+            </a>
+
+            <a href="sanpham-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📦</span>
+                <span class="nav-text">Sản phẩm</span>
+              </div>
+            </a>
+
+            <a href="danhmuc-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🗂</span>
+                <span class="nav-text">Danh mục</span>
+              </div>
+            </a>
+
+            <a href="tonkho-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏬</span>
+                <span class="nav-text">Tồn kho</span>
+              </div>
+            </a>
+
+            <a href="donhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">Đơn hàng</span>
+              </div>
+            </a>
+
+            <a href="khachhang-full.html" class="nav-item active">
+              <div class="nav-left">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Khách hàng</span>
+              </div>
+            </a>
+
+          </nav>
+
+          <!-- VẬN HÀNH -->
+          <div class="sidebar-section-label">VẬN HÀNH</div>
+          <nav class="sidebar-nav">
+            <a href="vanchuyen-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🚚</span>
+                <span class="nav-text">Vận chuyển</span>
+              </div>
+            </a>
+            <a href="hoantien-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">↩️</span>
+                <span class="nav-text">Hoàn tiền</span>
+              </div>
+            </a>
+            <a href="khuyenmai-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏷</span>
+                <span class="nav-text">Khuyến mãi</span>
+              </div>
+            </a>
+            <a href="flashsale-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Flash Sale</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- PHÂN TÍCH -->
+          <div class="sidebar-section-label">PHÂN TÍCH</div>
+          <nav class="sidebar-nav">
+            <a href="baocao-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Báo cáo</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- THIẾT LẬP -->
+          <div class="sidebar-section-label">THIẾT LẬP</div>
+          <nav class="sidebar-nav">
+            <a href="cuahang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">Cửa hàng</span>
+              </div>
+            </a>
+            <a href="caidat-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Cài đặt</span>
+              </div>
+            </a>
+          </nav>
+        </div>
+
+        <!-- FOOTER USER -->
+        <div class="sidebar-footer">
+          <div class="user">
+            <div class="avatar">
+              <img src="" alt="" onerror="this.style.display='none'" />
+              <span>NH</span>
+            </div>
+            <div class="user-info">
+              <div class="user-name">Nguyễn Hoàng</div>
+              <div class="user-role small">Premium Seller ▾</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+        <!-- TOP BAR -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <h1 class="page-title">Quản lý khách hàng</h1>
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input
+                type="text"
+                class="search-input"
+                id="customerSearch"
+                placeholder="Tìm kiếm khách hàng, số điện thoại..."
+              />
+            </div>
+          </div>
+          <div class="topbar-right">
+            <button class="top-btn">🔔</button>
+            <button class="top-btn">❓</button>
+            <button class="btn-store-open">Cửa hàng đang mở</button>
+          </div>
+        </header>
+
+        <!-- BREADCRUMB -->
+        <nav class="breadcrumb">
+          <a href="index.html" class="breadcrumb-item">Trang chủ</a>
+          <span class="breadcrumb-separator">›</span>
+          <span class="breadcrumb-item active">Quản lý khách hàng</span>
+        </nav>
+
+        <!-- KPI CARDS -->
+        <section class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>Tổng khách hàng</span>
+            </div>
+            <div class="kpi-value">3,456</div>
+            <div class="kpi-footer up">+156 tháng này</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>Khách VIP</span>
+            </div>
+            <div class="kpi-value">234</div>
+            <div class="kpi-footer">6.8% tổng số</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>Khách mới (30 ngày)</span>
+            </div>
+            <div class="kpi-value">89</div>
+            <div class="kpi-footer up">+12% so với tháng trước</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>Tỷ lệ quay lại</span>
+            </div>
+            <div class="kpi-value">67%</div>
+            <div class="kpi-footer up">+5% so với tháng trước</div>
+          </div>
+        </section>
+
+        <!-- CUSTOMER SECTION -->
+        <section class="product-section">
+          <div class="product-header">
+            <div class="filter-group">
+              <div class="search-box" style="min-width: 250px;">
+                <span class="search-icon">🔍</span>
+                <input
+                  type="text"
+                  class="search-input"
+                  id="customerSearchFilter"
+                  placeholder="Tìm kiếm khách hàng..."
+                />
+              </div>
+              <div style="position: relative;">
+                <button class="filter-btn" id="filterTypeBtn">
+                  <span>Tất cả</span>
+                  <span class="filter-arrow">▾</span>
+                </button>
+                <div class="filter-dropdown" id="filterTypeDropdown">
+                  <button class="filter-option active" data-value="">Tất cả</button>
+                  <button class="filter-option" data-value="vip">VIP</button>
+                  <button class="filter-option" data-value="thuong">Thường</button>
+                  <button class="filter-option" data-value="moi">Mới</button>
+                </div>
+              </div>
+              <div style="position: relative;">
+                <button class="filter-btn" id="filterSortBtn">
+                  <span>Chi tiêu cao nhất</span>
+                  <span class="filter-arrow">▾</span>
+                </button>
+                <div class="filter-dropdown" id="filterSortDropdown">
+                  <button class="filter-option active" data-value="spending-desc">Chi tiêu cao nhất</button>
+                  <button class="filter-option" data-value="spending-asc">Chi tiêu thấp nhất</button>
+                  <button class="filter-option" data-value="newest">Mới nhất</button>
+                  <button class="filter-option" data-value="oldest">Cũ nhất</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-header-right">
+              <button class="btn-export" id="btnExportList">
+                <span>📥</span>
+                <span>Xuất danh sách</span>
+              </button>
+              <button class="btn-add" id="btnAddCustomer">
+                <span>👤+</span>
+                <span>Thêm khách hàng</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>TIÊU</th>
+                    <th>ĐƠN GẦN NHẤT</th>
+                    <th>LOẠI</th>
+                    <th>THAO TÁC</th>
+                  </tr>
+                </thead>
+                <tbody id="customerTable">
+                  <tr data-type="vip" data-spending="125450000" data-date="2024-01-15" 
+                      data-email="tranvana@email.com" data-phone="0912 345 678" 
+                      data-address="123 Nguyễn Văn Linh, Q.7, TP.HCM" 
+                      data-join-date="2023-06-15" data-orders="15" data-rating="4.9">
+                    <td>
+                      <div class="product-cell">
+                        <div class="avatar" style="width: 40px; height: 40px;">
+                          <span>TA</span>
+                        </div>
+                        <div class="product-info">
+                          <div class="product-name">Trần Văn A</div>
+                          <div class="product-meta">⭐ 4.9 • 15 đơn • 125.450.000₫</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>15/1/2024</td>
+                    <td><span class="status success">VIP</span></td>
+                    <td class="cell-right">
+                      <div class="action-menu">
+                        <button type="button" class="action-toggle">⋯</button>
+                        <div class="action-dropdown">
+                          <button class="action-item" data-action="view">👁 Xem chi tiết</button>
+                          <button class="action-item" data-action="message">💬 Gửi tin nhắn</button>
+                          <button class="action-item" data-action="email">✉️ Gửi email</button>
+                          <button class="action-item danger" data-action="block">🚫 Chặn khách hàng</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-type="thuong" data-spending="67890000" data-date="2024-01-14"
+                      data-email="nguyenthib@email.com" data-phone="0987 654 321"
+                      data-address="456 Lê Văn Việt, Q.9, TP.HCM"
+                      data-join-date="2023-08-20" data-orders="8" data-rating="4.7">
+                    <td>
+                      <div class="product-cell">
+                        <div class="avatar" style="width: 40px; height: 40px;">
+                          <span>NB</span>
+                        </div>
+                        <div class="product-info">
+                          <div class="product-name">Nguyễn Thị B</div>
+                          <div class="product-meta">⭐ 4.7 • 8 đơn • 67.890.000₫</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>14/1/2024</td>
+                    <td><span class="status pending">Thường</span></td>
+                    <td class="cell-right">
+                      <div class="action-menu">
+                        <button type="button" class="action-toggle">⋯</button>
+                        <div class="action-dropdown">
+                          <button class="action-item" data-action="view">👁 Xem chi tiết</button>
+                          <button class="action-item" data-action="message">💬 Gửi tin nhắn</button>
+                          <button class="action-item" data-action="email">✉️ Gửi email</button>
+                          <button class="action-item danger" data-action="block">🚫 Chặn khách hàng</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-type="moi" data-spending="25670000" data-date="2024-01-10"
+                      data-email="lehoangc@email.com" data-phone="0909 123 456"
+                      data-address="789 Võ Văn Tần, Q.3, TP.HCM"
+                      data-join-date="2024-01-05" data-orders="3" data-rating="5.0">
+                    <td>
+                      <div class="product-cell">
+                        <div class="avatar" style="width: 40px; height: 40px;">
+                          <span>LC</span>
+                        </div>
+                        <div class="product-info">
+                          <div class="product-name">Lê Hoàng C</div>
+                          <div class="product-meta">⭐ 5.0 • 3 đơn • 25.670.000₫</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>10/1/2024</td>
+                    <td><span class="status" style="background: rgba(59, 130, 246, 0.16); color: #3b82f6;">Mới</span></td>
+                    <td class="cell-right">
+                      <div class="action-menu">
+                        <button type="button" class="action-toggle">⋯</button>
+                        <div class="action-dropdown">
+                          <button class="action-item" data-action="view">👁 Xem chi tiết</button>
+                          <button class="action-item" data-action="message">💬 Gửi tin nhắn</button>
+                          <button class="action-item" data-action="email">✉️ Gửi email</button>
+                          <button class="action-item danger" data-action="block">🚫 Chặn khách hàng</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-type="vip" data-spending="234560000" data-date="2024-01-13"
+                      data-email="phamminhd@email.com" data-phone="0978 111 222"
+                      data-address="321 Nguyễn Huệ, Q.1, TP.HCM"
+                      data-join-date="2022-11-10" data-orders="22" data-rating="4.8">
+                    <td>
+                      <div class="product-cell">
+                        <div class="avatar" style="width: 40px; height: 40px;">
+                          <span>PD</span>
+                        </div>
+                        <div class="product-info">
+                          <div class="product-name">Phạm Minh D</div>
+                          <div class="product-meta">⭐ 4.8 • 22 đơn • 234.560.000₫</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>13/1/2024</td>
+                    <td><span class="status success">VIP</span></td>
+                    <td class="cell-right">
+                      <div class="action-menu">
+                        <button type="button" class="action-toggle">⋯</button>
+                        <div class="action-dropdown">
+                          <button class="action-item" data-action="view">👁 Xem chi tiết</button>
+                          <button class="action-item" data-action="message">💬 Gửi tin nhắn</button>
+                          <button class="action-item" data-action="email">✉️ Gửi email</button>
+                          <button class="action-item danger" data-action="block">🚫 Chặn khách hàng</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-type="thuong" data-spending="45230000" data-date="2024-01-08"
+                      data-email="vothie@email.com" data-phone="0935 999 888"
+                      data-address="654 Trần Hưng Đạo, Q.5, TP.HCM"
+                      data-join-date="2023-12-01" data-orders="5" data-rating="4.5">
+                    <td>
+                      <div class="product-cell">
+                        <div class="avatar" style="width: 40px; height: 40px;">
+                          <span>VE</span>
+                        </div>
+                        <div class="product-info">
+                          <div class="product-name">Võ Thị E</div>
+                          <div class="product-meta">⭐ 4.5 • 5 đơn • 45.230.000₫</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>8/1/2024</td>
+                    <td><span class="status pending">Thường</span></td>
+                    <td class="cell-right">
+                      <div class="action-menu">
+                        <button type="button" class="action-toggle">⋯</button>
+                        <div class="action-dropdown">
+                          <button class="action-item" data-action="view">👁 Xem chi tiết</button>
+                          <button class="action-item" data-action="message">💬 Gửi tin nhắn</button>
+                          <button class="action-item" data-action="email">✉️ Gửi email</button>
+                          <button class="action-item danger" data-action="block">🚫 Chặn khách hàng</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pagination-container">
+              <span>Hiển thị 1-5 trong tổng số 3,456 khách hàng</span>
+              <button class="btn-sm">Trước</button>
+              <button class="btn-sm active">1</button>
+              <button class="btn-sm">2</button>
+              <button class="btn-sm">3</button>
+              <button class="btn-sm">Sau</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- MODAL THÊM KHÁCH HÀNG -->
+    <div id="addCustomerModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2>Thêm khách hàng mới</h2>
+          </div>
+          <button type="button" class="modal-close customer-modal-close">✕</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Họ và tên *</label>
+            <input 
+              type="text" 
+              id="customerName" 
+              placeholder="Nhập họ và tên khách hàng" 
+              required
+              style="width: 100%; padding: 10px; background: var(--bg-secondary, #1f2937); border: 1px solid var(--border-color, #374151); border-radius: 6px; color: var(--text, #fff);"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input 
+              type="email" 
+              id="customerEmail" 
+              placeholder="email@example.com" 
+              style="width: 100%; padding: 10px; background: var(--bg-secondary, #1f2937); border: 1px solid var(--border-color, #374151); border-radius: 6px; color: var(--text, #fff);"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Số điện thoại *</label>
+            <input 
+              type="tel" 
+              id="customerPhone" 
+              placeholder="0912 345 678" 
+              required
+              style="width: 100%; padding: 10px; background: var(--bg-secondary, #1f2937); border: 1px solid var(--border-color, #374151); border-radius: 6px; color: var(--text, #fff);"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Địa chỉ</label>
+            <input 
+              type="text" 
+              id="customerAddress" 
+              placeholder="Nhập địa chỉ" 
+              style="width: 100%; padding: 10px; background: var(--bg-secondary, #1f2937); border: 1px solid var(--border-color, #374151); border-radius: 6px; color: var(--text, #fff);"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Loại khách hàng</label>
+            <select id="customerType" style="width: 100%; padding: 10px; background: var(--bg-secondary, #1f2937); border: 1px solid var(--border-color, #374151); border-radius: 6px; color: var(--text, #fff);">
+              <option value="thuong">Thường</option>
+              <option value="vip">VIP</option>
+              <option value="moi">Mới</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel customer-modal-close">Hủy</button>
+          <button type="button" id="btnSaveCustomer" class="btn-submit" style="background: #22c55e;">
+            Thêm khách hàng
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL XEM CHI TIẾT KHÁCH HÀNG -->
+    <div id="customerDetailModal" class="modal">
+      <div class="modal-content" style="max-width: 700px;">
+        <div class="modal-header">
+          <div>
+            <h2>Thông tin khách hàng</h2>
+            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;" id="customerJoinDate">
+              Thành viên từ 15/6/2023
+            </div>
+          </div>
+          <button type="button" class="modal-close customer-detail-close">✕</button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Customer Profile -->
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+            <div class="avatar" id="customerDetailAvatar" style="width: 80px; height: 80px; font-size: 32px; font-weight: 700;">
+              <span>TA</span>
+            </div>
+            <div style="flex: 1;">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                <h3 style="font-size: 24px; font-weight: 700; margin: 0;" id="customerDetailName">Trần Văn A</h3>
+                <span class="status success" id="customerDetailType">VIP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Information -->
+          <div style="margin-bottom: 24px;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+                <span style="font-size: 18px;">✉️</span>
+                <span id="customerDetailEmail">tranvana@email.com</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+                <span style="font-size: 18px;">📞</span>
+                <span id="customerDetailPhone">0912 345 678</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
+                <span style="font-size: 18px;">📍</span>
+                <span id="customerDetailAddress">123 Nguyễn Văn Linh, Q.7, TP.HCM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Statistics Cards -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+            <div style="background: var(--bg-elevated-2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 8px;">📦</div>
+              <div style="font-size: 32px; font-weight: 700; color: var(--text); margin-bottom: 4px;" id="customerDetailOrders">15</div>
+              <div style="font-size: 13px; color: var(--text-muted);">Đơn hàng</div>
+            </div>
+            <div style="background: var(--bg-elevated-2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 8px;">⭐</div>
+              <div style="font-size: 32px; font-weight: 700; color: var(--text); margin-bottom: 4px;" id="customerDetailRating">4.9</div>
+              <div style="font-size: 13px; color: var(--text-muted);">Đánh giá</div>
+            </div>
+          </div>
+
+          <!-- Spending Overview -->
+          <div style="background: var(--bg-elevated-2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+              <span style="font-size: 14px; color: var(--text-muted);">Tổng chi tiêu</span>
+              <span style="font-size: 20px; font-weight: 700; color: var(--accent);" id="customerDetailTotalSpending">125.450.000₫</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 14px; color: var(--text-muted);">Trung bình/đơn</span>
+              <span style="font-size: 18px; font-weight: 600; color: var(--accent);" id="customerDetailAvgSpending">8.363.333₫</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer" style="justify-content: space-between;">
+          <button type="button" class="btn-cancel" id="btnCustomerMessage" style="background: var(--bg-elevated-2); border: 1px solid var(--border);">
+            <span>💬</span>
+            <span>Nhắn tin</span>
+          </button>
+          <button type="button" class="btn-submit" id="btnViewOrders" style="background: var(--accent);">
+            <span>👁</span>
+            <span>Xem đơn hàng</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/scrip.js"></script>
+    <script src="js/user-info.js"></script>
+    <script src="js/action-menu.js"></script>
+    <script src="js/khachhang.js"></script>
+    <script src="js/sidebar-preserve.js"></script>
+    <script src="js/store-status.js"></script>
+  </body>
+</html>
+

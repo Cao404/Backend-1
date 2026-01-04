@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>shop vn</title>
+  <script>
+    // Redirect to category-list.html since attribute management is now integrated there
+    window.location.href = 'category-list.html';
+  </script>
+</head>
+<body>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-2 11a2 2 0 0 1-2 1H7a2 2 0 0 1-2-1L3 7Z" stroke="#f9a44d" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v2" stroke="#f9a44d" stroke-width="1.5"/></svg>
+      <span class="brand-text">shop vn</span>
+      <div class="toggle-btn" onclick="toggleSidebar()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <h6>TỔNG HỢP</h6>
+      <a href="dashboard.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12l9-8 9 8v8a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8z" stroke="currentColor"/></svg><span>Bảng điều khiển</span></a>
+      
+      <h6>QUẢN TRỊ</h6>
+      <a href="admin-seller-approval.html"><svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M20 8v6M23 11h-6" stroke="currentColor" stroke-width="2"/></svg><span>Duyệt Người Bán</span></a>
+      <a href="admin-content-moderation.html"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 0 1.946-.806 3.42 3.42 0 0 1 3.438 0 3.42 3.42 0 0 0 1.946.806 3.42 3.42 0 0 1 3.138 3.138 3.42 3.42 0 0 0 .806 1.946 3.42 3.42 0 0 1 0 3.438 3.42 3.42 0 0 0-.806 1.946 3.42 3.42 0 0 1-3.138 3.138 3.42 3.42 0 0 0-1.946.806 3.42 3.42 0 0 1-3.438 0 3.42 3.42 0 0 0-1.946-.806 3.42 3.42 0 0 1-3.138-3.138 3.42 3.42 0 0 0-.806-1.946 3.42 3.42 0 0 1 0-3.438 3.42 3.42 0 0 0 .806-1.946 3.42 3.42 0 0 1 3.138-3.138z" stroke="currentColor" stroke-width="2"/></svg><span>Kiểm Duyệt Nội Dung</span></a>
+      <a href="admin-promotions.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"/></svg><span>Khuyến Mãi</span></a>
+      <a href="admin-shipping.html"><svg viewBox="0 0 24 24" fill="none"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z" stroke="currentColor" stroke-width="2"/><circle cx="5.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="2"/><circle cx="18.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg><span>Vận Chuyển</span></a>
+      <a href="admin-finance.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"/></svg><span>Tài Chính</span></a>
+      <a href="admin-disputes.html"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="2"/><path d="M12 16v-4M12 8h.01" stroke="currentColor" stroke-width="2"/></svg><span>Khiếu Nại & Tranh Chấp</span></a>
+      <a href="admin-reports.html"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18M7 16l4-4 4 4 6-6" stroke="currentColor" stroke-width="2"/></svg><span>Báo Cáo & Giám Sát</span></a>
+      <a href="admin-permissions.html"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="2"/></svg><span>Phân Quyền & Nhật Ký</span></a>
+    </nav>
+
+    <div class="grow"></div>
+
+    <div class="user">
+      <div class="avatar"></div>
+      <div style="flex:1">
+        <div style="font-weight:700">Admin</div>
+        <div class="sub">Quản trị viên</div>
+      </div>
+      <div class="icon-btn" onclick="logout()" title="Đăng xuất" style="width:32px;height:32px;margin-left:4px">
+        <svg viewBox="0 0 24 24" fill="none" width="16" height="16">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <section class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="title">QUẢN LÝ THUỘC TÍNH SẢN PHẨM</div>
+      <div class="actions">
+        <div class="icon-btn" title="Chế độ tối">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M21 12a9 9 0 1 1-8-8 7 7 0 0 0 8 8z" stroke="#b9c7e5"/></svg>
+        </div>
+        <div class="icon-btn" title="Thông báo">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" stroke="#b9c7e5"/></svg>
+        </div>
+        <label class="search">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><circle cx="11" cy="11" r="7" stroke="#7f95bd"/><path d="M21 21l-3.5-3.5" stroke="#7f95bd"/></svg>
+          <input placeholder="Tìm kiếm..." />
+        </label>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      
+      <!-- Info Card -->
+      <div class="card" style="margin-bottom:20px;background:linear-gradient(135deg, var(--accent) 0%, #ff8c3d 100%);color:#2b1606">
+        <div style="padding:20px">
+          <div style="font-weight:700;font-size:18px;margin-bottom:8px">Quản lý Thuộc Tính Sản Phẩm</div>
+          <div style="font-size:14px;opacity:0.9">Quản lý các nhóm thuộc tính (kích thước, màu sắc, chất liệu...) áp dụng cho sản phẩm. Để quản lý danh mục, vui lòng vào <a href="category-list.html" style="color:#2b1606;font-weight:700;text-decoration:underline">Quản lý danh mục</a>.</div>
+        </div>
+      </div>
+
+      <!-- Attribute Groups -->
+      <div class="card">
+        <div class="card-header">
+          <div style="font-weight:700;font-size:16px">Nhóm Thuộc Tính</div>
+          <button class="btn" onclick="openAttributeModal()">Thêm Nhóm Thuộc Tính</button>
+        </div>
+        
+        <div style="padding:20px">
+          <div id="attribute-groups"></div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div style="text-align:center;padding:24px 0;color:var(--muted);font-size:13px">
+        2025 © shop vn. Được chế tạo bởi <span style="color:var(--accent);font-weight:600">Cao, Trần Huy và Đào Huy</span>
+      </div>
+
+    </div>
+
+  </section>
+</div>
+
+<!-- Modal Nhóm Thuộc Tính -->
+<div class="modal-backdrop" id="attribute-modal-backdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="attribute-modal-title">Thêm nhóm thuộc tính</div>
+      <button type="button" class="modal-close" onclick="closeAttributeModal()">✕</button>
+    </div>
+    <form id="attribute-form" class="modal-form">
+      <div class="modal-field">
+        <label for="attr-name">Tên nhóm thuộc tính</label>
+        <input id="attr-name" name="name" type="text" placeholder="Kích thước (Size)" required />
+      </div>
+      <div class="modal-field">
+        <label for="attr-applies">Áp dụng cho danh mục (mỗi tên cách nhau bởi dấu phẩy)</label>
+        <input id="attr-applies" name="appliesTo" type="text" placeholder="Thời Trang, Nội Thất" />
+      </div>
+      <div class="modal-field">
+        <label for="attr-values">Danh sách giá trị (mỗi giá trị cách nhau bởi dấu phẩy)</label>
+        <textarea id="attr-values" name="values" placeholder="XS, S, M, L, XL"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeAttributeModal()">Hủy</button>
+        <button type="submit" class="btn">Lưu</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="./js/admin-category-attributes.js"></script>
+</body>
+</html>
+

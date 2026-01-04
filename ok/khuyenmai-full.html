@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khuyến mãi & Voucher - SellerHub</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/forms.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-header top-brand">
+          <div class="brand-left">
+            <div class="brand-icon">🛒</div>
+            <div class="brand-text">
+              <div class="brand-name">SellerHub</div>
+            </div>
+          </div>
+          <button class="collapse-btn">⮟</button>
+        </div>
+
+        <div class="sidebar-scroll">
+          <!-- QUẢN LÝ -->
+          <div class="sidebar-section-label">QUẢN LÝ</div>
+          <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Tổng quan</span>
+              </div>
+            </a>
+            <a href="sanpham-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📦</span>
+                <span class="nav-text">Sản phẩm</span>
+              </div>
+            </a>
+            <a href="danhmuc-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🗂</span>
+                <span class="nav-text">Danh mục</span>
+              </div>
+            </a>
+            <a href="tonkho-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏬</span>
+                <span class="nav-text">Tồn kho</span>
+              </div>
+            </a>
+            <a href="donhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">Đơn hàng</span>
+              </div>
+            </a>
+            <a href="khachhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Khách hàng</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- VẬN HÀNH -->
+          <div class="sidebar-section-label">VẬN HÀNH</div>
+          <nav class="sidebar-nav">
+            <a href="vanchuyen-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🚚</span>
+                <span class="nav-text">Vận chuyển</span>
+              </div>
+            </a>
+            <a href="hoantien-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">↩️</span>
+                <span class="nav-text">Hoàn tiền</span>
+              </div>
+            </a>
+            <a href="khuyenmai-full.html" class="nav-item active">
+              <div class="nav-left">
+                <span class="nav-icon">🏷</span>
+                <span class="nav-text">Khuyến mãi</span>
+              </div>
+            </a>
+            <a href="flashsale-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Flash Sale</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- PHÂN TÍCH -->
+          <div class="sidebar-section-label">PHÂN TÍCH</div>
+          <nav class="sidebar-nav">
+            <a href="baocao-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Báo cáo</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- THIẾT LẬP -->
+          <div class="sidebar-section-label">THIẾT LẬP</div>
+          <nav class="sidebar-nav">
+            <a href="cuahang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">Cửa hàng</span>
+              </div>
+            </a>
+            <a href="caidat-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Cài đặt</span>
+              </div>
+            </a>
+          </nav>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="user">
+            <div class="avatar"><span>NH</span></div>
+            <div class="user-info">
+              <div class="user-name">Nguyễn Hoàng</div>
+              <div class="user-role small">Premium Seller ▾</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-left">
+            <h1 class="page-title">Khuyến mãi & Voucher</h1>
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm, đơn hàng..." />
+            </div>
+          </div>
+          <div class="topbar-right">
+            <button class="top-btn">🔔</button>
+            <button class="top-btn">❓</button>
+            <button class="btn-store-open">Cửa hàng đang mở</button>
+          </div>
+        </header>
+
+        <!-- SUMMARY CARDS -->
+        <section class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>🏷 Tổng voucher</span>
+            </div>
+            <div class="kpi-value">5</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>✅ Đang hoạt động</span>
+            </div>
+            <div class="kpi-value">3</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>🛒 Lượt sử dụng</span>
+            </div>
+            <div class="kpi-value">445</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>💰 Đã giảm giá</span>
+            </div>
+            <div class="kpi-value">125.6M</div>
+          </div>
+        </section>
+
+        <!-- TABS AND CONTROLS -->
+        <div class="product-header">
+          <div class="tabs">
+            <button class="tab-btn active">Voucher</button>
+            <button class="tab-btn">Chiến dịch</button>
+          </div>
+          <div class="filter-group">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" class="search-input" id="voucherSearchInput" placeholder="Tìm mã voucher..." />
+            </div>
+            <div class="filter-dropdown-wrapper" style="position: relative;">
+              <button class="filter-btn" id="statusFilterBtn">
+                <span id="statusFilterText">Tất cả</span>
+                <span class="filter-arrow">▼</span>
+              </button>
+              <div class="filter-dropdown" id="statusFilterDropdown">
+                <button class="filter-option active" data-status="">✓ Tất cả</button>
+                <button class="filter-option" data-status="active">Đang hoạt động</button>
+                <button class="filter-option" data-status="pending">Chưa bắt đầu</button>
+                <button class="filter-option" data-status="expired">Đã hết hạn</button>
+              </div>
+            </div>
+            <button class="btn-add" id="btnCreateVoucher">+ Tạo voucher</button>
+          </div>
+        </div>
+
+        <!-- VOUCHER TABLE -->
+        <div class="card" id="voucherSection">
+          <div class="card-body table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>VOUCHER</th>
+                  <th>GIÁ TRỊ</th>
+                  <th>ĐIỀU KIỆN</th>
+                  <th>SỬ DỤNG</th>
+                  <th>THỜI HẠN</th>
+                  <th>TRẠNG THÁI</th>
+                  <th>THAO TÁC</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-voucher-code="SALE50">
+                  <td>
+                    <div>
+                      <div class="product-name">SALE50</div>
+                      <div class="product-meta">Giảm 50% tất cả sản phẩm</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <div style="font-weight: 600;">50%</div>
+                      <div class="product-meta">Tối đa: 500.000₫</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <div>Đơn từ 1.000.000₫</div>
+                      <div class="product-meta">Tất Cả</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <div style="width: 100px; height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden;">
+                        <div style="width: 45%; height: 100%; background: var(--accent);"></div>
+                      </div>
+                      <span style="font-size: 12px;">45/100</span>
+                    </div>
+                  </td>
+                  <td>2024-01-01 - 2024-01-31</td>
+                  <td><span class="status success">Đang hoạt động</span></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <label class="toggle-switch">
+                        <input type="checkbox" checked data-voucher-code="SALE50" />
+                        <span class="slider"></span>
+                      </label>
+                      <div class="action-menu">
+                        <button class="action-toggle">⋯</button>
+                        <div class="action-dropdown">
+                          <button class="action-item" data-action="edit" data-voucher-code="SALE50">✏️ Chỉnh sửa</button>
+                          <button class="action-item" data-action="duplicate" data-voucher-code="SALE50">📑 Nhân bản</button>
+                          <button class="action-item danger" data-action="delete" data-voucher-code="SALE50">🗑 Xóa</button>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr data-voucher-code="FREESHIP">
+                  <td>
+                    <div>
+                      <div class="product-name">FREESHIP</div>
+                      <div class="product-meta">Miễn phí vận chuyển</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <div style="font-weight: 600;">Free Ship</div>
+                      <div class="product-meta">Tối đa: 50.000₫</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <div>Đơn từ 500.000₫</div>
+                      <div class="product-meta">Tất Cả</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <div style="width: 100px; height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden;">
+                        <div style="width: 60%; height: 100%; background: var(--accent);"></div>
+                      </div>
+                      <span style="font-size: 12px;">120/200</span>
+                    </div>
+                  </td>
+                  <td>2024-01-01 - 2024-02-28</td>
+                  <td><span class="status success">Đang hoạt động</span></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <label class="toggle-switch">
+                        <input type="checkbox" checked data-voucher-code="FREESHIP" />
+                        <span class="slider"></span>
+                      </label>
+                      <div class="action-menu">
+                        <button class="action-toggle">⋯</button>
+                        <div class="action-dropdown">
+                          <button class="action-item" data-action="edit" data-voucher-code="FREESHIP">✏️ Chỉnh sửa</button>
+                          <button class="action-item" data-action="duplicate" data-voucher-code="FREESHIP">📑 Nhân bản</button>
+                          <button class="action-item danger" data-action="delete" data-voucher-code="FREESHIP">🗑 Xóa</button>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr data-voucher-code="IPHONE200K">
+                  <td>
+                    <div>
+                      <div class="product-name">IPHONE200K</div>
+                      <div class="product-meta">Giảm 200K cho iPhone</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <div style="font-weight: 600;">200.000₫</div>
+                      <div class="product-meta">Tối đa: 200.000₫</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <div>Đơn từ 20.000.000₫</div>
+                      <div class="product-meta">Theo Danh Mục</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <div style="width: 100px; height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden;">
+                        <div style="width: 100%; height: 100%; background: var(--accent);"></div>
+                      </div>
+                      <span style="font-size: 12px;">50/50</span>
+                    </div>
+                  </td>
+                  <td>2024-01-01 - 2024-01-15</td>
+                  <td><span class="status cancelled">Đã hết hạn</span></td>
+                  <td>
+                    <div class="action-menu">
+                      <button class="action-toggle">⋯</button>
+                      <div class="action-dropdown">
+                        <button class="action-item" data-action="edit" data-voucher-code="IPHONE200K">✏️ Chỉnh sửa</button>
+                        <button class="action-item" data-action="duplicate" data-voucher-code="IPHONE200K">📑 Nhân bản</button>
+                        <button class="action-item danger" data-action="delete" data-voucher-code="IPHONE200K">🗑 Xóa</button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- PAGINATION -->
+          <div class="pagination-container" id="paginationContainer" style="display: none;">
+            <span id="paginationInfo" style="color: var(--text-muted); font-size: 13px;">Hiển thị 1-10 trong tổng số 0 voucher</span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <button class="btn-sm" id="prevPageBtn" disabled>Trước</button>
+              <div id="paginationNumbers" style="display: flex; gap: 6px;"></div>
+              <button class="btn-sm" id="nextPageBtn">Sau</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHIẾN DỊCH SECTION -->
+        <div class="card" id="campaignSection" style="display: none;">
+          <!-- CAMPAIGN HEADER -->
+          <div class="product-header" style="padding: 16px 20px; border-bottom: 1px solid var(--border);">
+            <div class="filter-group">
+              <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" id="campaignSearchInput" placeholder="Tìm kiếm chiến dịch..." />
+              </div>
+              <button class="btn-add" id="btnCreateCampaign">+ Tạo chiến dịch</button>
+            </div>
+          </div>
+          
+          <!-- CAMPAIGN TABLE -->
+          <div class="card-body table-wrapper" id="campaignTableWrapper">
+            <table id="campaignTable">
+              <thead>
+                <tr>
+                  <th>TÊN CHIẾN DỊCH</th>
+                  <th>MÔ TẢ</th>
+                  <th>THỜI GIAN</th>
+                  <th>TRẠNG THÁI</th>
+                  <th>THAO TÁC</th>
+                </tr>
+              </thead>
+              <tbody id="campaignTableBody">
+                <!-- Campaigns will be added here -->
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- CAMPAIGN PAGINATION -->
+          <div class="pagination-container" id="campaignPaginationContainer" style="display: none;">
+            <span id="campaignPaginationInfo" style="color: var(--text-muted); font-size: 13px;">Hiển thị 1-10 trong tổng số 0 chiến dịch</span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <button class="btn-sm" id="campaignPrevPageBtn" disabled>Trước</button>
+              <div id="campaignPaginationNumbers" style="display: flex; gap: 6px;"></div>
+              <button class="btn-sm" id="campaignNextPageBtn">Sau</button>
+            </div>
+          </div>
+          
+          <!-- EMPTY STATE -->
+          <div id="campaignEmptyState" style="text-align: center; padding: 60px 20px; color: var(--text-muted); display: none;">
+            <div style="font-size: 48px; margin-bottom: 16px;">📢</div>
+            <h3 style="color: var(--text); margin-bottom: 8px;">Chưa có chiến dịch nào</h3>
+            <p style="font-size: 14px; margin-bottom: 24px;">Tạo chiến dịch khuyến mãi đầu tiên của bạn</p>
+            <button class="btn-add" id="btnCreateCampaignEmpty">+ Tạo chiến dịch</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- MODAL TẠO VOUCHER -->
+    <div id="voucherModal" class="modal">
+      <div class="modal-content" style="max-width: 700px;">
+        <div class="modal-header">
+          <div>
+            <h2>Tạo voucher mới</h2>
+            <p class="modal-subtitle">Thiết lập mã giảm giá cho khách hàng</p>
+          </div>
+          <button class="modal-close" id="closeVoucherModal">✕</button>
+        </div>
+
+        <form id="voucherForm">
+          <div class="modal-body">
+            <!-- Mã voucher và Loại giảm giá -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Mã voucher <span class="required">*</span></label>
+                <input
+                  type="text"
+                  name="voucherCode"
+                  id="voucherCode"
+                  placeholder="VD: SALE50"
+                  required
+                  style="text-transform: uppercase;"
+                />
+              </div>
+              <div class="form-group">
+                <label>Loại giảm giá</label>
+                <select name="discountType" id="discountType">
+                  <option value="percent">Giảm theo %</option>
+                  <option value="amount">Giảm theo số tiền</option>
+                  <option value="freeship">Miễn phí vận chuyển</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Tên voucher -->
+            <div class="form-group">
+              <label>Tên voucher <span class="required">*</span></label>
+              <input
+                type="text"
+                name="voucherName"
+                id="voucherName"
+                placeholder="VD: Giảm 50% tất cả sản phẩm"
+                required
+              />
+            </div>
+
+            <!-- Giá trị giảm và Giảm tối đa -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Giá trị giảm <span class="required">*</span></label>
+                <input
+                  type="number"
+                  name="discountValue"
+                  id="discountValue"
+                  placeholder="50"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Giảm tối đa</label>
+                <input
+                  type="number"
+                  name="maxDiscount"
+                  id="maxDiscount"
+                  placeholder="500000"
+                  min="0"
+                />
+              </div>
+            </div>
+
+            <!-- Đơn hàng tối thiểu và Giới hạn sử dụng -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Đơn hàng tối thiểu</label>
+                <input
+                  type="number"
+                  name="minOrder"
+                  id="minOrder"
+                  placeholder="1000000"
+                  min="0"
+                />
+              </div>
+              <div class="form-group">
+                <label>Giới hạn sử dụng</label>
+                <input
+                  type="number"
+                  name="usageLimit"
+                  id="usageLimit"
+                  placeholder="100"
+                  min="1"
+                />
+              </div>
+            </div>
+
+            <!-- Ngày bắt đầu và Ngày kết thúc -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Ngày bắt đầu</label>
+                <input
+                  type="date"
+                  name="startDate"
+                  id="startDate"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Ngày kết thúc</label>
+                <input
+                  type="date"
+                  name="endDate"
+                  id="endDate"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Áp dụng cho -->
+            <div class="form-group">
+              <label>Áp dụng cho</label>
+              <select name="applyTo" id="applyTo">
+                <option value="all">Tất cả sản phẩm</option>
+                <option value="category">Theo danh mục</option>
+                <option value="product">Theo sản phẩm</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn-cancel" id="cancelVoucherBtn">Hủy</button>
+            <button type="submit" class="btn-submit">Tạo voucher</button>
+          </div>
+        </form>
+      </div>
+    <!-- MODAL TẠO CHIẾN DỊCH -->
+    <div id="campaignModal" class="modal">
+      <div class="modal-content" style="max-width: 700px;">
+        <div class="modal-header">
+          <div>
+            <h2>Tạo chiến dịch mới</h2>
+            <p class="modal-subtitle">Thiết lập chiến dịch khuyến mãi</p>
+          </div>
+          <button class="modal-close" id="closeCampaignModal">✕</button>
+        </div>
+
+        <form id="campaignForm">
+          <div class="modal-body">
+            <!-- Tên chiến dịch -->
+            <div class="form-group">
+              <label>Tên chiến dịch <span class="required">*</span></label>
+              <input
+                type="text"
+                name="campaignName"
+                id="campaignName"
+                placeholder="VD: Black Friday 2024"
+                required
+              />
+            </div>
+
+            <!-- Mô tả -->
+            <div class="form-group">
+              <label>Mô tả <span class="required">*</span></label>
+              <textarea
+                name="campaignDescription"
+                id="campaignDescription"
+                placeholder="Mô tả chi tiết về chiến dịch..."
+                rows="4"
+                required
+                style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: inherit; resize: vertical;"
+              ></textarea>
+            </div>
+
+            <!-- Thời gian -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Ngày bắt đầu <span class="required">*</span></label>
+                <input
+                  type="date"
+                  name="startDate"
+                  id="campaignStartDate"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Ngày kết thúc <span class="required">*</span></label>
+                <input
+                  type="date"
+                  name="endDate"
+                  id="campaignEndDate"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Trạng thái -->
+            <div class="form-group">
+              <label>Trạng thái</label>
+              <select name="campaignStatus" id="campaignStatus">
+                <option value="active">Đang hoạt động</option>
+                <option value="pending">Chưa bắt đầu</option>
+                <option value="expired">Đã hết hạn</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn-cancel" id="cancelCampaignBtn">Hủy</button>
+            <button type="submit" class="btn-submit">Tạo chiến dịch</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    </div>
+
+    <script src="js/scrip.js"></script>
+    <script src="js/user-info.js"></script>
+    <script src="js/action-menu.js"></script>
+    <script src="js/sidebar-preserve.js"></script>
+    <script src="js/store-status.js"></script>
+    <script src="js/khuyenmai.js"></script>
+  </body>
+</html>
+

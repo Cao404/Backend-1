@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Báo cáo & Phân tích - SellerHub</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/forms.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-header top-brand">
+          <div class="brand-left">
+            <div class="brand-icon">🛒</div>
+            <div class="brand-text">
+              <div class="brand-name">SellerHub</div>
+            </div>
+          </div>
+          <button class="collapse-btn">⮟</button>
+        </div>
+
+        <div class="sidebar-scroll">
+          <!-- QUẢN LÝ -->
+          <div class="sidebar-section-label">QUẢN LÝ</div>
+          <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Tổng quan</span>
+              </div>
+            </a>
+            <a href="sanpham-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">📦</span>
+                <span class="nav-text">Sản phẩm</span>
+              </div>
+            </a>
+            <a href="danhmuc-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🗂</span>
+                <span class="nav-text">Danh mục</span>
+              </div>
+            </a>
+            <a href="tonkho-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏬</span>
+                <span class="nav-text">Tồn kho</span>
+              </div>
+            </a>
+            <a href="donhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">Đơn hàng</span>
+              </div>
+            </a>
+            <a href="khachhang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Khách hàng</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- VẬN HÀNH -->
+          <div class="sidebar-section-label">VẬN HÀNH</div>
+          <nav class="sidebar-nav">
+            <a href="vanchuyen-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🚚</span>
+                <span class="nav-text">Vận chuyển</span>
+              </div>
+            </a>
+            <a href="hoantien-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">↩️</span>
+                <span class="nav-text">Hoàn tiền</span>
+              </div>
+            </a>
+            <a href="khuyenmai-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏷</span>
+                <span class="nav-text">Khuyến mãi</span>
+              </div>
+            </a>
+            <a href="flashsale-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Flash Sale</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- PHÂN TÍCH -->
+          <div class="sidebar-section-label">PHÂN TÍCH</div>
+          <nav class="sidebar-nav">
+            <a href="baocao-full.html" class="nav-item active">
+              <div class="nav-left">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Báo cáo</span>
+              </div>
+            </a>
+          </nav>
+
+          <!-- THIẾT LẬP -->
+          <div class="sidebar-section-label">THIẾT LẬP</div>
+          <nav class="sidebar-nav">
+            <a href="cuahang-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">Cửa hàng</span>
+              </div>
+            </a>
+            <a href="caidat-full.html" class="nav-item">
+              <div class="nav-left">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Cài đặt</span>
+              </div>
+            </a>
+          </nav>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="user">
+            <div class="avatar"><span>NH</span></div>
+            <div class="user-info">
+              <div class="user-name">Nguyễn Hoàng</div>
+              <div class="user-role small">Premium Seller ▾</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-left">
+            <h1 class="page-title">Báo cáo & Phân tích</h1>
+            <div class="search-box">
+              <span class="search-icon">Q</span>
+              <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm, đơn hàng..." />
+            </div>
+          </div>
+          <div class="topbar-right">
+            <select class="filter-select" style="margin-right: 12px;">
+              <option>30 ngày qua</option>
+            </select>
+            <button class="btn-export" id="exportReportBtn">📥 Xuất báo cáo</button>
+            <button class="top-btn">🔔</button>
+            <button class="top-btn">❓</button>
+            <button class="btn-store-open">Cửa hàng đang mở</button>
+          </div>
+        </header>
+
+        <!-- KPI CARDS -->
+        <section class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>💰 Tổng doanh thu</span>
+            </div>
+            <div class="kpi-value">892.450.000₫</div>
+            <div class="kpi-footer up">+12.5%</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>🛒 Tổng đơn hàng</span>
+            </div>
+            <div class="kpi-value">1,234</div>
+            <div class="kpi-footer up">+8.2%</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>📦 Giá trị đơn TB</span>
+            </div>
+            <div class="kpi-value">723.500₫</div>
+            <div class="kpi-footer down">-2.1%</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span>👁 Lượt xem</span>
+            </div>
+            <div class="kpi-value">45,678</div>
+            <div class="kpi-footer up">+22.1%</div>
+          </div>
+        </section>
+
+        <!-- CHARTS ROW -->
+        <section style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-top: 20px;">
+          <!-- Revenue Chart -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Biểu đồ doanh thu</h3>
+                <span class="card-subtitle">Doanh thu và lợi nhuận theo tháng</span>
+              </div>
+              <div class="tabs" style="padding: 0;">
+                <button class="tab-btn active">Doanh thu</button>
+                <button class="tab-btn">Lợi nhuận</button>
+                <button class="tab-btn">Đơn hàng</button>
+              </div>
+            </div>
+            <div class="card-body">
+              <canvas id="revenueChart" style="height: 300px;"></canvas>
+            </div>
+          </div>
+
+          <!-- Revenue by Category -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Doanh thu theo danh mục</h3>
+            </div>
+            <div class="card-body">
+              <div style="position: relative; height: 300px; width: 100%;">
+                <canvas id="categoryChart"></canvas>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 16px;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span>Điện thoại</span>
+                  <span style="font-weight: 600;">45%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span>Laptop</span>
+                  <span style="font-weight: 600;">25%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span>Phụ kiện</span>
+                  <span style="font-weight: 600;">15%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span>Máy tính bảng</span>
+                  <span style="font-weight: 600;">10%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span>Đồng hồ</span>
+                  <span style="font-weight: 600;">5%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BOTTOM ROW -->
+        <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px;">
+          <!-- Orders by Hour -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Đơn hàng theo giờ</h3>
+                <span class="card-subtitle">Giờ cao điểm trong ngày</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <canvas id="ordersByHourChart" style="height: 250px;"></canvas>
+            </div>
+          </div>
+
+          <!-- Best Selling Products -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Sản phẩm bán chạy</h3>
+            </div>
+            <div class="card-body">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="font-weight: 600;">#1 iPhone 15 Pro Max</span>
+                    <span style="color: var(--accent);">+12.5%</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
+                    <span>Đã bán: 156</span>
+                    <span style="font-weight: 600; color: var(--text);">5,5 T₫</span>
+                  </div>
+                  <div style="height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden;">
+                    <div style="width: 90%; height: 100%; background: var(--accent);"></div>
+                  </div>
+                </div>
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="font-weight: 600;">#2 MacBook Air M3</span>
+                    <span style="color: var(--accent);">+8.2%</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
+                    <span>Đã bán: 89</span>
+                    <span style="font-weight: 600; color: var(--text);">2,5 T₫</span>
+                  </div>
+                  <div style="height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden;">
+                    <div style="width: 70%; height: 100%; background: var(--accent);"></div>
+                  </div>
+                </div>
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="font-weight: 600;">#3 AirPods Pro 2</span>
+                    <span style="color: var(--danger);">-15.3%</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
+                    <span>Đã bán: 234</span>
+                    <span style="font-weight: 600; color: var(--text);">1,5 T₫</span>
+                  </div>
+                  <div style="height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden;">
+                    <div style="width: 55%; height: 100%; background: var(--accent);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/scrip.js"></script>
+    <script src="js/user-info.js"></script>
+    <script src="js/sidebar-preserve.js"></script>
+    <script src="js/store-status.js"></script>
+    <script src="js/baocao.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
