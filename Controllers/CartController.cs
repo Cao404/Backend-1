@@ -26,3 +26,26 @@ namespace User.Api.Controllers
             _repo.AddOrUpdateItem(req.MaKhachHang, req.MaSanPham, req.SoLuong);
             return Ok(ApiResponse<string>.Ok("OK", "Đã thêm vào giỏ"));
         }
+
+        [HttpPut("items/{maGioHangItem:int}")]
+        public IActionResult UpdateQty(int maGioHangItem, [FromBody] UpdateCartItemRequest req)
+        {
+            _repo.UpdateQty(req.MaKhachHang, maGioHangItem, req.SoLuong);
+            return Ok(ApiResponse<string>.Ok("OK", "Đã cập nhật số lượng"));
+        }
+
+        [HttpDelete("items/{maGioHangItem:int}")]
+        public IActionResult RemoveItem(int maGioHangItem, [FromQuery] int maKhachHang)
+        {
+            _repo.RemoveItem(maKhachHang, maGioHangItem);
+            return Ok(ApiResponse<string>.Ok("OK", "Đã xóa item"));
+        }
+
+        [HttpDelete("clear/{maKhachHang:int}")]
+        public IActionResult Clear(int maKhachHang)
+        {
+            _repo.ClearCart(maKhachHang);
+            return Ok(ApiResponse<string>.Ok("OK", "Đã xóa toàn bộ giỏ"));
+        }
+    }
+}
