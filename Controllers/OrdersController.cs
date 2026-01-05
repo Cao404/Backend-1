@@ -28,3 +28,22 @@ namespace User.Api.Controllers
             var list = _repo.GetOrdersByCustomer(maKhachHang);
             return Ok(ApiResponse<object>.Ok(list));
         }
+
+        // chi tiết đơn
+        [HttpGet("{maDonHang:int}")]
+        public IActionResult Detail(int maDonHang, [FromQuery] int maKhachHang)
+        {
+            var data = _repo.GetOrderDetail(maDonHang, maKhachHang);
+            if (data == null) return NotFound(ApiResponse<string>.Fail("Không tìm thấy đơn"));
+            return Ok(ApiResponse<object>.Ok(data));
+        }
+
+        // tracking
+        [HttpGet("{maDonHang:int}/tracking")]
+        public IActionResult Tracking(int maDonHang, [FromQuery] int maKhachHang)
+        {
+            var data = _repo.GetTracking(maDonHang, maKhachHang);
+            return Ok(ApiResponse<object>.Ok(data));
+        }
+    }
+}
