@@ -46,6 +46,7 @@ namespace User.Api.Controllers
         {
             _repo.ClearCart(maKhachHang);
             return Ok(ApiResponse<string>.Ok("OK", "Đã xóa toàn bộ giỏ"));
+            //ggfhg//
         }
     }
 }
