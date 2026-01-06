@@ -26,3 +26,15 @@ public class SellerApplicationsController : ControllerBase
 
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
+
+        // 2) tạo application
+        var app = new SellerApplication
+        {
+            UserId = user.Id,
+            Status = SellerAppStatus.Submitted,
+            CreatedAt = DateTime.UtcNow,
+            Kyc = null
+        };
+
+        _db.SellerApplications.Add(app);
+        await _db.SaveChangesAsync();
