@@ -1,0 +1,8 @@
+.vs/
+bin/
+obj/
+*.vsidx
+
+# local service deps (không push)
+Properties/serviceDependencies.local.json
+Properties/serviceDependencies.local.json.user
