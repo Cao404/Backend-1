@@ -1,6 +1,28 @@
-﻿namespace wedapi.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+using SellerHub.Api.Data;
+using SellerHub.Api.Dto;
+using SellerHub.Api.Models;
+
+[ApiController]
+public class SellerApplicationsController : ControllerBase
 {
-    public class SellerApplicationsController
+    private readonly SellerHubDbContext _db;
+    public SellerApplicationsController(SellerHubDbContext db) => _db = db;
+
+    [HttpPost("/api/seller-applications")]
+    public async Task<IActionResult> Create([FromBody] CreateSellerApplicationDto dto)
     {
-    }
-}
+        // 1) tạo user
+        var user = new SellerHub.Api.model.User
+        {
+            Email = dto.Email,
+            Phone = dto.Phone,
+            FullName = dto.FullName ?? dto.Email,
+            Role = "seller",
+            Status = "Active",
+            CreatedAt = DateTime.UtcNow,
+            PasswordHash = dto.Password
+        };
+
+        _db.Users.Add(user);
+        await _db.SaveChangesAsync();
