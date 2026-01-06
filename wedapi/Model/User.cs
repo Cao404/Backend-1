@@ -7,8 +7,7 @@ namespace SellerHub.Api.model
     public enum AccountStatus { Active, Locked }
     public class User
     {
-        internal string? Password;
-
+        // Removed the unused internal field 'Password' to resolve CS0649
         public int Id { get; set; }
 
         public string FullName { get; set; } = "";
