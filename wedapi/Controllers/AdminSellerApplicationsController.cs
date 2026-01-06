@@ -59,3 +59,19 @@ public class AdminSellerApplicationsController : ControllerBase
 
         return Ok(data);
     }
+
+    [HttpPatch("{id:int}/approve")]
+    public async Task<IActionResult> Approve(int id)
+    {
+        var app = await _db.SellerApplications.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
+        if (app == null) return NotFound();
+
+        app.Status = SellerAppStatus.Approved;
+        app.UpdatedAt = DateTime.UtcNow;
+
+        // (tuỳ bạn) duyệt xong thì set user role = seller
+        if (app.User != null) app.User.Role = "seller";
+
+        await _db.SaveChangesAsync();
+        return Ok();
+    }
