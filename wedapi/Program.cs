@@ -1,20 +1,22 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Extensions.DependencyInjection;
 using SellerHub.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Controllers + Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// DbContext (C?C QUAN TR?NG)
-builder.Services.AddDbContext<SellerHubDbContext>(options =>
+// ✅ đăng ký factory tạo SqlConnection (ADO.NET)
+builder.Services.AddSingleton<ISqlConnectionFactory>(sp =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+    var cfg = sp.GetRequiredService<IConfiguration>();
+    return new SqlConnectionFactory(cfg.GetConnectionString("Default")!);
 });
 
-// CORS (n?u FE g?i qua port kh�c)
+// ✅ Repo/service
+builder.Services.AddScoped<SellerApplicationRepository>();
+
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("fe", p => p
@@ -38,5 +40,4 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors("fe");
 app.MapControllers();
-
 app.Run();
