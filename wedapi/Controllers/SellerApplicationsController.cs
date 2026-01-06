@@ -38,3 +38,19 @@ public class SellerApplicationsController : ControllerBase
 
         _db.SellerApplications.Add(app);
         await _db.SaveChangesAsync();
+
+        var res = new SellerAppAdminDto
+        {
+            Id = app.Id,
+            UserId = user.Id,
+            FullName = user.FullName,
+            Email = user.Email,
+            Phone = user.Phone,
+            Kyc = app.Kyc,
+            Status = app.Status,
+            CreatedAt = app.CreatedAt
+        };
+
+        return Ok(res);
+    }
+}
