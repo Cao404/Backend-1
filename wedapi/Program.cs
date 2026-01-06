@@ -7,14 +7,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// ✅ đăng ký factory tạo SqlConnection (ADO.NET)
+//  đăng ký factory tạo SqlConnection (ADO.NET)
 builder.Services.AddSingleton<ISqlConnectionFactory>(sp =>
 {
     var cfg = sp.GetRequiredService<IConfiguration>();
     return new SqlConnectionFactory(cfg.GetConnectionString("Default")!);
 });
 
-// ✅ Repo/service
+//  Repo/service
 builder.Services.AddScoped<SellerApplicationRepository>();
 
 builder.Services.AddCors(opt =>
@@ -41,3 +41,7 @@ app.UseHttpsRedirection();
 app.UseCors("fe");
 app.MapControllers();
 app.Run();
+
+var cs = builder.Configuration.GetConnectionString("Default");
+if (string.IsNullOrWhiteSpace(cs))
+    throw new Exception("Missing ConnectionStrings:Default in appsettings(.Development).json");
