@@ -1,7 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 
-namespace SellerHub.Api.Data;
-
 public interface ISqlConnectionFactory
 {
     SqlConnection Create();
@@ -9,12 +7,19 @@ public interface ISqlConnectionFactory
 
 public class SqlConnectionFactory : ISqlConnectionFactory
 {
-    private readonly IConfiguration _config;
-    public SqlConnectionFactory(IConfiguration config) => _config = config;
+    private readonly string _cs;
+    private string v;
 
-    public SqlConnection Create()
+    public SqlConnectionFactory(IConfiguration config)
     {
-        var cs = _config.GetConnectionString("Default");
-        return new SqlConnection(cs);
+        _cs = config.GetConnectionString("Default")
+              ?? throw new InvalidOperationException("Missing ConnectionStrings:Default");
     }
+
+    public SqlConnectionFactory(string v)
+    {
+        this.v = v;
+    }
+
+    public SqlConnection Create() => new SqlConnection(_cs);
 }
