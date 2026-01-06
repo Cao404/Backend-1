@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using SellerHub.Api.Data;
 using SellerHub.Api.model;
 using System.ComponentModel.DataAnnotations.Schema;
 using SellerHub.Api.Dto;
+using Microsoft.EntityFrameworkCore;
 
 namespace SellerHub.Api.Controllers;
 
