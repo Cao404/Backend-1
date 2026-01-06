@@ -1,0 +1,227 @@
+@baseUrl = http://localhost:5136/api
+
+### ==================== DANH MỤC ====================
+
+# Get all danh muc
+GET {{baseUrl}}/danhmuc
+
+###
+# Get danh muc by ID
+GET {{baseUrl}}/danhmuc/1
+
+###
+# Get root categories (no parent)
+GET {{baseUrl}}/danhmuc/parent
+
+###
+# Get child categories by parent ID
+GET {{baseUrl}}/danhmuc/parent/4
+
+###
+# Create new danh muc
+POST {{baseUrl}}/danhmuc
+Content-Type: application/json
+
+{
+  "maDanhMuc": "DM08",
+  "tenDanhMuc": "Test Category",
+  "danhMucChaID": null
+}
+
+###
+# Update danh muc
+PUT {{baseUrl}}/danhmuc/1
+Content-Type: application/json
+
+{
+  "maDanhMuc": "DM01",
+  "tenDanhMuc": "Điện thoại Updated",
+  "danhMucChaID": null,
+  "trangThai": true
+}
+
+###
+# Delete danh muc
+DELETE {{baseUrl}}/danhmuc/8
+
+### ==================== SẢN PHẨM ====================
+
+# Get all san pham
+GET {{baseUrl}}/sanpham
+
+###
+# Get san pham by ID
+GET {{baseUrl}}/sanpham/1
+
+###
+# Get san pham by SKU
+GET {{baseUrl}}/sanpham/sku/SP001
+
+###
+# Get san pham by danh muc
+GET {{baseUrl}}/sanpham/danhmuc/1
+
+###
+# Search san pham
+GET {{baseUrl}}/sanpham/search?keyword=iPhone
+
+###
+# Create new san pham
+POST {{baseUrl}}/sanpham
+Content-Type: application/json
+
+{
+  "sku": "SP007",
+  "tenSanPham": "Test Product",
+  "danhMucID": 1,
+  "giaBan": 15000000,
+  "kho": 10
+}
+
+###
+# Update san pham
+PUT {{baseUrl}}/sanpham/1
+Content-Type: application/json
+
+{
+  "tenSanPham": "iPhone 15 128GB Updated",
+  "danhMucID": 1,
+  "giaBan": 26000000,
+  "kho": 25,
+  "trangThai": true
+}
+
+###
+# Delete san pham
+DELETE {{baseUrl}}/sanpham/7
+
+### ==================== KHÁCH HÀNG ====================
+
+# Get all khach hang
+GET {{baseUrl}}/khachhang
+
+###
+# Get khach hang by ID
+GET {{baseUrl}}/khachhang/1
+
+###
+# Get khach hang by phone
+GET {{baseUrl}}/khachhang/phone/0900000001
+
+###
+# Get khach hang by loai
+GET {{baseUrl}}/khachhang/loai/vip
+
+###
+# Search khach hang
+GET {{baseUrl}}/khachhang/search?keyword=Nguyen
+
+###
+# Create new khach hang
+POST {{baseUrl}}/khachhang
+Content-Type: application/json
+
+{
+  "hoTen": "Test Customer",
+  "email": "test@gmail.com",
+  "soDienThoai": "0900000099",
+  "diaChi": "Test Address",
+  "loai": "moi"
+}
+
+###
+# Update khach hang
+PUT {{baseUrl}}/khachhang/1
+Content-Type: application/json
+
+{
+  "hoTen": "Nguyễn Văn A Updated",
+  "email": "a_updated@gmail.com",
+  "diaChi": "Hà Nội - Updated",
+  "loai": "vip",
+  "trangThai": true
+}
+
+###
+# Delete khach hang
+DELETE {{baseUrl}}/khachhang/4
+
+### ==================== GIỎ HÀNG ====================
+
+# Get gio hang by khach hang ID
+GET {{baseUrl}}/giohang/1
+
+###
+# Add to cart
+POST {{baseUrl}}/giohang/add
+Content-Type: application/json
+
+{
+  "khachHangID": 1,
+  "sanPhamID": 2,
+  "soLuong": 1
+}
+
+###
+# Update cart item quantity
+PUT {{baseUrl}}/giohang/item/1
+Content-Type: application/json
+
+{
+  "soLuong": 3
+}
+
+###
+# Remove cart item
+DELETE {{baseUrl}}/giohang/item/1
+
+###
+# Clear cart
+DELETE {{baseUrl}}/giohang/clear/1
+
+### ==================== ĐƠN HÀNG ====================
+
+# Get all don hang
+GET {{baseUrl}}/donhang
+
+###
+# Get don hang by ID
+GET {{baseUrl}}/donhang/1
+
+###
+# Get don hang by ma don hang
+GET {{baseUrl}}/donhang/ma/DH202601050001
+
+###
+# Get don hang by khach hang
+GET {{baseUrl}}/donhang/khachhang/1
+
+###
+# Get don hang by trang thai (0=Pending, 1=Confirmed, 2=Shipping, 3=Delivered, 4=Cancelled, 5=Refunded)
+GET {{baseUrl}}/donhang/trangthai/0
+
+###
+# Create new don hang
+POST {{baseUrl}}/donhang
+Content-Type: application/json
+
+{
+  "khachHangID": 1,
+  "diaChiGiao": "Hà Nội - Test Address",
+  "ghiChu": "Giao nhanh",
+  "phiShip": 30000,
+  "items": [
+    { "sanPhamID": 1, "soLuong": 1 },
+    { "sanPhamID": 5, "soLuong": 2 }
+  ]
+}
+
+###
+# Update trang thai don hang
+PUT {{baseUrl}}/donhang/1/trangthai
+Content-Type: application/json
+
+{
+  "trangThai": 1,
+  "ghiChu": "Đã xác nhận đơn hàng"
+}
