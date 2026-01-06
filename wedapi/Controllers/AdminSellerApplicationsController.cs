@@ -87,3 +87,16 @@ public class AdminSellerApplicationsController : ControllerBase
         await _db.SaveChangesAsync();
         return Ok();
     }
+    [HttpPatch("{id:int}/lock")]
+    public async Task<IActionResult> Lock(int id)
+    {
+        var app = await _db.SellerApplications.FirstOrDefaultAsync(x => x.Id == id);
+        if (app == null) return NotFound();
+
+        app.Status = SellerAppStatus.Locked;
+        app.UpdatedAt = DateTime.UtcNow;
+
+        await _db.SaveChangesAsync();
+        return Ok();
+    }
+}
