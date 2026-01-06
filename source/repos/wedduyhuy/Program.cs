@@ -1,4 +1,5 @@
 using wedduyhuy.Repositories;
+using wedduyhuy.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,10 @@ builder.Services.AddControllers();
 
 // Register repositories
 builder.Services.AddScoped<IDanhMucRepository, DanhMucRepository>();
+builder.Services.AddScoped<ISanPhamRepository, SanPhamRepository>();
+builder.Services.AddScoped<IKhachHangRepository, KhachHangRepository>();
+builder.Services.AddScoped<IDonHangRepository, DonHangRepository>();
+builder.Services.AddScoped<IGioHangRepository, GioHangRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
