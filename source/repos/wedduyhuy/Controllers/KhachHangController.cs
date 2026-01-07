@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using wedduyhuy.DTOs;
-using wedduyhuy.Repositories;
+using wedduyhuy.Repositories.Interfaces;
 
 namespace wedduyhuy.Controllers
 {
@@ -12,27 +12,27 @@ namespace wedduyhuy.Controllers
 
         public KhachHangController(IKhachHangRepository repo) => _repo = repo;
 
-        [HttpGet]
+        [HttpGet("get-all")]
         public async Task<ActionResult<IEnumerable<KhachHangDto>>> GetAll()
         {
             return Ok(await _repo.GetAllAsync());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("get-by-id/{id}")]
         public async Task<ActionResult<KhachHangDto>> GetById(int id)
         {
             var item = await _repo.GetByIdAsync(id);
             return item == null ? NotFound() : Ok(item);
         }
 
-        [HttpGet("phone/{phone}")]
+        [HttpGet("get-by-phone/{phone}")]
         public async Task<ActionResult<KhachHangDto>> GetByPhone(string phone)
         {
             var item = await _repo.GetByPhoneAsync(phone);
             return item == null ? NotFound() : Ok(item);
         }
 
-        [HttpGet("loai/{loai}")]
+        [HttpGet("get-by-loai/{loai}")]
         public async Task<ActionResult<IEnumerable<KhachHangDto>>> GetByLoai(string loai)
         {
             return Ok(await _repo.GetByLoaiAsync(loai));
@@ -45,7 +45,7 @@ namespace wedduyhuy.Controllers
             return Ok(await _repo.SearchAsync(keyword));
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<ActionResult<KhachHangDto>> Create([FromBody] CreateKhachHangDto dto)
         {
             var id = await _repo.CreateAsync(dto);
@@ -53,7 +53,7 @@ namespace wedduyhuy.Controllers
             return CreatedAtAction(nameof(GetById), new { id }, created);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         public async Task<ActionResult> Update(int id, [FromBody] UpdateKhachHangDto dto)
         {
             if (await _repo.GetByIdAsync(id) == null) return NotFound();
@@ -61,7 +61,7 @@ namespace wedduyhuy.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             if (await _repo.GetByIdAsync(id) == null) return NotFound();
