@@ -21,7 +21,7 @@ public class SellerApplicationsController : ControllerBase
             Role = "seller",
             Status = "Active",
             CreatedAt = DateTime.UtcNow,
-            PasswordHash = dto.Password
+            PasswordHash = dto.Password // 
         };
 
         _db.Users.Add(user);
@@ -39,6 +39,7 @@ public class SellerApplicationsController : ControllerBase
         _db.SellerApplications.Add(app);
         await _db.SaveChangesAsync();
 
+        // 3) return DTO phẳng 
         var res = new SellerAppAdminDto
         {
             Id = app.Id,
