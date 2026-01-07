@@ -1,5 +1,6 @@
 using Microsoft.Data.SqlClient;
 using wedduyhuy.DTOs;
+using wedduyhuy.Repositories.Interfaces;
 
 namespace wedduyhuy.Repositories
 {
