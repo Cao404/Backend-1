@@ -99,4 +99,30 @@ public class AdminSellerApplicationsController : ControllerBase
         await _db.SaveChangesAsync();
         return Ok();
     }
+
+[HttpGet("by-user/{userId:int}")]
+    public async Task<IActionResult> GetByUserId(int userId)
+    {
+        var data = await _db.SellerApplications
+            .Include(x => x.User)
+            .AsNoTracking()
+            .Where(x => x.UserId == userId)
+            .OrderByDescending(x => x.CreatedAt)
+            .Select(x => new
+            {
+                x.Id,
+                x.UserId,
+                fullName = x.User!.FullName,
+                email = x.User!.Email,
+                phone = x.User!.Phone,
+                role = x.User!.Role,
+                kyc = x.Kyc,
+                status = x.Status.ToString(),
+                createdAt = x.CreatedAt
+            })
+            .ToListAsync();
+
+        return Ok(data);
+    }
+
 }
