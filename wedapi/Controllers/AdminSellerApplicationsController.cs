@@ -100,7 +100,7 @@ public class AdminSellerApplicationsController : ControllerBase
         return Ok();
     }
 
-[HttpGet("by-user/{userId:int}")]
+    [HttpGet("by-user/{userId:int}")]
     public async Task<IActionResult> GetByUserId(int userId)
     {
         var data = await _db.SellerApplications
@@ -122,7 +122,9 @@ public class AdminSellerApplicationsController : ControllerBase
             })
             .ToListAsync();
 
+        if (data.Count == 0)
+            return NotFound(new { message = "Tìm kiếm không thành công, vui lòng thử lại." });
+
         return Ok(data);
     }
-
 }
