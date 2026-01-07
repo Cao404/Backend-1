@@ -60,21 +60,32 @@ public class AdminSellerApplicationsController : ControllerBase
         return Ok(data);
     }
 
+
     [HttpPatch("{id:int}/approve")]
     public async Task<IActionResult> Approve(int id)
     {
-        var app = await _db.SellerApplications.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
-        if (app == null) return NotFound();
+        var app = await _db.SellerApplications
+            .Include(x => x.User)
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (app == null)
+            return NotFound(new { success = false, message = $"Duyệt không thành công vui lòng thử lại  #{id}" });
 
         app.Status = SellerAppStatus.Approved;
         app.UpdatedAt = DateTime.UtcNow;
-
-        // (tuỳ bạn) duyệt xong thì set user role = seller
         if (app.User != null) app.User.Role = "seller";
 
         await _db.SaveChangesAsync();
-        return Ok();
+
+        return Ok(new
+        {
+            success = true,
+            message = "Duyệt thành công",
+            id = app.Id,
+            status = app.Status.ToString()
+        });
     }
+
     [HttpPatch("{id:int}/suspend")]
     public async Task<IActionResult> Suspend(int id)
     {
