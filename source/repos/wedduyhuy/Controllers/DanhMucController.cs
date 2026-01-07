@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using wedduyhuy.DTOs;
-using wedduyhuy.Repositories;
+using wedduyhuy.Repositories.Interfaces;
 
 namespace wedduyhuy.Controllers
 {
@@ -8,120 +8,51 @@ namespace wedduyhuy.Controllers
     [Route("api/[controller]")]
     public class DanhMucController : ControllerBase
     {
-        private readonly IDanhMucRepository _danhMucRepository;
+        private readonly IDanhMucRepository _repo;
 
-        public DanhMucController(IDanhMucRepository danhMucRepository)
-        {
-            _danhMucRepository = danhMucRepository;
-        }
+        public DanhMucController(IDanhMucRepository repo) => _repo = repo;
 
-        [HttpGet]
+        [HttpGet("get-all")]
         public async Task<ActionResult<IEnumerable<DanhMucDto>>> GetAll()
         {
-            try
-            {
-                var danhMucs = await _danhMucRepository.GetAllAsync();
-                return Ok(danhMucs);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Lỗi server", error = ex.Message });
-            }
+            return Ok(await _repo.GetAllAsync());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("get-by-id/{id}")]
         public async Task<ActionResult<DanhMucDto>> GetById(int id)
         {
-            try
-            {
-                var danhMuc = await _danhMucRepository.GetByIdAsync(id);
-                if (danhMuc == null)
-                    return NotFound(new { message = "Không tìm thấy danh mục" });
-
-                return Ok(danhMuc);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Lỗi server", error = ex.Message });
-            }
+            var item = await _repo.GetByIdAsync(id);
+            return item == null ? NotFound() : Ok(item);
         }
 
-        [HttpGet("parent/{parentId?}")]
+        [HttpGet("get-by-parent/{parentId?}")]
         public async Task<ActionResult<IEnumerable<DanhMucDto>>> GetByParent(int? parentId = null)
         {
-            try
-            {
-                var danhMucs = await _danhMucRepository.GetByParentIdAsync(parentId);
-                return Ok(danhMucs);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Lỗi server", error = ex.Message });
-            }
+            return Ok(await _repo.GetByParentIdAsync(parentId));
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<ActionResult<DanhMucDto>> Create([FromBody] CreateDanhMucDto dto)
         {
-            try
-            {
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
-
-                var id = await _danhMucRepository.CreateAsync(dto);
-                var created = await _danhMucRepository.GetByIdAsync(id);
-                
-                return CreatedAtAction(nameof(GetById), new { id }, created);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Lỗi server", error = ex.Message });
-            }
+            var id = await _repo.CreateAsync(dto);
+            var created = await _repo.GetByIdAsync(id);
+            return CreatedAtAction(nameof(GetById), new { id }, created);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         public async Task<ActionResult> Update(int id, [FromBody] UpdateDanhMucDto dto)
         {
-            try
-            {
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
-
-                var exists = await _danhMucRepository.GetByIdAsync(id);
-                if (exists == null)
-                    return NotFound(new { message = "Không tìm thấy danh mục" });
-
-                var success = await _danhMucRepository.UpdateAsync(id, dto);
-                if (!success)
-                    return BadRequest(new { message = "Cập nhật thất bại" });
-
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Lỗi server", error = ex.Message });
-            }
+            if (await _repo.GetByIdAsync(id) == null) return NotFound();
+            await _repo.UpdateAsync(id, dto);
+            return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            try
-            {
-                var exists = await _danhMucRepository.GetByIdAsync(id);
-                if (exists == null)
-                    return NotFound(new { message = "Không tìm thấy danh mục" });
-
-                var success = await _danhMucRepository.DeleteAsync(id);
-                if (!success)
-                    return BadRequest(new { message = "Xóa thất bại" });
-
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Lỗi server", error = ex.Message });
-            }
+            if (await _repo.GetByIdAsync(id) == null) return NotFound();
+            await _repo.DeleteAsync(id);
+            return NoContent();
         }
     }
 }
