@@ -60,16 +60,7 @@ ORDER BY dm.MaDanhMuc DESC;";
         return list;
     }
 
-    public async Task<bool> ExistsAsync(int id)
-    {
-        const string sql = @"SELECT 1 FROM dbo.DanhMuc WHERE MaDanhMuc=@id AND IsDeleted=0;";
-        await using var conn = _factory.Create();
-        await conn.OpenAsync();
-        await using var cmd = new SqlCommand(sql, conn);
-        cmd.Parameters.AddWithValue("@id", id);
-        var obj = await cmd.ExecuteScalarAsync();
-        return obj != null;
-    }
+  
 
     public async Task<int> CreateAsync(CreateDanhMucRequest req)
     {
