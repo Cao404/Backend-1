@@ -25,7 +25,18 @@ public sealed class DanhMucController : ControllerBase
 
     // POST /api/danh-muc
     [HttpPost]
-   
+    public async Task<IActionResult> Create([FromBody] CreateDanhMucRequest req)
+    {
+        try
+        {
+            var id = await _repo.CreateAsync(req);
+            return CreatedAtAction(nameof(GetAll), new { id }, new { maDanhMuc = id });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 
     // PUT /api/danh-muc/{id}
     [HttpPut("{id:int}")]
