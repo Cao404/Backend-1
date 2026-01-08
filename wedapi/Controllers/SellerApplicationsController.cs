@@ -80,19 +80,16 @@ public class SellerApplicationsController : ControllerBase
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
 
-        // 3) return DTO phẳng 
-        var res = new SellerAppAdminDto
+        // 3) tạo application
+        var app = new SellerApplication
         {
-            Id = app.Id,
             UserId = user.Id,
-            FullName = user.FullName,
-            Email = user.Email,
-            Phone = user.Phone,
-            Kyc = app.Kyc,
-            Status = app.Status,
-            CreatedAt = app.CreatedAt
+            Status = SellerAppStatus.Submitted,
+            CreatedAt = DateTime.UtcNow,
+            Kyc = null
         };
 
-        return Ok(res);
+        _db.SellerApplications.Add(app);
+        await _db.SaveChangesAsync();
     }
 }
