@@ -14,7 +14,14 @@ public class OrderPaymentDto
     public bool Paid { get; set; } = false;
 }
 
-
+public class OrderItemDto
+{
+    public int? ProductId { get; set; }
+    public string? Emoji { get; set; }  // optional
+    public string Name { get; set; } = "";
+    public int Quantity { get; set; } = 1;
+    public decimal Price { get; set; } = 0;
+}
 
 public class DonHangCreateReq
 {
