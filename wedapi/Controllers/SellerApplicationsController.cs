@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SellerHub.Api.Data;
 using SellerHub.Api.Dto;
+using SellerHub.Api.model;
 using SellerHub.Api.Models;
 
 [ApiController]
@@ -64,16 +65,19 @@ public class SellerApplicationsController : ControllerBase
             });
         }
 
-        // 2) tạo application
-        var app = new SellerApplication
+        // 2) tạo user 
+        var user = new User
         {
-            UserId = user.Id,
-            Status = SellerAppStatus.Submitted,
+            Email = dto.Email,
+            Phone = dto.Phone,
+            FullName = string.IsNullOrWhiteSpace(dto.FullName) ? (dto.Email ?? dto.Phone) : dto.FullName,
+            Role = "user",
+            Status = "Active",
             CreatedAt = DateTime.UtcNow,
-            Kyc = null
+            PasswordHash = dto.Password
         };
 
-        _db.SellerApplications.Add(app);
+        _db.Users.Add(user);
         await _db.SaveChangesAsync();
 
         // 3) return DTO phẳng 
