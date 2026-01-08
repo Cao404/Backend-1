@@ -106,13 +106,14 @@ public class AdminSellerApplicationsController : ControllerBase
     public async Task<IActionResult> Suspend(int id)
     {
         var app = await _db.SellerApplications.FirstOrDefaultAsync(x => x.Id == id);
-        if (app == null) return NotFound();
+        if (app == null)
+            return NotFound(new { success = false, message = $"Tạm ngưng không thành công, không tìm thấy hồ sơ #{id}" });
 
         app.Status = SellerAppStatus.Suspended;
         app.UpdatedAt = DateTime.UtcNow;
 
         await _db.SaveChangesAsync();
-        return Ok();
+        return Ok(new { success = true, message = "Tạm ngưng thành công", id = app.Id, status = app.Status.ToString() });
     }
     [HttpPatch("{id:int}/lock")]
     public async Task<IActionResult> Lock(int id)
