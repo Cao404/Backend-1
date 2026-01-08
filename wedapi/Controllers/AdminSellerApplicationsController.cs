@@ -85,6 +85,22 @@ public class AdminSellerApplicationsController : ControllerBase
             status = app.Status.ToString()
         });
     }
+    public record RejectBody(string? Reason);
+
+    [HttpPatch("{id:int}/reject")]
+    public async Task<IActionResult> Reject(int id, [FromBody] RejectBody? body)
+    {
+        var app = await _db.SellerApplications.FirstOrDefaultAsync(x => x.Id == id);
+        if (app == null)
+            return NotFound(new { success = false, message = $"Từ chối không thành công, không tìm thấy hồ sơ #{id}" });
+
+        app.Status = SellerAppStatus.Rejected;
+        app.RejectReason = body?.Reason;
+        app.UpdatedAt = DateTime.UtcNow;
+
+        await _db.SaveChangesAsync();
+        return Ok(new { success = true, message = "Từ chối thành công", id = app.Id, status = app.Status.ToString() });
+    }
 
     [HttpPatch("{id:int}/suspend")]
     public async Task<IActionResult> Suspend(int id)
