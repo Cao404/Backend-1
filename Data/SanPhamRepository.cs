@@ -135,7 +135,8 @@ WHERE MaSanPham = @id AND IsDeleted = 0;
         if (rows == 0) throw new KeyNotFoundException("Sản phẩm không tồn tại.");
     }
 
-    
+  
+
     private static void Validate(string sku, string ten, decimal gia, int kho, int daBan)
     {
         if (string.IsNullOrWhiteSpace(sku)) throw new ArgumentException("SKU không được trống.");
