@@ -8,7 +8,7 @@ public interface ISqlConnectionFactory
 public class SqlConnectionFactory : ISqlConnectionFactory
 {
     private readonly string _cs;
-    private string v;
+    private readonly string? v; // Made nullable to address CS8618
 
     public SqlConnectionFactory(IConfiguration config)
     {
@@ -19,6 +19,7 @@ public class SqlConnectionFactory : ISqlConnectionFactory
     public SqlConnectionFactory(string v)
     {
         this.v = v;
+        _cs = v; // Ensure _cs is initialized in this constructor as well
     }
 
     public SqlConnection Create() => new SqlConnection(_cs);

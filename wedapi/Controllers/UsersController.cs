@@ -34,8 +34,10 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> GetById(int id)
     {
         var user = await _db.Users.FindAsync(id);
-        if (user == null) return NotFound();
-        return Ok(user);
+        if (user == null)
+            return NotFound(new { success = false, message = "Tìm kiếm không thành công, vui lòng thử lại." });
+
+        return Ok(new { success = true, message = "Tìm kiếm thành công", data = user });
     }
 
     // POST: api/admin/users
