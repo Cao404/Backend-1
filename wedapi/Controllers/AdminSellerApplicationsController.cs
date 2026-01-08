@@ -119,13 +119,14 @@ public class AdminSellerApplicationsController : ControllerBase
     public async Task<IActionResult> Lock(int id)
     {
         var app = await _db.SellerApplications.FirstOrDefaultAsync(x => x.Id == id);
-        if (app == null) return NotFound();
+        if (app == null)
+            return NotFound(new { success = false, message = $"Khóa không thành công, không tìm thấy hồ sơ #{id}" });
 
         app.Status = SellerAppStatus.Locked;
         app.UpdatedAt = DateTime.UtcNow;
 
         await _db.SaveChangesAsync();
-        return Ok();
+        return Ok(new { success = true, message = "Khóa thành công", id = app.Id, status = app.Status.ToString() });
     }
 
     [HttpGet("by-user/{userId:int}")]
