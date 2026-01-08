@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\duyhu\\source\\repos\\wedduyhuy\\wedduyhuy.csproj": {}
+    "C:\\Users\\duyhu\\source\\Backend-1\\source\\repos\\wedduyhuy\\wedduyhuy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\duyhu\\source\\repos\\wedduyhuy\\wedduyhuy.csproj": {
+    "C:\\Users\\duyhu\\source\\Backend-1\\source\\repos\\wedduyhuy\\wedduyhuy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\duyhu\\source\\repos\\wedduyhuy\\wedduyhuy.csproj",
+        "projectUniqueName": "C:\\Users\\duyhu\\source\\Backend-1\\source\\repos\\wedduyhuy\\wedduyhuy.csproj",
         "projectName": "wedduyhuy",
-        "projectPath": "C:\\Users\\duyhu\\source\\repos\\wedduyhuy\\wedduyhuy.csproj",
+        "projectPath": "C:\\Users\\duyhu\\source\\Backend-1\\source\\repos\\wedduyhuy\\wedduyhuy.csproj",
         "packagesPath": "C:\\Users\\duyhu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\duyhu\\source\\repos\\wedduyhuy\\obj\\",
+        "outputPath": "C:\\Users\\duyhu\\source\\Backend-1\\source\\repos\\wedduyhuy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
