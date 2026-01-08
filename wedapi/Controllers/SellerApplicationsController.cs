@@ -91,5 +91,23 @@ public class SellerApplicationsController : ControllerBase
 
         _db.SellerApplications.Add(app);
         await _db.SaveChangesAsync();
+
+        // 4) trả về message cho FE
+        return Ok(new
+        {
+            success = true,
+            message = "Đăng ký thành công. Vui lòng chờ admin duyệt.",
+            data = new
+            {
+                id = app.Id,
+                userId = user.Id,
+                fullName = user.FullName,
+                email = user.Email,
+                phone = user.Phone,
+                kyc = app.Kyc,
+                status = app.Status.ToString(),
+                createdAt = app.CreatedAt
+            }
+        });
     }
 }
