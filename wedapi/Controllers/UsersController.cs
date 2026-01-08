@@ -44,9 +44,35 @@ public class UsersController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] User input)
     {
-        _db.Users.Add(input);
-        await _db.SaveChangesAsync();
-        return Ok(input);
+        try
+        {
+            if (input == null)
+                return BadRequest(new { success = false, message = "Dữ liệu không hợp lệ" });
+
+            if (string.IsNullOrWhiteSpace(input.Email) && string.IsNullOrWhiteSpace(input.Phone))
+                return BadRequest(new { success = false, message = "Email hoặc SĐT là bắt buộc" });
+
+            // check trùng Email/Phone
+            var exists = await _db.Users.AsNoTracking().AnyAsync(u =>
+                (!string.IsNullOrWhiteSpace(input.Email) && u.Email == input.Email) ||
+                (!string.IsNullOrWhiteSpace(input.Phone) && u.Phone == input.Phone)
+            );
+
+            if (exists)
+                return Conflict(new { success = false, message = "Email/SĐT đã tồn tại" });
+
+            input.CreatedAt = DateTime.UtcNow;
+
+            _db.Users.Add(input);
+            await _db.SaveChangesAsync();
+
+            return Ok(new { success = true, message = "Thêm người dùng thành công", data = input });
+
+        }
+        catch
+        {
+            return StatusCode(500, new { success = false, message = "Thêm người dùng không thành công, vui lòng thử lại." });
+        }
     }
 
     // PUT: api/admin/users/5
