@@ -40,7 +40,17 @@ public sealed class DanhMucController : ControllerBase
 
     // PUT /api/danh-muc/{id}
     [HttpPut("{id:int}")]
- 
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateDanhMucRequest req)
+    {
+        try
+        {
+            await _repo.UpdateAsync(id, req);
+            return NoContent();
+        }
+        catch (KeyNotFoundException ex) { return NotFound(ex.Message); }
+        catch (Exception ex) { return BadRequest(ex.Message); }
+    }
+
     // DELETE /api/danh-muc/{id}
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete([FromRoute] int id)
