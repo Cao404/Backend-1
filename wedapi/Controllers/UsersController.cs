@@ -128,10 +128,12 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> Delete(int id)
     {
         var user = await _db.Users.FindAsync(id);
-        if (user == null) return NotFound();
+        if (user == null)
+            return NotFound(new { success = false, message = "Xóa không thành công, không tìm thấy người dùng." });
 
         _db.Users.Remove(user);
         await _db.SaveChangesAsync();
-        return Ok();
+        return Ok(new { success = true, message = "Xóa thành công" });
     }
+
 }
