@@ -35,7 +35,16 @@ public sealed class SanPhamController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-  
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateSanPhamRequest req)
+    {
+        try
+        {
+            await _repo.UpdateAsync(id, req);
+            return NoContent();
+        }
+        catch (KeyNotFoundException ex) { return NotFound(ex.Message); }
+        catch (Exception ex) { return BadRequest(ex.Message); }
+    }
 
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete([FromRoute] int id)
