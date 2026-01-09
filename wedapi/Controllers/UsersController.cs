@@ -104,12 +104,14 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> Lock(int id)
     {
         var user = await _db.Users.FindAsync(id);
-        if (user == null) return NotFound();
+        if (user == null)
+            return NotFound(new { success = false, message = "Khóa không thành công, không tìm thấy người dùng." });
 
         user.Status = "Locked";
         await _db.SaveChangesAsync();
-        return Ok(user);
+        return Ok(new { success = true, message = "Khóa thành công", data = user });
     }
+
 
     // PATCH: api/admin/users/5/unlock
     [HttpPatch("{id:int}/unlock")]
