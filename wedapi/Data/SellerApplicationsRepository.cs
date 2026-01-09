@@ -64,4 +64,36 @@ ORDER BY sa.CreatedAt DESC";
 
         return list.Cast<object>().ToList();
     }
+    public async Task<object?> GetByUserIdAsync(int userId)
+    {
+        var sql = @"
+SELECT TOP 1 sa.Id, sa.UserId, sa.Kyc, sa.Status, sa.CreatedAt,
+       u.FullName, u.Email, u.Phone, u.Role
+FROM SellerApplications sa
+JOIN Users u ON u.Id = sa.UserId
+WHERE sa.UserId = @UserId
+ORDER BY sa.CreatedAt DESC";
+
+        await using var conn = new SqlConnection(_cs);
+        await conn.OpenAsync();
+
+        await using var cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.AddWithValue("@UserId", userId);
+
+        await using var rd = await cmd.ExecuteReaderAsync();
+        if (!await rd.ReadAsync()) return null;
+
+        return new
+        {
+            id = rd.GetInt32(0),
+            userId = rd.GetInt32(1),
+            kyc = rd.IsDBNull(2) ? null : rd.GetString(2),
+            status = rd.GetString(3),
+            createdAt = rd.GetDateTime(4),
+            fullName = rd.IsDBNull(5) ? null : rd.GetString(5),
+            email = rd.IsDBNull(6) ? null : rd.GetString(6),
+            phone = rd.IsDBNull(7) ? null : rd.GetString(7),
+            role = rd.IsDBNull(8) ? null : rd.GetString(8),
+        };
+    }
 }
