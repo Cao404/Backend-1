@@ -68,4 +68,17 @@ public class UsersRepository
             CreatedAt = rd.GetDateTime(7)
         };
     }
+    public async Task<bool> SetStatusAsync(int id, string status)
+    {
+        const string sql = @"UPDATE Users SET Status=@Status WHERE Id=@Id";
+
+        await using var conn = new SqlConnection(_cs);
+        await conn.OpenAsync();
+
+        await using var cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.AddWithValue("@Status", status);
+        cmd.Parameters.AddWithValue("@Id", id);
+
+        return await cmd.ExecuteNonQueryAsync() > 0;
+    }
 }
