@@ -47,5 +47,10 @@ public class DonHangController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-  
+    public async Task<ActionResult> SoftDelete(int id)
+    {
+        var ok = await _repo.SoftDeleteAsync(id);
+        if (!ok) return NotFound();
+        return NoContent();
+    }
 }
