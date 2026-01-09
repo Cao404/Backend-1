@@ -23,7 +23,12 @@ public class DonHangController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-  
+    public async Task<ActionResult<DonHangDetailDto>> GetById(int id)
+    {
+        var dto = await _repo.GetByIdAsync(id);
+        if (dto == null) return NotFound();
+        return Ok(dto);
+    }
 
     [HttpPost]
     public async Task<ActionResult> Create([FromBody] DonHangCreateReq req)
@@ -42,10 +47,5 @@ public class DonHangController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult> SoftDelete(int id)
-    {
-        var ok = await _repo.SoftDeleteAsync(id);
-        if (!ok) return NotFound();
-        return NoContent();
-    }
+  
 }
