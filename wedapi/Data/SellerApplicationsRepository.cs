@@ -126,4 +126,32 @@ VALUES(@UserId, @Kyc, @Status, @CreatedAt)";
         var newId = (int)(await cmd.ExecuteScalarAsync() ?? 0);
         return (true, newId, "Đăng ký người bán thành công, vui lòng chờ admin duyệt.");
     }
-}
+    public async Task<(bool ok, string message)> UpdateStatusAsync(
+        int appId,
+        SellerAppStatus status,
+        string? rejectReason = null,
+        bool setUserRoleSeller = false)
+    {
+        await using var conn = new SqlConnection(_cs);
+        await conn.OpenAsync();
+
+        await using var tx = await conn.BeginTransactionAsync();
+
+        try
+        {
+            // lấy UserId từ Application
+            int? userId = null;
+            await using (var get = new SqlCommand("SELECT UserId FROM SellerApplications WHERE Id=@Id", conn, (SqlTransaction)tx))
+            {
+                get.Parameters.AddWithValue("@Id", appId);
+                var obj = await get.ExecuteScalarAsync();
+                if (obj == null)
+                {
+                    await tx.RollbackAsync();
+                    return (false, "Không tìm thấy đơn đăng ký người bán.");
+                }
+                userId = Convert.ToInt32(obj);
+            }
+
+        }
+    }
