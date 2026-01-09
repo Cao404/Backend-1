@@ -36,6 +36,7 @@ public sealed class SanPhamController : ControllerBase
 
     [HttpPut("{id:int}")]
   
+
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
