@@ -80,7 +80,8 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> Update(int id, [FromBody] UpdateUserDto input)
     {
         var user = await _db.Users.FindAsync(id);
-        if (user == null) return NotFound();
+        if (user == null)
+            return NotFound(new { success = false, message = "Cập nhật không thành công, không tìm thấy người dùng." });
 
         user.FullName = input.FullName;
         user.Email = input.Email;
@@ -90,13 +91,12 @@ public class UsersController : ControllerBase
 
         var newPw = input.GetPassword();
         if (!string.IsNullOrWhiteSpace(newPw))
-        {
-            user.PasswordHash = newPw; // demo 
-        }
+            user.PasswordHash = newPw;
 
         await _db.SaveChangesAsync();
-        return Ok(user);
+        return Ok(new { success = true, message = "Cập nhật thành công", data = user });
     }
+
 
 
     // PATCH: api/admin/users/5/lock
