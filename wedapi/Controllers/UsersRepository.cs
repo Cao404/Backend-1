@@ -1,16 +1,15 @@
-﻿
-namespace SellerHub.Api.Controllers
-{
-    public class UsersRepository
-    {
-        internal void GetAll()
-        {
-            throw new NotImplementedException();
-        }
+﻿using Microsoft.Data.SqlClient;
+using SellerHub.Api.model;
 
-        internal bool Unlock(int id)
-        {
-            throw new NotImplementedException();
-        }
+namespace SellerHub.Api.Repositories;
+
+public class UsersRepository
+{
+    private readonly string _cs;
+
+    public UsersRepository(IConfiguration config)
+    {
+        _cs = config.GetConnectionString("Default")
+              ?? throw new InvalidOperationException("Missing ConnectionStrings:Default");
     }
 }
