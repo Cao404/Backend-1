@@ -96,4 +96,34 @@ ORDER BY sa.CreatedAt DESC";
             role = rd.IsDBNull(8) ? null : rd.GetString(8),
         };
     }
+    public async Task<(bool ok, int appId, string message)> CreateForExistingUserAsync(int userId, string? kyc)
+    {
+        // chặn đăng ký trùng 
+        var checkSql = @"SELECT TOP 1 Id FROM SellerApplications WHERE UserId=@UserId ORDER BY CreatedAt DESC";
+
+        await using var conn = new SqlConnection(_cs);
+        await conn.OpenAsync();
+
+        await using (var check = new SqlCommand(checkSql, conn))
+        {
+            check.Parameters.AddWithValue("@UserId", userId);
+            var existed = await check.ExecuteScalarAsync();
+            if (existed != null)
+                return (false, 0, "User này đã có đơn đăng ký người bán rồi.");
+        }
+
+        var insertSql = @"
+INSERT INTO SellerApplications(UserId, Kyc, Status, CreatedAt)
+OUTPUT INSERTED.Id
+VALUES(@UserId, @Kyc, @Status, @CreatedAt)";
+
+        await using var cmd = new SqlCommand(insertSql, conn);
+        cmd.Parameters.AddWithValue("@UserId", userId);
+        cmd.Parameters.AddWithValue("@Kyc", (object?)kyc ?? DBNull.Value);
+        cmd.Parameters.AddWithValue("@Status", SellerAppStatus.Submitted.ToString());
+        cmd.Parameters.AddWithValue("@CreatedAt", DateTime.UtcNow);
+
+        var newId = (int)(await cmd.ExecuteScalarAsync() ?? 0);
+        return (true, newId, "Đăng ký người bán thành công, vui lòng chờ admin duyệt.");
+    }
 }
