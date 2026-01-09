@@ -151,7 +151,25 @@ VALUES(@UserId, @Kyc, @Status, @CreatedAt)";
                     return (false, "Không tìm thấy đơn đăng ký người bán.");
                 }
                 userId = Convert.ToInt32(obj);
+            } 
+            // approve => gán role seller cho user 
+            if (setUserRoleSeller && userId.HasValue)
+            {
+                await using var upUser = new SqlCommand("UPDATE Users SET Role='seller' WHERE Id=@UserId", conn, (SqlTransaction)tx);
+                upUser.Parameters.AddWithValue("@UserId", userId.Value);
+                await upUser.ExecuteNonQueryAsync();
             }
 
+            await tx.CommitAsync();
+            return (true, "Thao tác thành công.");
+        }
+        catch (Exception ex)
+        {
+            await tx.RollbackAsync();
+            return (false, "Lỗi server: " + ex.Message);
         }
     }
+}
+
+        
+    
