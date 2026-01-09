@@ -118,12 +118,14 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> Unlock(int id)
     {
         var user = await _db.Users.FindAsync(id);
-        if (user == null) return NotFound();
+        if (user == null)
+            return NotFound(new { success = false, message = "Mở khóa không thành công, không tìm thấy người dùng." });
 
         user.Status = "Active";
         await _db.SaveChangesAsync();
-        return Ok(user);
+        return Ok(new { success = true, message = "Mở khóa thành công", data = user });
     }
+
 
     // DELETE: api/admin/users/5
     [HttpDelete("{id:int}")]
