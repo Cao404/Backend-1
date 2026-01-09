@@ -135,7 +135,23 @@ WHERE MaSanPham = @id AND IsDeleted = 0;
         if (rows == 0) throw new KeyNotFoundException("Sản phẩm không tồn tại.");
     }
 
-  
+    public async Task DeleteAsync(int id)
+    {
+        const string sql = @"
+UPDATE dbo.SanPham
+SET IsDeleted = 1, TrangThai = 0, NgayCapNhat = SYSDATETIME()
+WHERE MaSanPham = @id AND IsDeleted = 0;
+";
+
+        await using var conn = _factory.Create();
+        await conn.OpenAsync();
+
+        await using var cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.AddWithValue("@id", id);
+
+        var rows = await cmd.ExecuteNonQueryAsync();
+        if (rows == 0) throw new KeyNotFoundException("Sản phẩm không tồn tại.");
+    }
 
     private static void Validate(string sku, string ten, decimal gia, int kho, int daBan)
     {
