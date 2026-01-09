@@ -26,5 +26,20 @@ public class UsersRepository
         await using var rd = await cmd.ExecuteReaderAsync();
 
         while (await rd.ReadAsync())
-            }
+        {
+            list.Add(new User
+            {
+                Id = rd.GetInt32(0),
+                FullName = rd.IsDBNull(1) ? null : rd.GetString(1),
+                Email = rd.IsDBNull(2) ? null : rd.GetString(2),
+                Phone = rd.IsDBNull(3) ? null : rd.GetString(3),
+                Role = rd.IsDBNull(4) ? null : rd.GetString(4),
+                Status = rd.IsDBNull(5) ? null : rd.GetString(5),
+                PasswordHash = rd.IsDBNull(6) ? null : rd.GetString(6),
+                CreatedAt = rd.GetDateTime(7)
+            });
+        }
+
+        return list;
+    }
 }
