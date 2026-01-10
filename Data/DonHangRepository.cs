@@ -17,16 +17,18 @@ public class DonHangRepository
         return (a + b).Trim();
     }
 
-    public async Task<List<DonHangListDto>> GetAllAsync(string? status, string? q, DateTime? from, DateTime? to)
+    // ===== GET ALL =====
+    public async Task<List<DonHangListDto>> GetAllAsync(string? trangThai, string? q, DateTime? from, DateTime? to)
     {
         await using var conn = _factory.CreateConnection();
         await conn.OpenAsync();
 
         var sql = @"
-SELECT MaDonHang, MaDon, TenKhachHang, Email, SoDienThoai, TongTien, PhuongThucThanhToan, DaThanhToan, TrangThai, NgayTao
+SELECT MaDonHang, MaDon, TenKhachHang, Email, SoDienThoai, TongTien,
+       PhuongThucThanhToan, DaThanhToan, TrangThai, NgayTao
 FROM dbo.DonHang
 WHERE TrangThaiHoatDong = 1
-  AND (@status IS NULL OR @status = '' OR TrangThai = @status)
+  AND (@trangThai IS NULL OR @trangThai = '' OR TrangThai = @trangThai)
   AND (
         @q IS NULL OR @q = '' 
         OR MaDon LIKE N'%' + @q + N'%'
@@ -38,7 +40,7 @@ WHERE TrangThaiHoatDong = 1
 ORDER BY NgayTao DESC;";
 
         await using var cmd = new SqlCommand(sql, conn);
-        cmd.Parameters.AddWithValue("@status", (object?)status ?? DBNull.Value);
+        cmd.Parameters.AddWithValue("@trangThai", (object?)trangThai ?? DBNull.Value);
         cmd.Parameters.AddWithValue("@q", (object?)q ?? DBNull.Value);
         cmd.Parameters.AddWithValue("@from", (object?)from ?? DBNull.Value);
         cmd.Parameters.AddWithValue("@to", (object?)to ?? DBNull.Value);
@@ -47,34 +49,36 @@ ORDER BY NgayTao DESC;";
         await using var rd = await cmd.ExecuteReaderAsync();
         while (await rd.ReadAsync())
         {
-            var name = rd.GetString(rd.GetOrdinal("TenKhachHang"));
-            var phone = rd.GetString(rd.GetOrdinal("SoDienThoai"));
+            var ten = rd.GetString(rd.GetOrdinal("TenKhachHang"));
+            var sdt = rd.GetString(rd.GetOrdinal("SoDienThoai"));
             var email = rd.IsDBNull(rd.GetOrdinal("Email")) ? null : rd.GetString(rd.GetOrdinal("Email"));
 
             list.Add(new DonHangListDto
             {
-                Id = rd.GetInt32(rd.GetOrdinal("MaDonHang")),
-                Code = rd.GetString(rd.GetOrdinal("MaDon")),
-                Customer = new OrderCustomerDto
+                MaDonHang = rd.GetInt32(rd.GetOrdinal("MaDonHang")),
+                MaDon = rd.GetString(rd.GetOrdinal("MaDon")),
+                KhachHang = new KhachHangDonHangDto
                 {
-                    Name = name,
-                    Phone = phone,
+                    HoTen = ten,
+                    SoDienThoai = sdt,
                     Email = email,
-                    Avatar = AvatarFromName(name)
+                    Avatar = AvatarFromName(ten)
                 },
-                Total = rd.GetDecimal(rd.GetOrdinal("TongTien")),
-                Payment = new OrderPaymentDto
+                TongTien = rd.GetDecimal(rd.GetOrdinal("TongTien")),
+                ThanhToan = new ThanhToanDonHangDto
                 {
-                    Method = rd.GetString(rd.GetOrdinal("PhuongThucThanhToan")),
-                    Paid = rd.GetBoolean(rd.GetOrdinal("DaThanhToan"))
+                    PhuongThuc = rd.GetString(rd.GetOrdinal("PhuongThucThanhToan")),
+                    DaThanhToan = rd.GetBoolean(rd.GetOrdinal("DaThanhToan"))
                 },
-                Status = rd.GetString(rd.GetOrdinal("TrangThai")),
-                CreatedAt = rd.GetDateTime(rd.GetOrdinal("NgayTao"))
+                TrangThai = rd.GetString(rd.GetOrdinal("TrangThai")),
+                ThoiGianTao = rd.GetDateTime(rd.GetOrdinal("NgayTao"))
             });
         }
+
         return list;
     }
 
+    // ===== GET BY ID (DETAIL) =====
     public async Task<DonHangDetailDto?> GetByIdAsync(int id)
     {
         await using var conn = _factory.CreateConnection();
@@ -95,34 +99,34 @@ WHERE TrangThaiHoatDong = 1 AND MaDonHang = @id;";
         {
             if (!await rd.ReadAsync()) return null;
 
-            var name = rd.GetString(rd.GetOrdinal("TenKhachHang"));
-            var phone = rd.GetString(rd.GetOrdinal("SoDienThoai"));
+            var ten = rd.GetString(rd.GetOrdinal("TenKhachHang"));
+            var sdt = rd.GetString(rd.GetOrdinal("SoDienThoai"));
             var email = rd.IsDBNull(rd.GetOrdinal("Email")) ? null : rd.GetString(rd.GetOrdinal("Email"));
             var diaChi = rd.IsDBNull(rd.GetOrdinal("DiaChiGiao")) ? null : rd.GetString(rd.GetOrdinal("DiaChiGiao"));
-            var note = rd.IsDBNull(rd.GetOrdinal("GhiChu")) ? null : rd.GetString(rd.GetOrdinal("GhiChu"));
+            var ghiChu = rd.IsDBNull(rd.GetOrdinal("GhiChu")) ? null : rd.GetString(rd.GetOrdinal("GhiChu"));
 
             dto = new DonHangDetailDto
             {
-                Id = rd.GetInt32(rd.GetOrdinal("MaDonHang")),
-                Code = rd.GetString(rd.GetOrdinal("MaDon")),
-                Customer = new OrderCustomerDto
+                MaDonHang = rd.GetInt32(rd.GetOrdinal("MaDonHang")),
+                MaDon = rd.GetString(rd.GetOrdinal("MaDon")),
+                KhachHang = new KhachHangDonHangDto
                 {
-                    Name = name,
-                    Phone = phone,
+                    HoTen = ten,
+                    SoDienThoai = sdt,
                     Email = email,
-                    Avatar = AvatarFromName(name)
+                    Avatar = AvatarFromName(ten)
                 },
-                ShippingAddress = diaChi,
-                Note = note,
-                Total = rd.GetDecimal(rd.GetOrdinal("TongTien")),
-                Payment = new OrderPaymentDto
+                DiaChiGiaoHang = diaChi,
+                GhiChu = ghiChu,
+                TongTien = rd.GetDecimal(rd.GetOrdinal("TongTien")),
+                ThanhToan = new ThanhToanDonHangDto
                 {
-                    Method = rd.GetString(rd.GetOrdinal("PhuongThucThanhToan")),
-                    Paid = rd.GetBoolean(rd.GetOrdinal("DaThanhToan"))
+                    PhuongThuc = rd.GetString(rd.GetOrdinal("PhuongThucThanhToan")),
+                    DaThanhToan = rd.GetBoolean(rd.GetOrdinal("DaThanhToan"))
                 },
-                Status = rd.GetString(rd.GetOrdinal("TrangThai")),
-                CreatedAt = rd.GetDateTime(rd.GetOrdinal("NgayTao")),
-                Products = new List<OrderItemDto>()
+                TrangThai = rd.GetString(rd.GetOrdinal("TrangThai")),
+                ThoiGianTao = rd.GetDateTime(rd.GetOrdinal("NgayTao")),
+                SanPham = new List<SanPhamDonHangDto>()
             };
         }
 
@@ -139,35 +143,35 @@ ORDER BY MaChiTiet ASC;";
         await using var rd2 = await itemsCmd.ExecuteReaderAsync();
         while (await rd2.ReadAsync())
         {
-            dto!.Products.Add(new OrderItemDto
+            dto!.SanPham.Add(new SanPhamDonHangDto
             {
-                ProductId = rd2.IsDBNull(rd2.GetOrdinal("MaSanPham")) ? null : rd2.GetInt32(rd2.GetOrdinal("MaSanPham")),
-                Name = rd2.GetString(rd2.GetOrdinal("TenSanPham")),
-                Quantity = rd2.GetInt32(rd2.GetOrdinal("SoLuong")),
-                Price = rd2.GetDecimal(rd2.GetOrdinal("DonGia"))
+                MaSanPham = rd2.IsDBNull(rd2.GetOrdinal("MaSanPham")) ? null : rd2.GetInt32(rd2.GetOrdinal("MaSanPham")),
+                Ten = rd2.GetString(rd2.GetOrdinal("TenSanPham")),
+                SoLuong = rd2.GetInt32(rd2.GetOrdinal("SoLuong")),
+                DonGia = rd2.GetDecimal(rd2.GetOrdinal("DonGia")),
+                Emoji = "📦"
             });
         }
 
         return dto;
     }
 
+    // ===== CREATE =====
     public async Task<int> CreateAsync(DonHangCreateReq req)
     {
-        // validate tối thiểu
-        if (string.IsNullOrWhiteSpace(req.Code)) throw new ArgumentException("Code is required");
-        if (req.Customer == null) throw new ArgumentException("Customer is required");
-        if (string.IsNullOrWhiteSpace(req.Customer.Name)) throw new ArgumentException("Customer.Name is required");
-        if (string.IsNullOrWhiteSpace(req.Customer.Phone)) throw new ArgumentException("Customer.Phone is required");
-        if (req.Products == null || req.Products.Count == 0) throw new ArgumentException("Products is required");
+        if (string.IsNullOrWhiteSpace(req.MaDon)) throw new ArgumentException("MaDon is required");
+        if (req.KhachHang == null) throw new ArgumentException("KhachHang is required");
+        if (string.IsNullOrWhiteSpace(req.KhachHang.HoTen)) throw new ArgumentException("KhachHang.HoTen is required");
+        if (string.IsNullOrWhiteSpace(req.KhachHang.SoDienThoai)) throw new ArgumentException("KhachHang.SoDienThoai is required");
+        if (req.SanPham == null || req.SanPham.Count == 0) throw new ArgumentException("SanPham is required");
 
-        // tính tổng
-        decimal total = 0;
-        foreach (var p in req.Products)
+        decimal tong = 0;
+        foreach (var p in req.SanPham)
         {
-            if (string.IsNullOrWhiteSpace(p.Name)) throw new ArgumentException("Product.Name is required");
-            if (p.Quantity <= 0) throw new ArgumentException("Product.Quantity must be > 0");
-            if (p.Price < 0) throw new ArgumentException("Product.Price must be >= 0");
-            total += p.Price * p.Quantity;
+            if (string.IsNullOrWhiteSpace(p.Ten)) throw new ArgumentException("SanPham.Ten is required");
+            if (p.SoLuong <= 0) throw new ArgumentException("SanPham.SoLuong must be > 0");
+            if (p.DonGia < 0) throw new ArgumentException("SanPham.DonGia must be >= 0");
+            tong += p.DonGia * p.SoLuong;
         }
 
         await using var conn = _factory.CreateConnection();
@@ -176,27 +180,27 @@ ORDER BY MaChiTiet ASC;";
 
         try
         {
-            var createdAt = req.CreatedAt ?? DateTime.Now;
+            var createdAt = req.ThoiGianTao ?? DateTime.Now;
 
             var insertHeader = @"
 INSERT INTO dbo.DonHang(MaDon, MaKhachHang, TenKhachHang, Email, SoDienThoai, DiaChiGiao,
                        TongTien, PhuongThucThanhToan, DaThanhToan, TrangThai, GhiChu, NgayTao, TrangThaiHoatDong)
-VALUES(@MaDon, @MaKhachHang, @Ten, @Email, @Phone, @DiaChi,
-       @TongTien, @PTTT, @Paid, @Status, @Note, @NgayTao, 1);
+VALUES(@MaDon, @MaKhachHang, @Ten, @Email, @SDT, @DiaChi,
+       @TongTien, @PTTT, @DaThanhToan, @TrangThai, @GhiChu, @NgayTao, 1);
 SELECT CAST(SCOPE_IDENTITY() AS INT);";
 
             await using var cmd = new SqlCommand(insertHeader, conn, (SqlTransaction)tx);
-            cmd.Parameters.AddWithValue("@MaDon", req.Code.Trim());
-            cmd.Parameters.AddWithValue("@MaKhachHang", (object?)req.CustomerId ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("@Ten", req.Customer.Name.Trim());
-            cmd.Parameters.AddWithValue("@Email", string.IsNullOrWhiteSpace(req.Customer.Email) ? (object)DBNull.Value : req.Customer.Email.Trim());
-            cmd.Parameters.AddWithValue("@Phone", req.Customer.Phone.Trim());
-            cmd.Parameters.AddWithValue("@DiaChi", string.IsNullOrWhiteSpace(req.ShippingAddress) ? (object)DBNull.Value : req.ShippingAddress.Trim());
-            cmd.Parameters.AddWithValue("@TongTien", total);
-            cmd.Parameters.AddWithValue("@PTTT", string.IsNullOrWhiteSpace(req.Payment?.Method) ? "COD" : req.Payment.Method.Trim());
-            cmd.Parameters.AddWithValue("@Paid", req.Payment?.Paid ?? false);
-            cmd.Parameters.AddWithValue("@Status", string.IsNullOrWhiteSpace(req.Status) ? "pending" : req.Status.Trim());
-            cmd.Parameters.AddWithValue("@Note", string.IsNullOrWhiteSpace(req.Note) ? (object)DBNull.Value : req.Note.Trim());
+            cmd.Parameters.AddWithValue("@MaDon", req.MaDon.Trim());
+            cmd.Parameters.AddWithValue("@MaKhachHang", (object?)req.MaKhachHang ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Ten", req.KhachHang.HoTen.Trim());
+            cmd.Parameters.AddWithValue("@Email", string.IsNullOrWhiteSpace(req.KhachHang.Email) ? (object)DBNull.Value : req.KhachHang.Email.Trim());
+            cmd.Parameters.AddWithValue("@SDT", req.KhachHang.SoDienThoai.Trim());
+            cmd.Parameters.AddWithValue("@DiaChi", string.IsNullOrWhiteSpace(req.DiaChiGiaoHang) ? (object)DBNull.Value : req.DiaChiGiaoHang.Trim());
+            cmd.Parameters.AddWithValue("@TongTien", tong);
+            cmd.Parameters.AddWithValue("@PTTT", string.IsNullOrWhiteSpace(req.ThanhToan?.PhuongThuc) ? "COD" : req.ThanhToan.PhuongThuc.Trim());
+            cmd.Parameters.AddWithValue("@DaThanhToan", req.ThanhToan?.DaThanhToan ?? false);
+            cmd.Parameters.AddWithValue("@TrangThai", string.IsNullOrWhiteSpace(req.TrangThai) ? "pending" : req.TrangThai.Trim());
+            cmd.Parameters.AddWithValue("@GhiChu", string.IsNullOrWhiteSpace(req.GhiChu) ? (object)DBNull.Value : req.GhiChu.Trim());
             cmd.Parameters.AddWithValue("@NgayTao", createdAt);
 
             var orderId = (int)(await cmd.ExecuteScalarAsync() ?? 0);
@@ -205,14 +209,14 @@ SELECT CAST(SCOPE_IDENTITY() AS INT);";
 INSERT INTO dbo.DonHangChiTiet(MaDonHang, MaSanPham, TenSanPham, SoLuong, DonGia)
 VALUES(@MaDonHang, @MaSanPham, @TenSP, @SoLuong, @DonGia);";
 
-            foreach (var p in req.Products)
+            foreach (var p in req.SanPham)
             {
                 await using var cmdItem = new SqlCommand(insertItem, conn, (SqlTransaction)tx);
                 cmdItem.Parameters.AddWithValue("@MaDonHang", orderId);
-                cmdItem.Parameters.AddWithValue("@MaSanPham", (object?)p.ProductId ?? DBNull.Value);
-                cmdItem.Parameters.AddWithValue("@TenSP", p.Name.Trim());
-                cmdItem.Parameters.AddWithValue("@SoLuong", p.Quantity);
-                cmdItem.Parameters.AddWithValue("@DonGia", p.Price);
+                cmdItem.Parameters.AddWithValue("@MaSanPham", (object?)p.MaSanPham ?? DBNull.Value);
+                cmdItem.Parameters.AddWithValue("@TenSP", p.Ten.Trim());
+                cmdItem.Parameters.AddWithValue("@SoLuong", p.SoLuong);
+                cmdItem.Parameters.AddWithValue("@DonGia", p.DonGia);
                 await cmdItem.ExecuteNonQueryAsync();
             }
 
@@ -226,7 +230,97 @@ VALUES(@MaDonHang, @MaSanPham, @TenSP, @SoLuong, @DonGia);";
         }
     }
 
-    public async Task<bool> UpdateTrangThaiAsync(int id, string status)
+    // ===== UPDATE (thay header + replace items) =====
+    public async Task<bool> UpdateAsync(int id, DonHangUpdateReq req)
+    {
+        if (req.KhachHang == null) throw new ArgumentException("KhachHang is required");
+        if (string.IsNullOrWhiteSpace(req.KhachHang.HoTen)) throw new ArgumentException("KhachHang.HoTen is required");
+        if (string.IsNullOrWhiteSpace(req.KhachHang.SoDienThoai)) throw new ArgumentException("KhachHang.SoDienThoai is required");
+        if (req.SanPham == null || req.SanPham.Count == 0) throw new ArgumentException("SanPham is required");
+
+        decimal tong = 0;
+        foreach (var p in req.SanPham)
+        {
+            if (string.IsNullOrWhiteSpace(p.Ten)) throw new ArgumentException("SanPham.Ten is required");
+            if (p.SoLuong <= 0) throw new ArgumentException("SanPham.SoLuong must be > 0");
+            if (p.DonGia < 0) throw new ArgumentException("SanPham.DonGia must be >= 0");
+            tong += p.DonGia * p.SoLuong;
+        }
+
+        await using var conn = _factory.CreateConnection();
+        await conn.OpenAsync();
+        await using var tx = await conn.BeginTransactionAsync();
+
+        try
+        {
+            var updateHeader = @"
+UPDATE dbo.DonHang
+SET MaKhachHang = @MaKhachHang,
+    TenKhachHang = @Ten,
+    Email = @Email,
+    SoDienThoai = @SDT,
+    DiaChiGiao = @DiaChi,
+    TongTien = @TongTien,
+    PhuongThucThanhToan = @PTTT,
+    DaThanhToan = @DaThanhToan,
+    GhiChu = @GhiChu
+WHERE TrangThaiHoatDong = 1 AND MaDonHang = @Id;";
+
+            await using (var cmd = new SqlCommand(updateHeader, conn, (SqlTransaction)tx))
+            {
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@MaKhachHang", (object?)req.MaKhachHang ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Ten", req.KhachHang.HoTen.Trim());
+                cmd.Parameters.AddWithValue("@Email", string.IsNullOrWhiteSpace(req.KhachHang.Email) ? (object)DBNull.Value : req.KhachHang.Email.Trim());
+                cmd.Parameters.AddWithValue("@SDT", req.KhachHang.SoDienThoai.Trim());
+                cmd.Parameters.AddWithValue("@DiaChi", string.IsNullOrWhiteSpace(req.DiaChiGiaoHang) ? (object)DBNull.Value : req.DiaChiGiaoHang.Trim());
+                cmd.Parameters.AddWithValue("@TongTien", tong);
+                cmd.Parameters.AddWithValue("@PTTT", string.IsNullOrWhiteSpace(req.ThanhToan?.PhuongThuc) ? "COD" : req.ThanhToan.PhuongThuc.Trim());
+                cmd.Parameters.AddWithValue("@DaThanhToan", req.ThanhToan?.DaThanhToan ?? false);
+                cmd.Parameters.AddWithValue("@GhiChu", string.IsNullOrWhiteSpace(req.GhiChu) ? (object)DBNull.Value : req.GhiChu.Trim());
+
+                var affected = await cmd.ExecuteNonQueryAsync();
+                if (affected == 0)
+                {
+                    await tx.RollbackAsync();
+                    return false;
+                }
+            }
+
+            var deleteItems = @"DELETE FROM dbo.DonHangChiTiet WHERE MaDonHang = @Id;";
+            await using (var cmdDel = new SqlCommand(deleteItems, conn, (SqlTransaction)tx))
+            {
+                cmdDel.Parameters.AddWithValue("@Id", id);
+                await cmdDel.ExecuteNonQueryAsync();
+            }
+
+            var insertItem = @"
+INSERT INTO dbo.DonHangChiTiet(MaDonHang, MaSanPham, TenSanPham, SoLuong, DonGia)
+VALUES(@MaDonHang, @MaSanPham, @TenSP, @SoLuong, @DonGia);";
+
+            foreach (var p in req.SanPham)
+            {
+                await using var cmdItem = new SqlCommand(insertItem, conn, (SqlTransaction)tx);
+                cmdItem.Parameters.AddWithValue("@MaDonHang", id);
+                cmdItem.Parameters.AddWithValue("@MaSanPham", (object?)p.MaSanPham ?? DBNull.Value);
+                cmdItem.Parameters.AddWithValue("@TenSP", p.Ten.Trim());
+                cmdItem.Parameters.AddWithValue("@SoLuong", p.SoLuong);
+                cmdItem.Parameters.AddWithValue("@DonGia", p.DonGia);
+                await cmdItem.ExecuteNonQueryAsync();
+            }
+
+            await tx.CommitAsync();
+            return true;
+        }
+        catch
+        {
+            await tx.RollbackAsync();
+            throw;
+        }
+    }
+
+    // ===== UPDATE TRẠNG THÁI =====
+    public async Task<bool> UpdateTrangThaiAsync(int id, string trangThai)
     {
         await using var conn = _factory.CreateConnection();
         await conn.OpenAsync();
@@ -238,11 +332,12 @@ WHERE TrangThaiHoatDong = 1 AND MaDonHang = @id;";
 
         await using var cmd = new SqlCommand(sql, conn);
         cmd.Parameters.AddWithValue("@id", id);
-        cmd.Parameters.AddWithValue("@st", status);
+        cmd.Parameters.AddWithValue("@st", trangThai);
 
         return await cmd.ExecuteNonQueryAsync() > 0;
     }
 
+    // ===== SOFT DELETE =====
     public async Task<bool> SoftDeleteAsync(int id)
     {
         await using var conn = _factory.CreateConnection();
