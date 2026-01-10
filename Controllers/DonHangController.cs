@@ -11,43 +11,77 @@ public class DonHangController : ControllerBase
     private readonly DonHangRepository _repo;
     public DonHangController(DonHangRepository repo) => _repo = repo;
 
+    // GET /api/don-hang
     [HttpGet]
-    public async Task<ActionResult<List<DonHangListDto>>> GetAll(
-        [FromQuery] string? status,
+    public async Task<IActionResult> GetAll(
+        [FromQuery] string? trangThai,
         [FromQuery] string? q,
         [FromQuery] DateTime? from,
         [FromQuery] DateTime? to)
-    {
-        var data = await _repo.GetAllAsync(status, q, from, to);
-        return Ok(data);
-    }
+        => Ok(await _repo.GetAllAsync(trangThai, q, from, to));
 
+    // GET /api/don-hang/{id}
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<DonHangDetailDto>> GetById(int id)
+    public async Task<IActionResult> GetById(int id)
     {
         var dto = await _repo.GetByIdAsync(id);
-        if (dto == null) return NotFound();
-        return Ok(dto);
+        return dto == null ? NotFound() : Ok(dto);
     }
 
-    [HttpPost]
-    public async Task<ActionResult> Create([FromBody] DonHangCreateReq req)
+    // POST /api/don-hang/create
+    [HttpPost("create")]
+    public async Task<IActionResult> Create([FromBody] DonHangCreateReq req)
     {
         var id = await _repo.CreateAsync(req);
         return CreatedAtAction(nameof(GetById), new { id }, new { id });
     }
 
-    [HttpPatch("{id:int}/trang-thai")]
-    public async Task<ActionResult> UpdateTrangThai(int id, [FromBody] UpdateTrangThaiReq req)
+    // PUT /api/don-hang/update/{id}
+    [HttpPut("update/{id:int}")]
+    public async Task<IActionResult> Update(int id, [FromBody] DonHangUpdateReq req)
     {
-        if (string.IsNullOrWhiteSpace(req.Status)) return BadRequest("Status is required");
-        var ok = await _repo.UpdateTrangThaiAsync(id, req.Status.Trim());
+        var ok = await _repo.UpdateAsync(id, req);
         if (!ok) return NotFound();
         return NoContent();
     }
 
-    [HttpDelete("{id:int}")]
-    public async Task<ActionResult> SoftDelete(int id)
+    // ===== CẬP NHẬT TRẠNG THÁI (TIẾNG VIỆT) =====
+
+    // PUT /api/don-hang/cho-xac-nhan/{id}
+    [HttpPut("cho-xac-nhan/{id:int}")]
+    public async Task<IActionResult> ChoXacNhan(int id)
+        => await SetTrangThai(id, "pending");
+
+    // PUT /api/don-hang/dang-xu-ly/{id}
+    [HttpPut("dang-xu-ly/{id:int}")]
+    public async Task<IActionResult> DangXuLy(int id)
+        => await SetTrangThai(id, "processing");
+
+    // PUT /api/don-hang/dang-giao/{id}
+    [HttpPut("dang-giao/{id:int}")]
+    public async Task<IActionResult> DangGiao(int id)
+        => await SetTrangThai(id, "shipping");
+
+    // PUT /api/don-hang/da-giao/{id}
+    [HttpPut("da-giao/{id:int}")]
+    public async Task<IActionResult> DaGiao(int id)
+        => await SetTrangThai(id, "completed");
+
+    // PUT /api/don-hang/huy-don/{id}
+    [HttpPut("huy-don/{id:int}")]
+    public async Task<IActionResult> HuyDon(int id)
+        => await SetTrangThai(id, "canceled");
+
+    private async Task<IActionResult> SetTrangThai(int id, string trangThai)
+    {
+        var ok = await _repo.UpdateTrangThaiAsync(id, trangThai);
+        if (!ok) return NotFound();
+        return NoContent();
+    }
+
+    // DELETE /api/don-hang/xoa/{id}
+    [HttpDelete("xoa/{id:int}")]
+    public async Task<IActionResult> Xoa(int id)
     {
         var ok = await _repo.SoftDeleteAsync(id);
         if (!ok) return NotFound();
